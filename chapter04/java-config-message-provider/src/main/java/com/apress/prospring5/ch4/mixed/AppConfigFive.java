@@ -12,17 +12,17 @@ import org.springframework.context.annotation.ImportResource;
  * Created by iuliana.cosmina on 3/15/17.
  */
 @Configuration
-@ImportResource(value="classpath:spring/app-context-xml-01.xml")
+@ImportResource(value = "classpath:spring/app-context-xml-01.xml")
 public class AppConfigFive {
-	@Autowired
-	MessageProvider provider;
+    @Autowired
+    MessageProvider provider;
 
 
-	@Bean(name = "messageRenderer")
-	public MessageRenderer messageRenderer() {
-		MessageRenderer renderer = new StandardOutMessageRenderer();
-		renderer.setMessageProvider(provider);
-		return renderer;
-	}
+    @Bean(name = "messageRenderer")
+    public MessageRenderer messageRenderer() {
+        MessageRenderer renderer = new StandardOutMessageRenderer();
+        renderer.setMessageProvider(provider);
+        return renderer;
+    }
 
 }

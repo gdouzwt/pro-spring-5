@@ -21,7 +21,7 @@ public class Singer {
     private void init() {
         System.out.println("Initializing bean");
 
-       if (name == null) {
+        if (name == null) {
             System.out.println("Using default name");
             name = DEFAULT_NAME;
         }

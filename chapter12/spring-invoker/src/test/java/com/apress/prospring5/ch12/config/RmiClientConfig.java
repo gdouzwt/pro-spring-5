@@ -11,12 +11,12 @@ import org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean;
 @Configuration
 public class RmiClientConfig {
 
-	@Bean
-	public SingerService singerService() {
-		HttpInvokerProxyFactoryBean factoryBean = new HttpInvokerProxyFactoryBean();
-		factoryBean.setServiceInterface(SingerService.class);
-		factoryBean.setServiceUrl("http://localhost:8080/invoker/httpInvoker/singerService");
-		factoryBean.afterPropertiesSet();
-		return (SingerService) factoryBean.getObject();
-	}
+    @Bean
+    public SingerService singerService() {
+        HttpInvokerProxyFactoryBean factoryBean = new HttpInvokerProxyFactoryBean();
+        factoryBean.setServiceInterface(SingerService.class);
+        factoryBean.setServiceUrl("http://localhost:8080/invoker/httpInvoker/singerService");
+        factoryBean.afterPropertiesSet();
+        return (SingerService) factoryBean.getObject();
+    }
 }

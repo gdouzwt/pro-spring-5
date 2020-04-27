@@ -19,22 +19,22 @@ public class IntroductionDemo {
         pf.setOptimize(true);
 
         Contact proxy = (Contact) pf.getProxy();
-        IsModified proxyInterface = (IsModified)proxy;
+        IsModified proxyInterface = (IsModified) proxy;
 
         System.out.println("Is Contact?: " + (proxy instanceof Contact));
         System.out.println("Is IsModified?: " + (proxy instanceof IsModified));
 
-        System.out.println("Has been modified?: " + 
-            proxyInterface.isModified());
+        System.out.println("Has been modified?: " +
+                proxyInterface.isModified());
 
         proxy.setName("John Mayer");
 
-        System.out.println("Has been modified?: " + 
-            proxyInterface.isModified());
+        System.out.println("Has been modified?: " +
+                proxyInterface.isModified());
 
         proxy.setName("Eric Clapton");
 
-        System.out.println("Has been modified?: " + 
-            proxyInterface.isModified());
+        System.out.println("Has been modified?: " +
+                proxyInterface.isModified());
     }
 }

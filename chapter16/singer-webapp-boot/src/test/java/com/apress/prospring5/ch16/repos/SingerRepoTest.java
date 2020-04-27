@@ -19,32 +19,32 @@ import static org.junit.Assert.assertEquals;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@DirtiesContext(classMode=ClassMode.AFTER_CLASS)
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class SingerRepoTest {
 
-	private SingerRepository singerRepository;
+    private SingerRepository singerRepository;
 
-	@Autowired
-	public void setSingerRepository(SingerRepository singerRepository) {
-		this.singerRepository = singerRepository;
-	}
+    @Autowired
+    public void setSingerRepository(SingerRepository singerRepository) {
+        this.singerRepository = singerRepository;
+    }
 
-	@Test
-	public void testSaveSinger(){
-		Singer singer = new Singer();
-		singer.setFirstName("Angus");
-		singer.setLastName("Young");
-		singer.setBirthDate(new Date(
-				(new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
-		singerRepository.save(singer);
+    @Test
+    public void testSaveSinger() {
+        Singer singer = new Singer();
+        singer.setFirstName("Angus");
+        singer.setLastName("Young");
+        singer.setBirthDate(new Date(
+                (new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
+        singerRepository.save(singer);
 
-		//get all singers, list should have 15
-		Iterable<Singer> singers = singerRepository.findAll();
-		int count = 0;
+        //get all singers, list should have 15
+        Iterable<Singer> singers = singerRepository.findAll();
+        int count = 0;
 
-		for(Singer s : singers){
-			count++;
-		}
-		assertEquals(count, 15);
-	}
+        for (Singer s : singers) {
+            count++;
+        }
+        assertEquals(count, 15);
+    }
 }

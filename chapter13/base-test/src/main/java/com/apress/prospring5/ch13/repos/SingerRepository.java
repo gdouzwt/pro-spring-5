@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SingerRepository extends CrudRepository<Singer, Long> {
 
-	List<Singer> findByFirstName(String firstName);
+    List<Singer> findByFirstName(String firstName);
 
-	Singer findByFirstNameAndLastName(String firstName, String lastName);
+    Singer findByFirstNameAndLastName(String firstName, String lastName);
 }

@@ -5,30 +5,30 @@
    Customized by Iuliana Cosmina
 */
 
-.success{
-    color:#69A150;
-    font-size:1.2em;
+.success {
+    color: #69A150;
+    font-size: 1.2em;
     font-family: 'helvetica', Georgia, arial, sans-serif;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.info{
-    color:#5C7CA0;
-    font-size:1.2em;
+.info {
+    color: #5C7CA0;
+    font-size: 1.2em;
     font-family: 'helvetica', Georgia, arial, sans-serif;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.warn{
-    color:#BF9E1B;
-    font-size:1.2em;
+.warn {
+    color: #BF9E1B;
+    font-size: 1.2em;
     font-family: 'helvetica', Georgia, arial, sans-serif;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.error{
-    color:#AD5E5C;
-    font-size:1.2em;
+.error {
+    color: #AD5E5C;
+    font-size: 1.2em;
     font-family: 'helvetica', Georgia, arial, sans-serif;
-    font-weight:bold;
+    font-weight: bold;
 }

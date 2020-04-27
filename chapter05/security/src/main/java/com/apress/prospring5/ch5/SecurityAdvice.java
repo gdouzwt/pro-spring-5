@@ -19,15 +19,15 @@ public class SecurityAdvice implements MethodBeforeAdvice {
         if (user == null) {
             System.out.println("No user authenticated");
             throw new SecurityException(
-                "You must login before attempting to invoke the method: " 
-                + method.getName());
+                    "You must login before attempting to invoke the method: "
+                            + method.getName());
         } else if ("John".equals(user.getUserName())) {
             System.out.println("Logged in user is John - OKAY!");
         } else {
             System.out.println("Logged in user is " + user.getUserName()
-                + " NOT GOOD :(");
+                    + " NOT GOOD :(");
             throw new SecurityException("User " + user.getUserName()
-                + " is not allowed access to method " + method.getName());
+                    + " is not allowed access to method " + method.getName());
         }
     }
 }

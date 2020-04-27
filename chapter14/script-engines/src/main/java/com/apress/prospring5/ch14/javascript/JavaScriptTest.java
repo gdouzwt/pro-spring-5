@@ -9,15 +9,15 @@ import javax.script.ScriptException;
 
 public class JavaScriptTest {
 
-	private static Logger logger = LoggerFactory.getLogger(JavaScriptTest.class);
+    private static Logger logger = LoggerFactory.getLogger(JavaScriptTest.class);
 
-	public static void main(String... args) {
-		ScriptEngineManager mgr = new ScriptEngineManager();
-		ScriptEngine jsEngine = mgr.getEngineByName("JavaScript");
-		try {
-			jsEngine.eval("print('Hello JavaScript in Java')");
-		} catch (ScriptException ex) {
-			logger.error("JavaScript expression cannot be evaluated!", ex);
-		}
-	}
+    public static void main(String... args) {
+        ScriptEngineManager mgr = new ScriptEngineManager();
+        ScriptEngine jsEngine = mgr.getEngineByName("JavaScript");
+        try {
+            jsEngine.eval("print('Hello JavaScript in Java')");
+        } catch (ScriptException ex) {
+            logger.error("JavaScript expression cannot be evaluated!", ex);
+        }
+    }
 }

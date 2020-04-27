@@ -13,10 +13,10 @@ public class SpringJPADemo {
         ctx.refresh();
 
         SingerService singerService = ctx.getBean(SingerService.class);
-        
+
         List<Singer> singers = singerService.findAll();
 
-        for(Singer singer : singers) {
+        for (Singer singer : singers) {
             System.out.println(singer);
         }
 

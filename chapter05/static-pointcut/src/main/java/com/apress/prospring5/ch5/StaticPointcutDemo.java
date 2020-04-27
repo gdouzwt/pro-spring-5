@@ -22,12 +22,12 @@ public class StaticPointcutDemo {
         ProxyFactory pf = new ProxyFactory();
         pf.addAdvisor(advisor);
         pf.setTarget(johnMayer);
-        proxyOne = (Singer)pf.getProxy();
+        proxyOne = (Singer) pf.getProxy();
 
         pf = new ProxyFactory();
         pf.addAdvisor(advisor);
         pf.setTarget(ericClapton);
-        proxyTwo = (Singer)pf.getProxy();
+        proxyTwo = (Singer) pf.getProxy();
 
         proxyOne.sing();
         proxyTwo.sing();

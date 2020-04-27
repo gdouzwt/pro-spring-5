@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 public class Singer {
 
     @NotNull
-    @Size(min=2, max=60)
+    @Size(min = 2, max = 60)
     private String firstName;
 
     private String lastName;

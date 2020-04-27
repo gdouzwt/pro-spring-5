@@ -21,23 +21,23 @@ table td {
     border-bottom: 1px dotted #BDB76B;
 }
 
-.menu{
-    line-height:30px;
-    width:150px;
-    float:left;
-    padding:5px;
+.menu {
+    line-height: 30px;
+    width: 150px;
+    float: left;
+    padding: 5px;
 }
 
-.footer{
-    clear:both;
-    text-align:left;
-    padding:10px;
+.footer {
+    clear: both;
+    text-align: left;
+    padding: 10px;
 }
 
-.error{
+.error {
     border: 1px solid;
     margin: 5px 0px;
-    padding:5px 5px 5px 50px;
+    padding: 5px 5px 5px 50px;
     color: #D8000C;
     background-color: #FFBABA;
 }

@@ -23,9 +23,9 @@ dependencies {
 
 jar {
     manifest {
-        attributes("Created-By"      : "Iuliana Cosmina",
+        attributes("Created-By": "Iuliana Cosmina",
                 "Specification-Title": "Pro Spring 5",
-                "Main-Class"         : "com.apress.prospring5.ch6.Application",
-                "Class-Path"         : configurations.compile.collect { it.getName() }.join(' '))
+                "Main-Class": "com.apress.prospring5.ch6.Application",
+                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
     }
 }

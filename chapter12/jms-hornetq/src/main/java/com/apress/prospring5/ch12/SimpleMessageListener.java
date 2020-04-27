@@ -10,7 +10,7 @@ import javax.jms.Message;
 import javax.jms.TextMessage;
 
 @Component("messageListener")
-public class SimpleMessageListener{
+public class SimpleMessageListener {
     private static final Logger logger = LoggerFactory.getLogger(SimpleMessageListener.class);
 
     @JmsListener(destination = "prospring5", containerFactory = "jmsListenerContainerFactory")

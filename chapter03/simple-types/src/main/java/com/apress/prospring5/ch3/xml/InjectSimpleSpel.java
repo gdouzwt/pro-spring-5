@@ -50,11 +50,11 @@ public class InjectSimpleSpel {
     }
 
     public String toString() {
-        return "Name: " + name + "\n" 
-            + "Age: " + age + "\n"
-            + "Age in Seconds: " + ageInSeconds + "\n" 
-            + "Height: " + height + "\n" 
-            + "Is Programmer?: " + programmer;
+        return "Name: " + name + "\n"
+                + "Age: " + age + "\n"
+                + "Age in Seconds: " + ageInSeconds + "\n"
+                + "Height: " + height + "\n"
+                + "Is Programmer?: " + programmer;
     }
 
     public static void main(String... args) {
@@ -62,7 +62,7 @@ public class InjectSimpleSpel {
         ctx.load("classpath:spring/app-context-xml.xml");
         ctx.refresh();
 
-        InjectSimpleSpel simple = (InjectSimpleSpel)ctx.getBean("injectSimpleSpel");
+        InjectSimpleSpel simple = (InjectSimpleSpel) ctx.getBean("injectSimpleSpel");
         System.out.println(simple);
 
         ctx.close();

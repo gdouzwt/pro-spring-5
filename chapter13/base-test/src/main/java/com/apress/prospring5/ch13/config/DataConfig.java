@@ -16,20 +16,20 @@ import javax.sql.DataSource;
  */
 @Profile("dev")
 @Configuration
-@ComponentScan(basePackages  = {"com.apress.prospring5.ch13.init"} )
+@ComponentScan(basePackages = {"com.apress.prospring5.ch13.init"})
 public class DataConfig {
 
-	private static Logger logger = LoggerFactory.getLogger(DataConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(DataConfig.class);
 
-	@Bean
-	public DataSource dataSource() {
-		try {
-			EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-			return dbBuilder.setType(EmbeddedDatabaseType.H2).build();
-		} catch (Exception e) {
-			logger.error("Embedded DataSource bean cannot be created!", e);
-			return null;
-		}
-	}
+    @Bean
+    public DataSource dataSource() {
+        try {
+            EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
+            return dbBuilder.setType(EmbeddedDatabaseType.H2).build();
+        } catch (Exception e) {
+            logger.error("Embedded DataSource bean cannot be created!", e);
+            return null;
+        }
+    }
 
 }

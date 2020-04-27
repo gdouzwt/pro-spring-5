@@ -14,20 +14,20 @@ import java.util.Arrays;
 @SpringBootApplication
 public class Application {
 
-	private static Logger logger = LoggerFactory.getLogger(Application.class);
+    private static Logger logger = LoggerFactory.getLogger(Application.class);
 
-	public static void main(String... args) throws Exception {
-		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-		assert (ctx != null);
-		logger.info("The beans you were looking for:");
+    public static void main(String... args) throws Exception {
+        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+        assert (ctx != null);
+        logger.info("The beans you were looking for:");
 
-		// listing all bean definition  names
-		Arrays.stream(ctx.getBeanDefinitionNames()).forEach(logger::info);
+        // listing all bean definition  names
+        Arrays.stream(ctx.getBeanDefinitionNames()).forEach(logger::info);
 
-		HelloWorld hw = ctx.getBean(HelloWorld.class);
-		hw.sayHi();
+        HelloWorld hw = ctx.getBean(HelloWorld.class);
+        hw.sayHi();
 
-		System.in.read();
-		ctx.close();
-	}
+        System.in.read();
+        ctx.close();
+    }
 }

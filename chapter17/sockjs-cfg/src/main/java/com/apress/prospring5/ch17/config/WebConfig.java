@@ -17,15 +17,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ComponentScan(basePackages = {"com.apress.prospring5.ch17"})
 public class WebConfig implements WebMvcConfigurer {
 
-	// <=> <mvc:default-servlet-handler/>
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+    // <=> <mvc:default-servlet-handler/>
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
-	// <=> <mvc:view-controller .../>
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("/static/index.html");
-	}
+    // <=> <mvc:view-controller .../>
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("/static/index.html");
+    }
 }

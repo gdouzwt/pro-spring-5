@@ -12,18 +12,18 @@ public class SpringJPADemo {
         ctx.refresh();
 
         SingerService singerService = ctx.getBean(
-            "springJpaSingerService", SingerService.class);
+                "springJpaSingerService", SingerService.class);
 
         listSingers("Find all:", singerService.findAll());
         listSingers("Find by first name:", singerService.findByFirstName("John"));
-        listSingers("Find by first and last name:",   
-            singerService.findByFirstNameAndLastName("John", "Mayer"));
+        listSingers("Find by first and last name:",
+                singerService.findByFirstNameAndLastName("John", "Mayer"));
     }
 
     private static void listSingers(String message, List<Singer> singers) {
         System.out.println("");
         System.out.println(message);
-        for (Singer singer: singers) {
+        for (Singer singer : singers) {
             System.out.println(singer);
             System.out.println();
         }

@@ -23,7 +23,7 @@ public class ProxyPerfTest {
         pf.setTarget(target);
         pf.addAdvisor(advisor);
 
-        SimpleBean proxy = (SimpleBean)pf.getProxy();
+        SimpleBean proxy = (SimpleBean) pf.getProxy();
         System.out.println("Running CGLIB (Standard) Tests");
         test(proxy);
     }
@@ -46,7 +46,7 @@ public class ProxyPerfTest {
         pf.addAdvisor(advisor);
         pf.setInterfaces(new Class[]{SimpleBean.class});
 
-        SimpleBean proxy = (SimpleBean)pf.getProxy();
+        SimpleBean proxy = (SimpleBean) pf.getProxy();
         System.out.println("Running JDK Tests");
         test(proxy);
     }
@@ -57,7 +57,7 @@ public class ProxyPerfTest {
 
         System.out.println("Testing Advised Method");
         before = System.nanoTime();
-        for(int x = 0; x < 500000; x++) {
+        for (int x = 0; x < 500000; x++) {
             bean.advised();
         }
         after = System.nanoTime();
@@ -66,7 +66,7 @@ public class ProxyPerfTest {
 
         System.out.println("Testing Unadvised Method");
         before = System.nanoTime();
-        for(int x = 0; x < 500000; x++) {
+        for (int x = 0; x < 500000; x++) {
             bean.unadvised();
         }
         after = System.nanoTime();
@@ -75,7 +75,7 @@ public class ProxyPerfTest {
 
         System.out.println("Testing equals() Method");
         before = System.nanoTime();
-        for(int x = 0; x < 500000; x++) {
+        for (int x = 0; x < 500000; x++) {
             bean.equals(bean);
         }
         after = System.nanoTime();
@@ -84,18 +84,18 @@ public class ProxyPerfTest {
 
         System.out.println("Testing hashCode() Method");
         before = System.nanoTime();
-        for(int x = 0; x < 500000; x++) {
+        for (int x = 0; x < 500000; x++) {
             bean.hashCode();
         }
         after = System.nanoTime();
 
         System.out.println("Took " + (after - before) / 1000000 + " ms");
 
-        Advised advised = (Advised)bean;
+        Advised advised = (Advised) bean;
 
         System.out.println("Testing Advised.getProxyTargetClass() Method");
         before = System.nanoTime();
-        for(int x = 0; x < 500000; x++) {
+        for (int x = 0; x < 500000; x++) {
             advised.getTargetClass();
         }
         after = System.nanoTime();

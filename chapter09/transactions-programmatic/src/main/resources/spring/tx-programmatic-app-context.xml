@@ -32,9 +32,9 @@
     </bean>
 
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
         <property name="packagesToScan"
                   value="com.apress.prospring5.ch9"/>
@@ -52,7 +52,7 @@
     </bean>
 
     <context:component-scan
-            base-package="com.apress.prospring5.ch9" />
+            base-package="com.apress.prospring5.ch9"/>
 
     <jpa:repositories base-package="com.apress.prospring5.ch9"
                       entity-manager-factory-ref="emf"

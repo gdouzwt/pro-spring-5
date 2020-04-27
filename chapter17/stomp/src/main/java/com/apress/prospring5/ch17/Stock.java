@@ -14,7 +14,8 @@ public class Stock implements Serializable {
     private Date date = new Date();
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public Stock() { }
+    public Stock() {
+    }
 
     public Stock(String code, double price) {
         this.code = code;

@@ -17,14 +17,14 @@ buildscript {
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    compile boot.starterRabbitmq,  misc.jacksonDatabind
+    compile boot.starterRabbitmq, misc.jacksonDatabind
 }
 
 jar {
     manifest {
         attributes("Created-By": "Iuliana Cosmina",
                 "Specification-Title": "Pro Spring 5",
-                "Main-Class"         : "com.apress.prospring5.ch12.Application",
+                "Main-Class": "com.apress.prospring5.ch12.Application",
                 "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
     }
 }

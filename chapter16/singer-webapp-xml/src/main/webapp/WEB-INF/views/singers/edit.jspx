@@ -7,17 +7,17 @@
      version="2.0">
 
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             $('#birthDate').datepicker({
                 dateFormat: 'yy-mm-dd',
                 changeYear: true
             });
 
             $("#singerDescription").ckeditor(
-                    {
-                        toolbar : 'Basic',
-                        uiColor : '#CCCCCC'
-                    }
+                {
+                    toolbar: 'Basic',
+                    uiColor: '#CCCCCC'
+                }
             );
         });
     </script>
@@ -42,25 +42,25 @@
         <form:form modelAttribute="singer" id="singerUpdateForm" method="post"
                    enctype="multipart/form-data">
 
-        <c:if test="${not empty message}">
+            <c:if test="${not empty message}">
                 <div id="message" class="${message.type}">${message.message}</div>
             </c:if>
 
             <form:label path="firstName">
                 ${labelSingerFirstName}*
             </form:label>
-            <form:input path="firstName" />
+            <form:input path="firstName"/>
             <div>
-                <form:errors path="firstName" cssClass="error" />
+                <form:errors path="firstName" cssClass="error"/>
             </div>
             <p/>
 
             <form:label path="lastName">
                 ${labelSingerLastName}*
             </form:label>
-            <form:input path="lastName" />
+            <form:input path="lastName"/>
             <div>
-                <form:errors path="lastName" cssClass="error" />
+                <form:errors path="lastName" cssClass="error"/>
             </div>
             <p/>
 
@@ -69,7 +69,7 @@
             </form:label>
             <form:input path="birthDate" id="birthDate"/>
             <div>
-                <form:errors path="birthDate" cssClass="error" />
+                <form:errors path="birthDate" cssClass="error"/>
             </div>
             <p/>
 
@@ -78,7 +78,7 @@
             </form:label>
             <form:textarea cols="60" rows="8" path="description" id="singerDescription"/>
             <div>
-                <form:errors path="description" cssClass="error" />
+                <form:errors path="description" cssClass="error"/>
             </div>
             <p/>
 
@@ -88,7 +88,7 @@
             <input name="file" type="file"/>
             <p/>
 
-            <form:hidden path="version" />
+            <form:hidden path="version"/>
 
             <button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
                 <span class="ui-button-text">Save</span>

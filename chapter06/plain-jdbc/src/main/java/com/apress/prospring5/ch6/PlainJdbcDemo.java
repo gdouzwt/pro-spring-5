@@ -45,7 +45,7 @@ public class PlainJdbcDemo {
     private static void listAllSingers() {
         List<Singer> singers = singerDao.findAll();
 
-        for (Singer singer: singers) {
+        for (Singer singer : singers) {
             logger.info(singer.toString());
         }
     }

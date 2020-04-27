@@ -29,7 +29,7 @@ public class AsyncServiceImpl implements AsyncService {
     @Async
     @Override
     public Future<String> asyncWithReturn(String name) {
-        logger.info("Start execution of async. task with return for "+ name);
+        logger.info("Start execution of async. task with return for " + name);
 
         try {
             Thread.sleep(5000);

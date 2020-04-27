@@ -18,19 +18,20 @@ import static org.springframework.web.reactive.function.BodyInserters.fromObject
 @Component
 public class SingerHandler {
 
-	@Autowired ReactiveSingerRepo reactiveSingerRepo;
+    @Autowired
+    ReactiveSingerRepo reactiveSingerRepo;
 
-	public HandlerFunction<ServerResponse> list = serverRequest -> ServerResponse.ok()
-			.contentType(APPLICATION_JSON).body(reactiveSingerRepo.findAll(), Singer.class);
+    public HandlerFunction<ServerResponse> list = serverRequest -> ServerResponse.ok()
+            .contentType(APPLICATION_JSON).body(reactiveSingerRepo.findAll(), Singer.class);
 
-	public Mono<ServerResponse> show(ServerRequest request) {
-		Mono<Singer> singerMono = reactiveSingerRepo.findById(Long.valueOf(request.pathVariable("id")));
-		Mono<ServerResponse> notFound = ServerResponse.notFound().build();
-		return singerMono
-				.flatMap(singer -> ServerResponse.ok().contentType(APPLICATION_JSON).body(fromObject(singer)))
-				.switchIfEmpty(notFound);
-	}
+    public Mono<ServerResponse> show(ServerRequest request) {
+        Mono<Singer> singerMono = reactiveSingerRepo.findById(Long.valueOf(request.pathVariable("id")));
+        Mono<ServerResponse> notFound = ServerResponse.notFound().build();
+        return singerMono
+                .flatMap(singer -> ServerResponse.ok().contentType(APPLICATION_JSON).body(fromObject(singer)))
+                .switchIfEmpty(notFound);
+    }
 
-	public HandlerFunction<ServerResponse> save = serverRequest -> ServerResponse.ok()
-			.build(reactiveSingerRepo.save(serverRequest.bodyToMono(Singer.class)));
+    public HandlerFunction<ServerResponse> save = serverRequest -> ServerResponse.ok()
+            .build(reactiveSingerRepo.save(serverRequest.bodyToMono(Singer.class)));
 }

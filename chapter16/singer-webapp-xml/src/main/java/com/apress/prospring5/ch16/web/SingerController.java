@@ -89,7 +89,7 @@ public class SingerController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String create(@Valid Singer singer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale, @RequestParam(value="file", required=false) Part file) {
+    public String create(@Valid Singer singer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale, @RequestParam(value = "file", required = false) Part file) {
         logger.info("Creating singer");
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("message", new Message("error",
@@ -146,11 +146,11 @@ public class SingerController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/listgrid", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/listgrid", method = RequestMethod.GET, produces = "application/json")
     public SingerGrid listGrid(@RequestParam(value = "page", required = false) Integer page,
-                                @RequestParam(value = "rows", required = false) Integer rows,
-                                @RequestParam(value = "sidx", required = false) String sortBy,
-                                @RequestParam(value = "sord", required = false) String order) {
+                               @RequestParam(value = "rows", required = false) Integer rows,
+                               @RequestParam(value = "sidx", required = false) String sortBy,
+                               @RequestParam(value = "sord", required = false) String order) {
 
         logger.info("Listing singers for grid with page: {}, rows: {}", page, rows);
         logger.info("Listing singers for grid with sort: {}, order: {}", sortBy, order);

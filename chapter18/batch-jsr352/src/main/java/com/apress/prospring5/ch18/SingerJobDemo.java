@@ -19,8 +19,8 @@ public class SingerJobDemo {
     private static void waitForJob(JsrJobOperator jobOperator, JobExecution jobExecution) {
         BatchStatus batchStatus = jobExecution.getBatchStatus();
 
-        while(true) {
-            if(batchStatus == BatchStatus.STOPPED || batchStatus == BatchStatus.COMPLETED
+        while (true) {
+            if (batchStatus == BatchStatus.STOPPED || batchStatus == BatchStatus.COMPLETED
                     || batchStatus == BatchStatus.FAILED) {
                 return;
             }

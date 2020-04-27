@@ -1,5 +1,5 @@
 package com.apress.prospring5.ch5;
-    
+
 public class UserInfo {
     private String userName;
     private String password;

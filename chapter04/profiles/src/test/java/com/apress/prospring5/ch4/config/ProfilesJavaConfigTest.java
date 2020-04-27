@@ -16,18 +16,19 @@ import static org.junit.Assert.assertTrue;
  * Created by iuliana.cosmina on 3/18/17.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={KindergartenConfig.class, HighschoolConfig.class})
+@ContextConfiguration(classes = {KindergartenConfig.class, HighschoolConfig.class})
 @ActiveProfiles("kindergarten")
 public class ProfilesJavaConfigTest {
 
-	@Autowired FoodProviderService foodProviderService;
+    @Autowired
+    FoodProviderService foodProviderService;
 
-	@Test
-	public void testProvider(){
-		assertTrue(foodProviderService.provideLunchSet() != null);
-		assertFalse(foodProviderService.provideLunchSet().isEmpty());
+    @Test
+    public void testProvider() {
+        assertTrue(foodProviderService.provideLunchSet() != null);
+        assertFalse(foodProviderService.provideLunchSet().isEmpty());
 
-		assertEquals(2, foodProviderService.provideLunchSet().size());
-	}
+        assertEquals(2, foodProviderService.provideLunchSet().size());
+    }
 
 }

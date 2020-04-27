@@ -15,6 +15,6 @@ public class ProfilingDemo {
         factory.setTarget(target);
         factory.addAdvice(new ProfilingInterceptor());
 
-        return (WorkerBean)factory.getProxy();
+        return (WorkerBean) factory.getProxy();
     }
 }

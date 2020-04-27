@@ -40,7 +40,7 @@ public class Album implements Serializable {
     }
 
     public Long getId() {
-        return this.id; 
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -57,7 +57,7 @@ public class Album implements Serializable {
 
     public String getTitle() {
         return this.title;
-    } 
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -86,7 +86,8 @@ public class Album implements Serializable {
                 id, singer.getId(), title, sdf.format(releaseDate));
     }
 
-    @Override public boolean equals(Object o) {
+    @Override
+    public boolean equals(Object o) {
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
@@ -99,7 +100,8 @@ public class Album implements Serializable {
         return releaseDate != null ? releaseDate.equals(album.releaseDate) : album.releaseDate == null;
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);

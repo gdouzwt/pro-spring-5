@@ -15,7 +15,7 @@ public class SecurityDemo {
         try {
             mgr.login("invalid user", "pwd");
             bean.writeSecureMessage();
-        } catch(SecurityException ex) {
+        } catch (SecurityException ex) {
             System.out.println("Exception Caught: " + ex.getMessage());
         } finally {
             mgr.logout();
@@ -23,7 +23,7 @@ public class SecurityDemo {
 
         try {
             bean.writeSecureMessage();
-        } catch(SecurityException ex) {
+        } catch (SecurityException ex) {
             System.out.println("Exception Caught: " + ex.getMessage());
         }
     }
@@ -36,8 +36,8 @@ public class SecurityDemo {
         ProxyFactory factory = new ProxyFactory();
         factory.setTarget(target);
         factory.addAdvice(advice);
-        
-        SecureBean proxy = (SecureBean)factory.getProxy();
+
+        SecureBean proxy = (SecureBean) factory.getProxy();
 
         return proxy;
     }

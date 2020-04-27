@@ -1,14 +1,14 @@
 subprojects {
-	group 'com.apress.prospring5.ch14'
-	apply plugin: 'java'
+    group 'com.apress.prospring5.ch14'
+    apply plugin: 'java'
 
-	/*Task that copies all the dependencies under build/libs */
-	task copyDependencies(type: Copy) {
-		from configurations.compile
-		into 'build/libs'
-	}
+    /*Task that copies all the dependencies under build/libs */
+    task copyDependencies(type: Copy) {
+        from configurations.compile
+        into 'build/libs'
+    }
 
-	dependencies {
-		compile spring.webmvc, misc.slf4jJcl, misc.logback, misc.lang3
-	}
+    dependencies {
+        compile spring.webmvc, misc.slf4jJcl, misc.logback, misc.lang3
+    }
 }

@@ -44,7 +44,7 @@ public class StockController {
     }
 
     private void broadcastUpdatedPrices() {
-        for(Stock stock : stocks) {
+        for (Stock stock : stocks) {
             stock.setPrice(stock.getPrice() + (getUpdatedStockPrice() * stock.getPrice()));
             stock.setDate(new Date());
         }

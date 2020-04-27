@@ -8,6 +8,6 @@ import com.apress.prospring5.ch7.entities.Singer;
  */
 public interface InstrumentDao {
 
-	Instrument save(Instrument instrument);
+    Instrument save(Instrument instrument);
 
 }

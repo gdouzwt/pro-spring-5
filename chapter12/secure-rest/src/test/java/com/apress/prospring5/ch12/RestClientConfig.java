@@ -29,52 +29,56 @@ import java.util.List;
 @Configuration
 public class RestClientConfig {
 
-	@Autowired ApplicationContext ctx;
+    @Autowired
+    ApplicationContext ctx;
 
-	@Bean Credentials credentials(){
-		return new UsernamePasswordCredentials("prospring5", "prospring5");
-	}
+    @Bean
+    Credentials credentials() {
+        return new UsernamePasswordCredentials("prospring5", "prospring5");
+    }
 
-	@Bean
-	CredentialsProvider provider() {
-		BasicCredentialsProvider provider = new BasicCredentialsProvider();
-		provider.setCredentials(
-				AuthScope.ANY,
-				credentials());
-		return provider;
-	}
+    @Bean
+    CredentialsProvider provider() {
+        BasicCredentialsProvider provider = new BasicCredentialsProvider();
+        provider.setCredentials(
+                AuthScope.ANY,
+                credentials());
+        return provider;
+    }
 
-	@Bean
-	public HttpComponentsClientHttpRequestFactory factory() {
-		CloseableHttpClient client = HttpClients.custom()
-				.setDefaultCredentialsProvider(provider()).build();
-		return new HttpComponentsClientHttpRequestFactory(client);
-	}
+    @Bean
+    public HttpComponentsClientHttpRequestFactory factory() {
+        CloseableHttpClient client = HttpClients.custom()
+                .setDefaultCredentialsProvider(provider()).build();
+        return new HttpComponentsClientHttpRequestFactory(client);
+    }
 
-	@Bean
-	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.setRequestFactory(factory());
-		List<HttpMessageConverter<?>> mcvs = new ArrayList<>();
-		mcvs.add(singerMessageConverter());
-		restTemplate.setMessageConverters(mcvs);
-		return restTemplate;
-	}
+    @Bean
+    public RestTemplate restTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(factory());
+        List<HttpMessageConverter<?>> mcvs = new ArrayList<>();
+        mcvs.add(singerMessageConverter());
+        restTemplate.setMessageConverters(mcvs);
+        return restTemplate;
+    }
 
-	@Bean MarshallingHttpMessageConverter singerMessageConverter() {
-		MarshallingHttpMessageConverter mc = new MarshallingHttpMessageConverter();
-		mc.setMarshaller(castorMarshaller());
-		mc.setUnmarshaller(castorMarshaller());
-		List<MediaType> mediaTypes = new ArrayList<>();
-		MediaType mt = new MediaType("application", "xml");
-		mediaTypes.add(mt);
-		mc.setSupportedMediaTypes(mediaTypes);
-		return mc;
-	}
+    @Bean
+    MarshallingHttpMessageConverter singerMessageConverter() {
+        MarshallingHttpMessageConverter mc = new MarshallingHttpMessageConverter();
+        mc.setMarshaller(castorMarshaller());
+        mc.setUnmarshaller(castorMarshaller());
+        List<MediaType> mediaTypes = new ArrayList<>();
+        MediaType mt = new MediaType("application", "xml");
+        mediaTypes.add(mt);
+        mc.setSupportedMediaTypes(mediaTypes);
+        return mc;
+    }
 
-	@Bean CastorMarshaller castorMarshaller() {
-		CastorMarshaller castorMarshaller = new CastorMarshaller();
-		castorMarshaller.setMappingLocation(ctx.getResource("classpath:spring/oxm-mapping.xml"));
-		return castorMarshaller;
-	}
+    @Bean
+    CastorMarshaller castorMarshaller() {
+        CastorMarshaller castorMarshaller = new CastorMarshaller();
+        castorMarshaller.setMappingLocation(ctx.getResource("classpath:spring/oxm-mapping.xml"));
+        return castorMarshaller;
+    }
 }

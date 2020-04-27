@@ -20,33 +20,33 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = "com.apress.prospring5.ch6")
 public class AppConfig {
 
-	private static Logger logger = LoggerFactory.getLogger(AppConfig.class);
-	@Value("${driverClassName}")
-	private String driverClassName;
-	@Value("${url}")
-	private String url;
-	@Value("${username}")
-	private String username;
-	@Value("${password}")
-	private String password;
+    private static Logger logger = LoggerFactory.getLogger(AppConfig.class);
+    @Value("${driverClassName}")
+    private String driverClassName;
+    @Value("${url}")
+    private String url;
+    @Value("${username}")
+    private String username;
+    @Value("${password}")
+    private String password;
 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
-	@Bean(destroyMethod = "close")
-	public DataSource dataSource() {
-		try {
-			BasicDataSource dataSource = new BasicDataSource();
-			dataSource.setDriverClassName(driverClassName);
-			dataSource.setUrl(url);
-			dataSource.setUsername(username);
-			dataSource.setPassword(password);
-			return dataSource;
-		} catch (Exception e) {
-			logger.error("DBCP DataSource bean cannot be created!", e);
-			return null;
-		}
-	}
+    @Bean(destroyMethod = "close")
+    public DataSource dataSource() {
+        try {
+            BasicDataSource dataSource = new BasicDataSource();
+            dataSource.setDriverClassName(driverClassName);
+            dataSource.setUrl(url);
+            dataSource.setUsername(username);
+            dataSource.setPassword(password);
+            return dataSource;
+        } catch (Exception e) {
+            logger.error("DBCP DataSource bean cannot be created!", e);
+            return null;
+        }
+    }
 }

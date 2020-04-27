@@ -8,13 +8,13 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import java.util.Arrays;
 
 public class JmsHornetQDemo {
-    public static void main(String... args) throws Exception{
+    public static void main(String... args) throws Exception {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         MessageSender messageSender = ctx.getBean("messageSender", MessageSender.class);
         System.out.println(Arrays.toString(ctx.getBeanDefinitionNames()));
 
-        for(int i=0; i < 10; ++i) {
+        for (int i = 0; i < 10; ++i) {
             messageSender.sendMessage("Test message: " + i);
         }
 

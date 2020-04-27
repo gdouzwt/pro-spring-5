@@ -17,7 +17,7 @@
 
     <mvc:default-servlet-handler/>
 
-    <mvc:view-controller  path= "/" view-name="/static/index.html" />
+    <mvc:view-controller path="/" view-name="/static/index.html"/>
 
     <bean id="echoHandler" class="com.apress.prospring5.ch17.EchoHandler"/>
 </beans>

@@ -20,109 +20,109 @@ import static javax.persistence.GenerationType.IDENTITY;
 @EntityListeners(AuditingEntityListener.class)
 public class SingerAudit implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "ID")
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ID")
+    private Long id;
 
-	@Version
-	@Column(name = "VERSION")
-	private int version;
+    @Version
+    @Column(name = "VERSION")
+    private int version;
 
-	@Column(name = "FIRST_NAME")
-	private String firstName;
+    @Column(name = "FIRST_NAME")
+    private String firstName;
 
-	@Column(name = "LAST_NAME")
-	private String lastName;
+    @Column(name = "LAST_NAME")
+    private String lastName;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "BIRTH_DATE")
-	private Date birthDate;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "BIRTH_DATE")
+    private Date birthDate;
 
-	@CreatedDate
-	@Column(name = "CREATED_DATE")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdDate;
+    @CreatedDate
+    @Column(name = "CREATED_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
 
-	@CreatedBy
-	@Column(name = "CREATED_BY")
-	private String createdBy;
+    @CreatedBy
+    @Column(name = "CREATED_BY")
+    private String createdBy;
 
-	@LastModifiedBy
-	@Column(name = "LAST_MODIFIED_BY")
-	private String lastModifiedBy;
+    @LastModifiedBy
+    @Column(name = "LAST_MODIFIED_BY")
+    private String lastModifiedBy;
 
-	@LastModifiedDate
-	@Column(name = "LAST_MODIFIED_DATE")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastModifiedDate;
+    @LastModifiedDate
+    @Column(name = "LAST_MODIFIED_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
 
-	public Long getId() {
-		return this.id;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public String getFirstName() {
-		return this.firstName;
-	}
+    public String getFirstName() {
+        return this.firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return this.lastName;
-	}
+    public String getLastName() {
+        return this.lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public Date getBirthDate() {
-		return this.birthDate;
-	}
+    public Date getBirthDate() {
+        return this.birthDate;
+    }
 
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
 
-	public Optional<String> getCreatedBy() {
-		return Optional.of(createdBy);
-	}
+    public Optional<String> getCreatedBy() {
+        return Optional.of(createdBy);
+    }
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 
-	public Optional<Date> getCreatedDate() {
-		return Optional.of(createdDate);
-	}
+    public Optional<Date> getCreatedDate() {
+        return Optional.of(createdDate);
+    }
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
-	public Optional<String> getLastModifiedBy() {
-		return Optional.of(lastModifiedBy);
-	}
+    public Optional<String> getLastModifiedBy() {
+        return Optional.of(lastModifiedBy);
+    }
 
-	public void setLastModifiedBy(String lastModifiedBy) {
-		this.lastModifiedBy = lastModifiedBy;
-	}
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
+    }
 
-	public Optional<Date> getLastModifiedDate() {
-		return Optional.of(lastModifiedDate);
-	}
+    public Optional<Date> getLastModifiedDate() {
+        return Optional.of(lastModifiedDate);
+    }
 
-	public void setLastModifiedDate(Date lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
 
-	public String toString() {
-		return "Singer - Id: " + id + ", First name: " + firstName
-				+ ", Last name: " + lastName + ", Birthday: " + birthDate
-				+ ", Created by: " + createdBy + ", Create date: " + createdDate
-				+ ", Modified by: " + lastModifiedBy + ", Modified date: "
-				+ lastModifiedDate;
-	}
+    public String toString() {
+        return "Singer - Id: " + id + ", First name: " + firstName
+                + ", Last name: " + lastName + ", Birthday: " + birthDate
+                + ", Created by: " + createdBy + ", Create date: " + createdDate
+                + ", Modified by: " + lastModifiedBy + ", Modified date: "
+                + lastModifiedDate;
+    }
 
 }

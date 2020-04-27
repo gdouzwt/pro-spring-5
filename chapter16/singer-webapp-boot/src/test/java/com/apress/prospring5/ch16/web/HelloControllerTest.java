@@ -23,27 +23,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@DirtiesContext(classMode=ClassMode.AFTER_CLASS)
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class HelloControllerTest {
 
 
-	@Autowired
-	private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@Test
-	public void homePage() throws Exception {
-		mockMvc.perform(get("/"))
-				.andExpect(content().string(containsString("ProSpring5")));
-	}
+    @Test
+    public void homePage() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(content().string(containsString("ProSpring5")));
+    }
 
-	@Test
-	public void loginWithValidUserThenAuthenticated() throws Exception {
-		SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login = formLogin()
-				.user("user")
-				.password("user");
+    @Test
+    public void loginWithValidUserThenAuthenticated() throws Exception {
+        SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login = formLogin()
+                .user("user")
+                .password("user");
 
-		mockMvc.perform(login)
-				.andExpect(authenticated().withUsername("user"));
-	}
+        mockMvc.perform(login)
+                .andExpect(authenticated().withUsername("user"));
+    }
 
 }

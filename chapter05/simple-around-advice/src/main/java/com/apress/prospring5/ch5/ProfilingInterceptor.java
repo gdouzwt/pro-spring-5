@@ -25,7 +25,7 @@ public class ProfilingInterceptor implements MethodInterceptor {
         Object[] args = invocation.getArguments();
 
         System.out.println("Executed method: " + m.getName());
-        System.out.println("On object of type: " + 
+        System.out.println("On object of type: " +
                 target.getClass().getName());
 
         System.out.println("With arguments:");

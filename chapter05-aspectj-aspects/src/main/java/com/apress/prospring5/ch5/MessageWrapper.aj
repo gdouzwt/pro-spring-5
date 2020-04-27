@@ -20,15 +20,15 @@ public aspect MessageWrapper {
         return this.suffix;
     }
 
-    pointcut doWriting() :
-        execution(*
-           com.apress.prospring5.ch5.MessageWriter.writeMessage());
+    pointcut doWriting():
+            execution(*
+                    com.apress.prospring5.ch5.MessageWriter.writeMessage());
 
-    before() : doWriting() {
+    before(): doWriting() {
         System.out.println(prefix);
     }
 
-    after() : doWriting() {
+    after(): doWriting() {
         System.out.println(suffix);
     }
 }

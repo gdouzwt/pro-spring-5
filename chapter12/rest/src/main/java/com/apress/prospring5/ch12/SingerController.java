@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value="/singer")
+@RequestMapping(value = "/singer")
 public class SingerController {
     final Logger logger = LoggerFactory.getLogger(SingerController.class);
 
@@ -35,7 +35,7 @@ public class SingerController {
 
     //@RequestMapping(value="/", method=RequestMethod.POST)
     @ResponseBody
-    @PostMapping(value="/")
+    @PostMapping(value = "/")
     public Singer create(@RequestBody Singer singer) {
         logger.info("Creating singer: " + singer);
         singerService.save(singer);
@@ -45,7 +45,7 @@ public class SingerController {
 
     //@RequestMapping(value="/{id}", method=RequestMethod.PUT)
     @ResponseBody
-    @PutMapping(value="/{id}")
+    @PutMapping(value = "/{id}")
     public void update(@RequestBody Singer singer,
                        @PathVariable Long id) {
         logger.info("Updating singer: " + singer);
@@ -55,7 +55,7 @@ public class SingerController {
 
     //@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
     @ResponseBody
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable Long id) {
         logger.info("Deleting singer with id: " + id);
         Singer singer = singerService.findById(id);

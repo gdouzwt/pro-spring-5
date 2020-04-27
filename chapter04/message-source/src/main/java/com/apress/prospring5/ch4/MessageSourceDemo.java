@@ -16,10 +16,10 @@ public class MessageSourceDemo {
         System.out.println(ctx.getMessage("msg", null, english));
         System.out.println(ctx.getMessage("msg", null, german));
 
-        System.out.println(ctx.getMessage("nameMsg", new Object[] { "John",
-                "Mayer" }, english));
-        System.out.println(ctx.getMessage("nameMsg", new Object[] { "John",
-                "Mayer" }, german));
+        System.out.println(ctx.getMessage("nameMsg", new Object[]{"John",
+                "Mayer"}, english));
+        System.out.println(ctx.getMessage("nameMsg", new Object[]{"John",
+                "Mayer"}, german));
 
         ctx.close();
     }

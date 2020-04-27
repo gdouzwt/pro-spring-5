@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface SingerService {
 
-	List<Singer> findAll();
+    List<Singer> findAll();
 
-	Singer findById(Long id);
+    Singer findById(Long id);
 
-	Singer save(Singer singer);
+    Singer save(Singer singer);
 
-	long countAll();
+    long countAll();
 }

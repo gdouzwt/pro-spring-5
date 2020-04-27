@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServerConfig {
 
-	@Bean
-	public Server server() {
-		return new Server();
-	}
+    @Bean
+    public Server server() {
+        return new Server();
+    }
 }

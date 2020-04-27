@@ -20,34 +20,34 @@ import java.util.Set;
 @ComponentScan(basePackages = "com.apress.prospring5.ch10")
 public class AppConfig {
 
-	@Bean
-	public Singer john() throws Exception {
-		Singer singer = new Singer();
-		singer.setFirstName("John");
-		singer.setLastName("Mayer");
-		singer.setPersonalSite(new URL("http://johnmayer.com/"));
-		singer.setBirthDate(converter().convert("1977-10-16"));
-		return singer;
-	}
+    @Bean
+    public Singer john() throws Exception {
+        Singer singer = new Singer();
+        singer.setFirstName("John");
+        singer.setLastName("Mayer");
+        singer.setPersonalSite(new URL("http://johnmayer.com/"));
+        singer.setBirthDate(converter().convert("1977-10-16"));
+        return singer;
+    }
 
-	@Bean
-	public ConversionServiceFactoryBean conversionService() {
-		ConversionServiceFactoryBean conversionServiceFactoryBean = new ConversionServiceFactoryBean();
-		Set<Converter> convs = new HashSet<>();
-		convs.add(converter());
-		convs.add(singerConverter());
-		conversionServiceFactoryBean.setConverters(convs);
-		conversionServiceFactoryBean.afterPropertiesSet();
-		return conversionServiceFactoryBean;
-	}
+    @Bean
+    public ConversionServiceFactoryBean conversionService() {
+        ConversionServiceFactoryBean conversionServiceFactoryBean = new ConversionServiceFactoryBean();
+        Set<Converter> convs = new HashSet<>();
+        convs.add(converter());
+        convs.add(singerConverter());
+        conversionServiceFactoryBean.setConverters(convs);
+        conversionServiceFactoryBean.afterPropertiesSet();
+        return conversionServiceFactoryBean;
+    }
 
-	@Bean
-	StringToDateTimeConverter converter() {
-		return new StringToDateTimeConverter();
-	}
+    @Bean
+    StringToDateTimeConverter converter() {
+        return new StringToDateTimeConverter();
+    }
 
-	@Bean
-	SingerToAnotherSingerConverter singerConverter() {
-		return new SingerToAnotherSingerConverter();
-	}
+    @Bean
+    SingerToAnotherSingerConverter singerConverter() {
+        return new SingerToAnotherSingerConverter();
+    }
 }

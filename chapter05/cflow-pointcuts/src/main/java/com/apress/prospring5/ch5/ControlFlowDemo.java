@@ -16,15 +16,15 @@ public class ControlFlowDemo {
         TestBean target = new TestBean();
 
         Pointcut pc = new ControlFlowPointcut(ControlFlowDemo.class, "test");
-        Advisor advisor = new DefaultPointcutAdvisor(pc, 
-            new SimpleBeforeAdvice());
+        Advisor advisor = new DefaultPointcutAdvisor(pc,
+                new SimpleBeforeAdvice());
 
         ProxyFactory pf = new ProxyFactory();
         pf.setTarget(target);
         pf.addAdvisor(advisor);
 
         TestBean proxy = (TestBean) pf.getProxy();
- 
+
         System.out.println("\tTrying normal invoke");
         proxy.foo();
         System.out.println("\n\tTrying under ControlFlowDemo.test()");

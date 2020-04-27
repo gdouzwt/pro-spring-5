@@ -19,7 +19,7 @@ public class CustomEditorExample {
         ctx.refresh();
 
         CustomEditorExample bean =
-            (CustomEditorExample) ctx.getBean("exampleBean");
+                (CustomEditorExample) ctx.getBean("exampleBean");
 
         System.out.println(bean.getName());
 

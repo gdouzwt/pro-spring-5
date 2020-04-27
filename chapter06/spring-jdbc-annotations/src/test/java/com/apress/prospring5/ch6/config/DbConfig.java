@@ -18,36 +18,36 @@ import java.sql.Driver;
 @PropertySource("classpath:db/jdbc2.properties")
 public class DbConfig {
 
-	@Value("${driverClassName}")
-	private String driverClassName;
-	@Value("${url}")
-	private String url;
-	@Value("${username}")
-	private String username;
-	@Value("${password}")
-	private String password;
+    @Value("${driverClassName}")
+    private String driverClassName;
+    @Value("${url}")
+    private String url;
+    @Value("${username}")
+    private String username;
+    @Value("${password}")
+    private String password;
 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
-	@SuppressWarnings("unchecked")
-	@Lazy
-	@Bean
-	public DataSource dataSource() {
-		try {
-			SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-			Class<? extends Driver> driver = (Class<? extends Driver>) Class.forName(driverClassName);
-			dataSource.setDriverClass(driver);
-			dataSource.setUrl(url);
-			dataSource.setUsername(username);
-			dataSource.setPassword(password);
-			return dataSource;
-		} catch (Exception e) {
-			return null;
-		}
-	}
+    @SuppressWarnings("unchecked")
+    @Lazy
+    @Bean
+    public DataSource dataSource() {
+        try {
+            SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+            Class<? extends Driver> driver = (Class<? extends Driver>) Class.forName(driverClassName);
+            dataSource.setDriverClass(driver);
+            dataSource.setUrl(url);
+            dataSource.setUsername(username);
+            dataSource.setPassword(password);
+            return dataSource;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 
 }

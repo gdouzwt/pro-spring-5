@@ -11,28 +11,28 @@ class RuleEngineImpl implements RuleEngine {
     void run(Rule rule, Object object) {
         logger.info "Executing rule"
 
-        def exit=false
+        def exit = false
 
-        rule.parameters.each{ArrayList params ->
-            def paramIndex=0
-            def success=true
+        rule.parameters.each { ArrayList params ->
+            def paramIndex = 0
+            def success = true
 
-            if(!exit){
-                rule.conditions.each{
+            if (!exit) {
+                rule.conditions.each {
                     logger.info "Condition Param index: " + paramIndex
-                    success = success && it(object,params[paramIndex])
+                    success = success && it(object, params[paramIndex])
                     logger.info "Condition success: " + success
                     paramIndex++
                 }
 
-                if(success && !exit){
-                    rule.actions.each{
+                if (success && !exit) {
+                    rule.actions.each {
                         logger.info "Action Param index: " + paramIndex
-                        it(object,params[paramIndex])
+                        it(object, params[paramIndex])
                         paramIndex++
                     }
-                    if (rule.singlehit){
-                        exit=true
+                    if (rule.singlehit) {
+                        exit = true
                     }
                 }
             }

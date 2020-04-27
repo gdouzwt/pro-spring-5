@@ -14,8 +14,8 @@ public class ComposablePointcutDemo {
     public static void main(String... args) {
         GrammyGuitarist johnMayer = new GrammyGuitarist();
 
-        ComposablePointcut pc = new ComposablePointcut(ClassFilter.TRUE, 
-            new SingMethodMatcher());
+        ComposablePointcut pc = new ComposablePointcut(ClassFilter.TRUE,
+                new SingMethodMatcher());
 
         System.out.println("Test 1 >> ");
         GrammyGuitarist proxy = getProxy(pc, johnMayer);
@@ -35,9 +35,9 @@ public class ComposablePointcutDemo {
     }
 
     private static GrammyGuitarist getProxy(ComposablePointcut pc,
-            GrammyGuitarist target) {
-        Advisor advisor = new DefaultPointcutAdvisor(pc, 
-            new SimpleBeforeAdvice());
+                                            GrammyGuitarist target) {
+        Advisor advisor = new DefaultPointcutAdvisor(pc,
+                new SimpleBeforeAdvice());
 
         ProxyFactory pf = new ProxyFactory();
         pf.setTarget(target);

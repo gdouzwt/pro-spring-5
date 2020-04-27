@@ -26,30 +26,33 @@ import java.util.Map;
 @ComponentScan("com.apress.prospring5.ch12")
 public class AppConfig {
 
-	@Bean HornetQQueue prospring5() {
-		return new HornetQQueue("prospring5");
-	}
+    @Bean
+    HornetQQueue prospring5() {
+        return new HornetQQueue("prospring5");
+    }
 
-	@Bean ConnectionFactory connectionFactory() {
-		Map<String, Object> connDetails = new HashMap<>();
-		connDetails.put(TransportConstants.HOST_PROP_NAME, "127.0.0.1");
-		connDetails.put(TransportConstants.PORT_PROP_NAME, "5445");
-		TransportConfiguration transportConfiguration = new TransportConfiguration(
-				NettyConnectorFactory.class.getName(), connDetails);
-		return new HornetQJMSConnectionFactory(false, transportConfiguration);
-	}
+    @Bean
+    ConnectionFactory connectionFactory() {
+        Map<String, Object> connDetails = new HashMap<>();
+        connDetails.put(TransportConstants.HOST_PROP_NAME, "127.0.0.1");
+        connDetails.put(TransportConstants.PORT_PROP_NAME, "5445");
+        TransportConfiguration transportConfiguration = new TransportConfiguration(
+                NettyConnectorFactory.class.getName(), connDetails);
+        return new HornetQJMSConnectionFactory(false, transportConfiguration);
+    }
 
-	@Bean
-	public JmsListenerContainerFactory<DefaultMessageListenerContainer> jmsListenerContainerFactory() {
-		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-		factory.setConnectionFactory(connectionFactory());
-		factory.setConcurrency("3-5");
-		return factory;
-	}
+    @Bean
+    public JmsListenerContainerFactory<DefaultMessageListenerContainer> jmsListenerContainerFactory() {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory());
+        factory.setConcurrency("3-5");
+        return factory;
+    }
 
-	@Bean JmsTemplate jmsTemplate() {
-		JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
-		jmsTemplate.setDefaultDestination(prospring5());
-		return jmsTemplate;
-	}
+    @Bean
+    JmsTemplate jmsTemplate() {
+        JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
+        jmsTemplate.setDefaultDestination(prospring5());
+        return jmsTemplate;
+    }
 }

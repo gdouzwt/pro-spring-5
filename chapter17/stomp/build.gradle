@@ -1,10 +1,10 @@
 apply plugin: 'war'
 
 war {
-	archiveName = 'stomp.war'
-	manifest {
-		attributes("Created-By"      : "Iuliana Cosmina",
-				"Specification-Title": "Pro Spring 5",
-				"Class-Path"         : configurations.compile.collect { it.getName() }.join(' '))
-	}
+    archiveName = 'stomp.war'
+    manifest {
+        attributes("Created-By": "Iuliana Cosmina",
+                "Specification-Title": "Pro Spring 5",
+                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+    }
 } 

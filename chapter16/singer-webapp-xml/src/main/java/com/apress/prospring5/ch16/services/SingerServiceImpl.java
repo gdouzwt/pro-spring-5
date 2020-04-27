@@ -15,33 +15,33 @@ import java.util.List;
 @Service("singerService")
 public class SingerServiceImpl implements SingerService {
 
-	private SingerRepository singerRepository;
+    private SingerRepository singerRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Singer> findAll() {
-		return Lists.newArrayList(singerRepository.findAll());
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public List<Singer> findAll() {
+        return Lists.newArrayList(singerRepository.findAll());
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public Singer findById(Long id) {
-		return singerRepository.findById(id).get();
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public Singer findById(Long id) {
+        return singerRepository.findById(id).get();
+    }
 
-	@Override
-	public Singer save(Singer singer) {
-		return singerRepository.save(singer);
-	}
+    @Override
+    public Singer save(Singer singer) {
+        return singerRepository.save(singer);
+    }
 
-	@Autowired
-	public void setSingerRepository(SingerRepository singerRepository) {
-		this.singerRepository = singerRepository;
-	}
+    @Autowired
+    public void setSingerRepository(SingerRepository singerRepository) {
+        this.singerRepository = singerRepository;
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public Page<Singer> findAllByPage(Pageable pageable) {
-		return singerRepository.findAll(pageable);
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Singer> findAllByPage(Pageable pageable) {
+        return singerRepository.findAll(pageable);
+    }
 }

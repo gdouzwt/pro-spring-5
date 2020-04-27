@@ -11,26 +11,26 @@ import java.util.List;
 @Service
 public class SingerServiceImpl implements SingerService {
 
-	private SingerRepository singerRepository;
+    private SingerRepository singerRepository;
 
-	@Override
-	public List<Singer> findAll() {
-		return Lists.newArrayList(singerRepository.findAll());
-	}
+    @Override
+    public List<Singer> findAll() {
+        return Lists.newArrayList(singerRepository.findAll());
+    }
 
-	@Override
-	public Singer findById(Long id) {
-		return singerRepository.findById(id).get();
-	}
+    @Override
+    public Singer findById(Long id) {
+        return singerRepository.findById(id).get();
+    }
 
-	@Override
-	public Singer save(Singer singer) {
-		return singerRepository.save(singer);
-	}
+    @Override
+    public Singer save(Singer singer) {
+        return singerRepository.save(singer);
+    }
 
-	@Autowired
-	public void setSingerRepository(SingerRepository singerRepository) {
-		this.singerRepository = singerRepository;
-	}
+    @Autowired
+    public void setSingerRepository(SingerRepository singerRepository) {
+        this.singerRepository = singerRepository;
+    }
 
 }

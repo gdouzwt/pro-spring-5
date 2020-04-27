@@ -12,14 +12,14 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class SingerApplication {
 
-	private static Logger logger = LoggerFactory.getLogger(SingerApplication.class);
+    private static Logger logger = LoggerFactory.getLogger(SingerApplication.class);
 
-	public static void main(String... args) throws Exception {
-		ConfigurableApplicationContext ctx = SpringApplication.run(SingerApplication.class, args);
-		assert (ctx != null);
-		logger.info("Application started...");
+    public static void main(String... args) throws Exception {
+        ConfigurableApplicationContext ctx = SpringApplication.run(SingerApplication.class, args);
+        assert (ctx != null);
+        logger.info("Application started...");
 
-		System.in.read();
-		ctx.close();
-	}
+        System.in.read();
+        ctx.close();
+    }
 }

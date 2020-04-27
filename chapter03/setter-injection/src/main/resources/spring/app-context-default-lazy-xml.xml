@@ -8,9 +8,9 @@
        default-lazy-init="true">
 
     <bean id="renderer"
-        class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"
-        p:messageProvider-ref="provider"/>
+          class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"
+          p:messageProvider-ref="provider"/>
 
     <bean id="provider"
-        class="com.apress.prospring5.ch2.decoupled.HelloWorldMessageProvider"/>
+          class="com.apress.prospring5.ch2.decoupled.HelloWorldMessageProvider"/>
 </beans>

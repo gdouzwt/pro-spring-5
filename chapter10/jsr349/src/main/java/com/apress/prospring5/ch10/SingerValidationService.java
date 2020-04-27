@@ -11,10 +11,10 @@ import java.util.Set;
 @Service("singerValidationService")
 public class SingerValidationService {
 
-	@Autowired
-	private Validator validator;
+    @Autowired
+    private Validator validator;
 
-	public Set<ConstraintViolation<Singer>> validateSinger(Singer singer) {
-		return validator.validate(singer);
-	}
+    public Set<ConstraintViolation<Singer>> validateSinger(Singer singer) {
+        return validator.validate(singer);
+    }
 }

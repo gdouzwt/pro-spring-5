@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 

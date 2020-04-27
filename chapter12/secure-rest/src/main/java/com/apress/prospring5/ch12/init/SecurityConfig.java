@@ -17,31 +17,31 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	private static Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
-	@Autowired
-	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		try {
-			auth.inMemoryAuthentication().withUser("prospring5").password("prospring5").roles("REMOTE");
-		} catch (Exception e) {
-			logger.error("Could not configure authentication!", e);
-		}
-	}
+    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        try {
+            auth.inMemoryAuthentication().withUser("prospring5").password("prospring5").roles("REMOTE");
+        } catch (Exception e) {
+            logger.error("Could not configure authentication!", e);
+        }
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-				.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-				.authorizeRequests()
-				.antMatchers("/**").permitAll()
-				.antMatchers("/rest/**").hasRole("REMOTE").anyRequest().authenticated()
-				.and()
-				.formLogin()
-				.and()
-				.httpBasic()
-				.and()
-				.csrf().disable();
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .antMatchers("/rest/**").hasRole("REMOTE").anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .and()
+                .httpBasic()
+                .and()
+                .csrf().disable();
+    }
 }

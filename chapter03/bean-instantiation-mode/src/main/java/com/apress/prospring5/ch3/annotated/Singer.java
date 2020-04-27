@@ -7,13 +7,14 @@ import org.springframework.stereotype.Component;
 @Component("nonSingleton")
 @Scope("prototype")
 public class Singer {
-      private String name = "unknown";
+    private String name = "unknown";
 
-      public Singer(@Value("John Mayer") String name) {
-            this.name = name;
-      }
+    public Singer(@Value("John Mayer") String name) {
+        this.name = name;
+    }
 
-      @Override public String toString() {
-            return  name;
-      }
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -13,70 +13,78 @@ import java.util.Map;
 
 public class JdbcSingerDao implements SingerDao, InitializingBean {
 
-	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-	public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-	}
+    public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+    }
 
-	@Override
-	public List<Singer> findAll() {
-		String sql = "select id, first_name, last_name, birth_date from singer";
-		return namedParameterJdbcTemplate.query(sql, (rs, rowNum) -> {
-			Singer singer = new Singer();
-			singer.setId(rs.getLong("id"));
-			singer.setFirstName(rs.getString("first_name"));
-			singer.setLastName(rs.getString("last_name"));
-			singer.setBirthDate(rs.getDate("birth_date"));
-			return singer;
-		});
-	}
+    @Override
+    public List<Singer> findAll() {
+        String sql = "select id, first_name, last_name, birth_date from singer";
+        return namedParameterJdbcTemplate.query(sql, (rs, rowNum) -> {
+            Singer singer = new Singer();
+            singer.setId(rs.getLong("id"));
+            singer.setFirstName(rs.getString("first_name"));
+            singer.setLastName(rs.getString("last_name"));
+            singer.setBirthDate(rs.getDate("birth_date"));
+            return singer;
+        });
+    }
 
-	@Override
-	public String findNameById(Long id) {
-		String sql = "SELECT first_name || ' ' || last_name FROM singer WHERE id = :singerId";
-		Map<String, Object> namedParameters = new HashMap<>();
-		namedParameters.put("singerId", id);
-		return namedParameterJdbcTemplate.queryForObject(sql,
-				namedParameters, String.class);
-	}
+    @Override
+    public String findNameById(Long id) {
+        String sql = "SELECT first_name || ' ' || last_name FROM singer WHERE id = :singerId";
+        Map<String, Object> namedParameters = new HashMap<>();
+        namedParameters.put("singerId", id);
+        return namedParameterJdbcTemplate.queryForObject(sql,
+                namedParameters, String.class);
+    }
 
-	@Override public void insert(Singer singer) {
-		throw new NotImplementedException("insert");
-	}
+    @Override
+    public void insert(Singer singer) {
+        throw new NotImplementedException("insert");
+    }
 
-	@Override public void update(Singer singer) {
-		throw new NotImplementedException("update");
-	}
+    @Override
+    public void update(Singer singer) {
+        throw new NotImplementedException("update");
+    }
 
-	@Override public void delete(Long singerId) {
-		throw new NotImplementedException("delete");
-	}
+    @Override
+    public void delete(Long singerId) {
+        throw new NotImplementedException("delete");
+    }
 
-	@Override public List<Singer> findAllWithAlbums() {
-		throw new NotImplementedException("findAllWithAlbums");
-	}
+    @Override
+    public List<Singer> findAllWithAlbums() {
+        throw new NotImplementedException("findAllWithAlbums");
+    }
 
-	@Override public void insertWithAlbum(Singer singer) {
-		throw new NotImplementedException("insertWithAlbum");
-	}
+    @Override
+    public void insertWithAlbum(Singer singer) {
+        throw new NotImplementedException("insertWithAlbum");
+    }
 
-	@Override public List<Singer> findByFirstName(String firstName) {
-		throw new NotImplementedException("findByFirstName");
-	}
+    @Override
+    public List<Singer> findByFirstName(String firstName) {
+        throw new NotImplementedException("findByFirstName");
+    }
 
-	@Override public String findLastNameById(Long id) {
-		throw new NotImplementedException("findLastNameById");
-	}
+    @Override
+    public String findLastNameById(Long id) {
+        throw new NotImplementedException("findLastNameById");
+    }
 
-	@Override public String findFirstNameById(Long id) {
-		throw new NotImplementedException("findFirstNameById");
-	}
+    @Override
+    public String findFirstNameById(Long id) {
+        throw new NotImplementedException("findFirstNameById");
+    }
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		if (namedParameterJdbcTemplate == null) {
-			throw new BeanCreationException("Null NamedParameterJdbcTemplate on singerDao");
-		}
-	}
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        if (namedParameterJdbcTemplate == null) {
+            throw new BeanCreationException("Null NamedParameterJdbcTemplate on singerDao");
+        }
+    }
 }

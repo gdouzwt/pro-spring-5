@@ -5,11 +5,11 @@ public class ContextualizedDependencyLookup implements ManagedComponent {
 
     @Override
     public void performLookup(Container container) {
-        this.dependency = (Dependency) container.getDependency("myDependency"); 
+        this.dependency = (Dependency) container.getDependency("myDependency");
     }
 
     @Override
     public String toString() {
-    	return dependency.toString();
+        return dependency.toString();
     }
 }

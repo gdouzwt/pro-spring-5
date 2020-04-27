@@ -15,18 +15,18 @@ import java.util.Date;
  */
 public class SingerJobDemo {
 
-	public static void main(String... args) throws Exception {
-		GenericApplicationContext ctx =
-				new AnnotationConfigApplicationContext(BatchConfig.class);
+    public static void main(String... args) throws Exception {
+        GenericApplicationContext ctx =
+                new AnnotationConfigApplicationContext(BatchConfig.class);
 
-		Job job = ctx.getBean(Job.class);
-		JobLauncher jobLauncher = ctx.getBean(JobLauncher.class);
-		JobParameters jobParameters = new JobParametersBuilder()
-				.addDate("date", new Date())
-				.toJobParameters();
-		jobLauncher.run(job, jobParameters);
+        Job job = ctx.getBean(Job.class);
+        JobLauncher jobLauncher = ctx.getBean(JobLauncher.class);
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addDate("date", new Date())
+                .toJobParameters();
+        jobLauncher.run(job, jobParameters);
 
-		System.in.read();
-		ctx.close();
-	}
+        System.in.read();
+        ctx.close();
+    }
 }

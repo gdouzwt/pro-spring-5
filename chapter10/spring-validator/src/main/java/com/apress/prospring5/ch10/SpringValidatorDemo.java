@@ -14,24 +14,24 @@ import java.util.List;
 
 public class SpringValidatorDemo {
 
-	private static Logger logger = LoggerFactory.getLogger(SpringValidatorDemo.class);
+    private static Logger logger = LoggerFactory.getLogger(SpringValidatorDemo.class);
 
-	public static void main(String... args) {
-		GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+    public static void main(String... args) {
+        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-		Singer singer = new Singer();
-		singer.setFirstName(null);
-		singer.setLastName("Mayer");
+        Singer singer = new Singer();
+        singer.setFirstName(null);
+        singer.setLastName("Mayer");
 
-		Validator singerValidator = ctx.getBean("singerValidator", Validator.class);
-		BeanPropertyBindingResult result = new BeanPropertyBindingResult(singer, "John");
+        Validator singerValidator = ctx.getBean("singerValidator", Validator.class);
+        BeanPropertyBindingResult result = new BeanPropertyBindingResult(singer, "John");
 
-		ValidationUtils.invokeValidator(singerValidator, singer, result);
+        ValidationUtils.invokeValidator(singerValidator, singer, result);
 
-		List<ObjectError> errors = result.getAllErrors();
-		logger.info("No of validation errors: " + errors.size());
-		errors.forEach(e -> logger.info(e.getCode()));
+        List<ObjectError> errors = result.getAllErrors();
+        logger.info("No of validation errors: " + errors.size());
+        errors.forEach(e -> logger.info(e.getCode()));
 
-		ctx.close();
-	}
+        ctx.close();
+    }
 }

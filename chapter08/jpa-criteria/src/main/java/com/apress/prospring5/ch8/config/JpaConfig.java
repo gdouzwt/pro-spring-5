@@ -26,51 +26,51 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"com.apress.prospring5.ch8"})
 public class JpaConfig {
 
-	private static Logger logger = LoggerFactory.getLogger(JpaConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(JpaConfig.class);
 
-	@Bean
-	public DataSource dataSource() {
-		try {
-			EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-			return dbBuilder.setType(EmbeddedDatabaseType.H2)
-					.addScripts("classpath:db/schema.sql", "classpath:db/test-data.sql").build();
-		} catch (Exception e) {
-			logger.error("Embedded DataSource bean cannot be created!", e);
-			return null;
-		}
-	}
+    @Bean
+    public DataSource dataSource() {
+        try {
+            EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
+            return dbBuilder.setType(EmbeddedDatabaseType.H2)
+                    .addScripts("classpath:db/schema.sql", "classpath:db/test-data.sql").build();
+        } catch (Exception e) {
+            logger.error("Embedded DataSource bean cannot be created!", e);
+            return null;
+        }
+    }
 
-	@Bean
-	public PlatformTransactionManager transactionManager() {
-		return new JpaTransactionManager(entityManagerFactory());
-	}
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        return new JpaTransactionManager(entityManagerFactory());
+    }
 
-	@Bean
-	public JpaVendorAdapter jpaVendorAdapter() {
-		return new HibernateJpaVendorAdapter();
-	}
+    @Bean
+    public JpaVendorAdapter jpaVendorAdapter() {
+        return new HibernateJpaVendorAdapter();
+    }
 
-	@Bean
-	public Properties hibernateProperties() {
-		Properties hibernateProp = new Properties();
-		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-		hibernateProp.put("hibernate.format_sql", true);
-		hibernateProp.put("hibernate.use_sql_comments", true);
-		hibernateProp.put("hibernate.show_sql", true);
-		hibernateProp.put("hibernate.max_fetch_depth", 3);
-		hibernateProp.put("hibernate.jdbc.batch_size", 10);
-		hibernateProp.put("hibernate.jdbc.fetch_size", 50);
-		return hibernateProp;
-	}
+    @Bean
+    public Properties hibernateProperties() {
+        Properties hibernateProp = new Properties();
+        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        hibernateProp.put("hibernate.format_sql", true);
+        hibernateProp.put("hibernate.use_sql_comments", true);
+        hibernateProp.put("hibernate.show_sql", true);
+        hibernateProp.put("hibernate.max_fetch_depth", 3);
+        hibernateProp.put("hibernate.jdbc.batch_size", 10);
+        hibernateProp.put("hibernate.jdbc.fetch_size", 50);
+        return hibernateProp;
+    }
 
-	@Bean
-	public EntityManagerFactory entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setPackagesToScan("com.apress.prospring5.ch8");
-		factoryBean.setDataSource(dataSource());
-		factoryBean.setJpaProperties(hibernateProperties());
-		factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
-		factoryBean.afterPropertiesSet();
-		return factoryBean.getNativeEntityManagerFactory();
-	}
+    @Bean
+    public EntityManagerFactory entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+        factoryBean.setPackagesToScan("com.apress.prospring5.ch8");
+        factoryBean.setDataSource(dataSource());
+        factoryBean.setJpaProperties(hibernateProperties());
+        factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
+        factoryBean.afterPropertiesSet();
+        return factoryBean.getNativeEntityManagerFactory();
+    }
 }

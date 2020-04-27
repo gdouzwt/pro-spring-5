@@ -1,6 +1,7 @@
 package com.apress.prospring5.ch4;
 
 import java.io.File;
+
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -8,15 +9,15 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class DestructiveBeanWithInterface implements InitializingBean, DisposableBean {
     private File file;
     private String filePath;
-    
+
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing Bean");
 
         if (filePath == null) {
             throw new IllegalArgumentException(
-                    "You must specify the filePath property of " + 
-                    DestructiveBeanWithInterface.class);
+                    "You must specify the filePath property of " +
+                            DestructiveBeanWithInterface.class);
         }
 
         this.file = new File(filePath);
@@ -29,7 +30,7 @@ public class DestructiveBeanWithInterface implements InitializingBean, Disposabl
     public void destroy() {
         System.out.println("Destroying Bean");
 
-        if(!file.delete()) {
+        if (!file.delete()) {
             System.err.println("ERROR: failed to delete file.");
         }
 
@@ -43,10 +44,10 @@ public class DestructiveBeanWithInterface implements InitializingBean, Disposabl
     public static void main(String... args) throws Exception {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:spring/app-context-xml.xml");
-        ctx.refresh(); 
+        ctx.refresh();
 
-        DestructiveBeanWithInterface bean = 
-            (DestructiveBeanWithInterface) ctx.getBean("destructiveBean");
+        DestructiveBeanWithInterface bean =
+                (DestructiveBeanWithInterface) ctx.getBean("destructiveBean");
 
         System.out.println("Calling destroy()");
         ctx.destroy();

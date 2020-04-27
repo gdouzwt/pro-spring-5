@@ -28,13 +28,13 @@ public class ServiceTestExecutionListener implements TestExecutionListener {
     public void beforeTestMethod(TestContext testCtx) throws Exception {
         DataSets dataSetAnnotation = testCtx.getTestMethod().getAnnotation(DataSets.class);
 
-        if (dataSetAnnotation == null ) {
+        if (dataSetAnnotation == null) {
             return;
         }
 
         String dataSetName = dataSetAnnotation.setUpDataSet();
 
-        if (!dataSetName.equals("") ) {
+        if (!dataSetName.equals("")) {
             databaseTester = (IDatabaseTester)
                     testCtx.getApplicationContext().getBean("databaseTester");
             XlsDataFileLoader xlsDataFileLoader = (XlsDataFileLoader)

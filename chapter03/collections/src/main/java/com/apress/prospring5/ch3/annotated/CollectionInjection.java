@@ -16,25 +16,25 @@ import javax.annotation.Resource;
 public class CollectionInjection {
 
     /**
-     *      @Resource(name="map") is equivalent with @Autowired @Qualifier("map")
+     * @Resource(name="map") is equivalent with @Autowired @Qualifier("map")
      */
     @Autowired
     @Qualifier("map")
     private Map<String, Object> map;
 
-    @Resource(name="props")
+    @Resource(name = "props")
     private Properties props;
 
-    @Resource(name="set")
+    @Resource(name = "set")
     private Set set;
-    
-    @Resource(name="list")
+
+    @Resource(name = "list")
     private List list;
 
     public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:spring/app-context-annotation.xml");
-        ctx.refresh();  
+        ctx.refresh();
 
         CollectionInjection instance = (CollectionInjection) ctx.getBean("injectCollection");
         instance.displayInfo();

@@ -38,56 +38,60 @@ import javax.sql.DataSource;
 @ComponentScan("com.apress.prospring5.ch18")
 public class BatchConfig {
 
-	private static Logger logger = LoggerFactory.getLogger(BatchConfig.class);
-	@Autowired
-	private JobBuilderFactory jobs;
-	@Autowired
-	private JobLauncher jobLauncher;
-	@Autowired
-	private StepBuilderFactory steps;
-	@Autowired DataSource dataSource;
-	@Autowired StepExecutionStatsListener executionStatsListener;
-	@Autowired SingerItemProcessor itemProcessor;
-	@Autowired ResourceLoader resourceLoader;
+    private static Logger logger = LoggerFactory.getLogger(BatchConfig.class);
+    @Autowired
+    private JobBuilderFactory jobs;
+    @Autowired
+    private JobLauncher jobLauncher;
+    @Autowired
+    private StepBuilderFactory steps;
+    @Autowired
+    DataSource dataSource;
+    @Autowired
+    StepExecutionStatsListener executionStatsListener;
+    @Autowired
+    SingerItemProcessor itemProcessor;
+    @Autowired
+    ResourceLoader resourceLoader;
 
-	@Bean
-	public Job singerJob() {
-		return jobs.get("singerJob").start(step1()).build();
-	}
+    @Bean
+    public Job singerJob() {
+        return jobs.get("singerJob").start(step1()).build();
+    }
 
-	@Bean
-	protected Step step1() {
-		return steps.get("step1").listener(executionStatsListener)
-				.<Singer, Singer>chunk(10)
-				.reader(itemReader(null))
-				.processor(itemProcessor)
-				.writer(itemWriter())
-				.build();
-	}
+    @Bean
+    protected Step step1() {
+        return steps.get("step1").listener(executionStatsListener)
+                .<Singer, Singer>chunk(10)
+                .reader(itemReader(null))
+                .processor(itemProcessor)
+                .writer(itemWriter())
+                .build();
+    }
 
-	@Bean
-	@StepScope
-	public FlatFileItemReader itemReader(@Value("file://#{jobParameters['file.name']}") String filePath) {
-		FlatFileItemReader itemReader = new FlatFileItemReader();
-		itemReader.setResource(resourceLoader.getResource(filePath));
-		DefaultLineMapper lineMapper = new DefaultLineMapper();
-		DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
-		tokenizer.setNames("firstName", "lastName", "song");
-		tokenizer.setDelimiter(",");
-		lineMapper.setLineTokenizer(tokenizer);
-		BeanWrapperFieldSetMapper<Singer> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
-		fieldSetMapper.setTargetType(Singer.class);
-		lineMapper.setFieldSetMapper(fieldSetMapper);
-		itemReader.setLineMapper(lineMapper);
-		return itemReader;
-	}
+    @Bean
+    @StepScope
+    public FlatFileItemReader itemReader(@Value("file://#{jobParameters['file.name']}") String filePath) {
+        FlatFileItemReader itemReader = new FlatFileItemReader();
+        itemReader.setResource(resourceLoader.getResource(filePath));
+        DefaultLineMapper lineMapper = new DefaultLineMapper();
+        DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
+        tokenizer.setNames("firstName", "lastName", "song");
+        tokenizer.setDelimiter(",");
+        lineMapper.setLineTokenizer(tokenizer);
+        BeanWrapperFieldSetMapper<Singer> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
+        fieldSetMapper.setTargetType(Singer.class);
+        lineMapper.setFieldSetMapper(fieldSetMapper);
+        itemReader.setLineMapper(lineMapper);
+        return itemReader;
+    }
 
-	@Bean
-	public ItemWriter<Singer> itemWriter() {
-		JdbcBatchItemWriter<Singer> itemWriter = new JdbcBatchItemWriter<>();
-		itemWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
-		itemWriter.setSql("INSERT INTO singer (first_name, last_name, song) VALUES (:firstName, :lastName, :song)");
-		itemWriter.setDataSource(dataSource);
-		return itemWriter;
-	}
+    @Bean
+    public ItemWriter<Singer> itemWriter() {
+        JdbcBatchItemWriter<Singer> itemWriter = new JdbcBatchItemWriter<>();
+        itemWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
+        itemWriter.setSql("INSERT INTO singer (first_name, last_name, song) VALUES (:firstName, :lastName, :song)");
+        itemWriter.setDataSource(dataSource);
+        return itemWriter;
+    }
 }

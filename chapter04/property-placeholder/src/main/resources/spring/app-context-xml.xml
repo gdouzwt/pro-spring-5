@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder local-override="true"
-         location="classpath:application.properties"/>
+                                  location="classpath:application.properties"/>
 
     <bean id="appProperty" class="com.apress.prospring5.ch4.AppProperty"
           p:applicationHome="${application.home}"

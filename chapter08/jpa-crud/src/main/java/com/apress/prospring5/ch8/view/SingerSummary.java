@@ -8,7 +8,7 @@ public class SingerSummary implements Serializable {
     private String latestAlbum;
 
     public SingerSummary(String firstName, String lastName,
-            String latestAlbum) {
+                         String latestAlbum) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.latestAlbum = latestAlbum;
@@ -28,6 +28,6 @@ public class SingerSummary implements Serializable {
 
     public String toString() {
         return "First name: " + firstName + ", Last Name: " + lastName
-            + ", Most Recent Album: " + latestAlbum;
+                + ", Most Recent Album: " + latestAlbum;
     }
 }

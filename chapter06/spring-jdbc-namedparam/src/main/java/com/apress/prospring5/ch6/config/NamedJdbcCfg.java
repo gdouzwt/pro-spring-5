@@ -19,33 +19,34 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class NamedJdbcCfg {
-	private static Logger logger = LoggerFactory.getLogger(NamedJdbcCfg.class);
+    private static Logger logger = LoggerFactory.getLogger(NamedJdbcCfg.class);
 
-	@Bean
-	public DataSource dataSource() {
-		try {
-			EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-			return dbBuilder.setType(EmbeddedDatabaseType.H2)
-					.addScripts("classpath:db/schema.sql", "classpath:db/test-data.sql").build();
-		} catch (Exception e) {
-			logger.error("Embedded DataSource bean cannot be created!", e);
-			return null;
-		}
-	}
+    @Bean
+    public DataSource dataSource() {
+        try {
+            EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
+            return dbBuilder.setType(EmbeddedDatabaseType.H2)
+                    .addScripts("classpath:db/schema.sql", "classpath:db/test-data.sql").build();
+        } catch (Exception e) {
+            logger.error("Embedded DataSource bean cannot be created!", e);
+            return null;
+        }
+    }
 
-	@Bean public NamedParameterJdbcTemplate jdbcTemplate(){
-		return new NamedParameterJdbcTemplate(dataSource());
-	}
+    @Bean
+    public NamedParameterJdbcTemplate jdbcTemplate() {
+        return new NamedParameterJdbcTemplate(dataSource());
+    }
 
-	@Bean
-	public SingerDao singerDao() {
-		JdbcSingerDao dao = new JdbcSingerDao();
-		dao.setNamedParameterJdbcTemplate(jdbcTemplate());
-		return dao;
-	}
+    @Bean
+    public SingerDao singerDao() {
+        JdbcSingerDao dao = new JdbcSingerDao();
+        dao.setNamedParameterJdbcTemplate(jdbcTemplate());
+        return dao;
+    }
 
-	@Bean(destroyMethod = "destroy")
-	public CleanUp cleanUp() {
-		return new CleanUp(new JdbcTemplate(dataSource()));
-	}
+    @Bean(destroyMethod = "destroy")
+    public CleanUp cleanUp() {
+        return new CleanUp(new JdbcTemplate(dataSource()));
+    }
 }

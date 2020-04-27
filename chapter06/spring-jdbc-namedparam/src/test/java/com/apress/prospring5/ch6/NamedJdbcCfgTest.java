@@ -14,16 +14,16 @@ import static org.junit.Assert.assertTrue;
  */
 public class NamedJdbcCfgTest {
 
-	@Test
-	public void testCfg(){
-		GenericApplicationContext ctx = new AnnotationConfigApplicationContext(NamedJdbcCfg.class);
+    @Test
+    public void testCfg() {
+        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(NamedJdbcCfg.class);
 
-		SingerDao singerDao = ctx.getBean(SingerDao.class);
-		assertNotNull(singerDao);
-		String singerName = singerDao.findNameById(1l);
-		assertTrue("John Mayer".equals(singerName));
+        SingerDao singerDao = ctx.getBean(SingerDao.class);
+        assertNotNull(singerDao);
+        String singerName = singerDao.findNameById(1l);
+        assertTrue("John Mayer".equals(singerName));
 
-		ctx.close();
-	}
+        ctx.close();
+    }
 
 }

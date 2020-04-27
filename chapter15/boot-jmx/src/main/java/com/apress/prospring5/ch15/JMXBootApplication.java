@@ -16,14 +16,14 @@ import java.io.IOException;
 @SpringBootApplication(scanBasePackages = {"com.apress.prospring5.ch15"})
 public class JMXBootApplication {
 
-	private static Logger logger = LoggerFactory.getLogger(JMXBootApplication.class);
+    private static Logger logger = LoggerFactory.getLogger(JMXBootApplication.class);
 
-	public static void main(String[] args) throws IOException {
-		ConfigurableApplicationContext ctx = SpringApplication.run(JMXBootApplication.class, args);
-		assert (ctx != null);
-		logger.info("Started ...");
-		System.in.read();
-		ctx.close();
-	}
+    public static void main(String[] args) throws IOException {
+        ConfigurableApplicationContext ctx = SpringApplication.run(JMXBootApplication.class, args);
+        assert (ctx != null);
+        logger.info("Started ...");
+        System.in.read();
+        ctx.close();
+    }
 }
 

@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.text.SimpleDateFormat;
+
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.PropertyEditorRegistry;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -71,11 +72,11 @@ public class PropertyEditorBean {
 
     public void setStringList(List<String> stringList) {
         System.out.println("Setting string list with size: "
-            + stringList.size());
+                + stringList.size());
 
         this.stringList = stringList;
 
-        for (String string: stringList) {
+        for (String string : stringList) {
             System.out.println("String member: " + string);
         }
     }
@@ -105,12 +106,12 @@ public class PropertyEditorBean {
         this.trimString = trimString;
     }
 
-    public static class CustomPropertyEditorRegistrar implements PropertyEditorRegistrar { 
+    public static class CustomPropertyEditorRegistrar implements PropertyEditorRegistrar {
         @Override
         public void registerCustomEditors(PropertyEditorRegistry registry) {
             SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
-            registry.registerCustomEditor(Date.class, 
-                     new CustomDateEditor(dateFormatter, true));
+            registry.registerCustomEditor(Date.class,
+                    new CustomDateEditor(dateFormatter, true));
 
             registry.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         }
@@ -124,8 +125,8 @@ public class PropertyEditorBean {
         ctx.load("classpath:spring/app-context-01.xml");
         ctx.refresh();
 
-        PropertyEditorBean bean = 
-            (PropertyEditorBean) ctx.getBean("builtInSample");
+        PropertyEditorBean bean =
+                (PropertyEditorBean) ctx.getBean("builtInSample");
 
         ctx.close();
     }

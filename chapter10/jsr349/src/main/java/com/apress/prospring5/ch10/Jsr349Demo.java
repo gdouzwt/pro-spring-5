@@ -11,39 +11,39 @@ import javax.validation.ConstraintViolation;
 import java.util.Set;
 
 public class Jsr349Demo {
-	private static Logger logger = LoggerFactory.getLogger(Jsr349Demo.class);
+    private static Logger logger = LoggerFactory.getLogger(Jsr349Demo.class);
 
 
-	public static void main(String... args) {
+    public static void main(String... args) {
 
-		GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-		SingerValidationService singerBeanValidationService = ctx.getBean( SingerValidationService.class);
+        SingerValidationService singerBeanValidationService = ctx.getBean(SingerValidationService.class);
 
-		Singer singer = new Singer();
-		singer.setFirstName("J");
-		singer.setLastName("Mayer");
-		singer.setGenre(null);
-		singer.setGender(null);
+        Singer singer = new Singer();
+        singer.setFirstName("J");
+        singer.setLastName("Mayer");
+        singer.setGenre(null);
+        singer.setGender(null);
 
-		validateSinger(singer, singerBeanValidationService);
+        validateSinger(singer, singerBeanValidationService);
 
-		ctx.close();
-	}
+        ctx.close();
+    }
 
-	private static void validateSinger(Singer singer,
-			SingerValidationService singerValidationService) {
-		Set<ConstraintViolation<Singer>> violations = singerValidationService.validateSinger(singer);
-		listViolations(violations);
-	}
+    private static void validateSinger(Singer singer,
+                                       SingerValidationService singerValidationService) {
+        Set<ConstraintViolation<Singer>> violations = singerValidationService.validateSinger(singer);
+        listViolations(violations);
+    }
 
-	private static void listViolations(Set<ConstraintViolation<Singer>> violations) {
-		logger.info("No. of violations: " + violations.size());
-		for (ConstraintViolation<Singer> violation : violations) {
-			logger.info("Validation error for property: " +
-					violation.getPropertyPath()
-					+ " with value: " + violation.getInvalidValue()
-					+ " with error message: " + violation.getMessage());
-		}
-	}
+    private static void listViolations(Set<ConstraintViolation<Singer>> violations) {
+        logger.info("No. of violations: " + violations.size());
+        for (ConstraintViolation<Singer> violation : violations) {
+            logger.info("Validation error for property: " +
+                    violation.getPropertyPath()
+                    + " with value: " + violation.getInvalidValue()
+                    + " with error message: " + violation.getMessage());
+        }
+    }
 }

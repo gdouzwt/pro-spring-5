@@ -22,52 +22,52 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch9.repos"})
 public class DataJpaConfig {
 
-	private static Logger logger = LoggerFactory.getLogger(DataJpaConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(DataJpaConfig.class);
 
-	@SuppressWarnings("unchecked")
-	@Bean
-	public DataSource dataSource() {
-		try {
-			SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-			Class<? extends Driver> driver = (Class<? extends Driver>) Class.forName("org.h2.Driver");
-			dataSource.setDriverClass(driver);
-			dataSource.setUrl("jdbc:h2:~/musicdb");
-			dataSource.setUsername("prospring5");
-			dataSource.setPassword("prospring5");
-			return dataSource;
-		} catch (Exception e) {
-			logger.error("Populator DataSource bean cannot be created!", e);
-			return null;
-		}
-	}
+    @SuppressWarnings("unchecked")
+    @Bean
+    public DataSource dataSource() {
+        try {
+            SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+            Class<? extends Driver> driver = (Class<? extends Driver>) Class.forName("org.h2.Driver");
+            dataSource.setDriverClass(driver);
+            dataSource.setUrl("jdbc:h2:~/musicdb");
+            dataSource.setUsername("prospring5");
+            dataSource.setPassword("prospring5");
+            return dataSource;
+        } catch (Exception e) {
+            logger.error("Populator DataSource bean cannot be created!", e);
+            return null;
+        }
+    }
 
-	@Bean
-	public Properties hibernateProperties() {
-		Properties hibernateProp = new Properties();
-		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-		hibernateProp.put("hibernate.hbm2ddl.auto", "create-drop");
-		//hibernateProp.put("hibernate.format_sql", true);
-		hibernateProp.put("hibernate.show_sql", true);
-		hibernateProp.put("hibernate.max_fetch_depth", 3);
-		hibernateProp.put("hibernate.jdbc.batch_size", 10);
-		hibernateProp.put("hibernate.jdbc.fetch_size", 50);
-		return hibernateProp;
-	}
+    @Bean
+    public Properties hibernateProperties() {
+        Properties hibernateProp = new Properties();
+        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        hibernateProp.put("hibernate.hbm2ddl.auto", "create-drop");
+        //hibernateProp.put("hibernate.format_sql", true);
+        hibernateProp.put("hibernate.show_sql", true);
+        hibernateProp.put("hibernate.max_fetch_depth", 3);
+        hibernateProp.put("hibernate.jdbc.batch_size", 10);
+        hibernateProp.put("hibernate.jdbc.fetch_size", 50);
+        return hibernateProp;
+    }
 
-	@Bean
-	public JpaVendorAdapter jpaVendorAdapter() {
-		return new HibernateJpaVendorAdapter();
-	}
+    @Bean
+    public JpaVendorAdapter jpaVendorAdapter() {
+        return new HibernateJpaVendorAdapter();
+    }
 
-	@Bean
-	public EntityManagerFactory entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setPackagesToScan("com.apress.prospring5.ch9.entities");
-		factoryBean.setDataSource(dataSource());
-		factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		factoryBean.setJpaProperties(hibernateProperties());
-		factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
-		factoryBean.afterPropertiesSet();
-		return factoryBean.getNativeEntityManagerFactory();
-	}
+    @Bean
+    public EntityManagerFactory entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+        factoryBean.setPackagesToScan("com.apress.prospring5.ch9.entities");
+        factoryBean.setDataSource(dataSource());
+        factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        factoryBean.setJpaProperties(hibernateProperties());
+        factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
+        factoryBean.afterPropertiesSet();
+        return factoryBean.getNativeEntityManagerFactory();
+    }
 }

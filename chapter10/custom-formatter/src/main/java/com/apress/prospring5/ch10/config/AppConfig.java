@@ -17,17 +17,17 @@ import java.util.Locale;
 @ComponentScan(basePackages = "com.apress.prospring5.ch10")
 public class AppConfig {
 
-	@Autowired
-	ApplicationConversionServiceFactoryBean conversionService;
+    @Autowired
+    ApplicationConversionServiceFactoryBean conversionService;
 
-	@Bean
-	public Singer john() throws Exception {
-		Singer singer = new Singer();
-		singer.setFirstName("John");
-		singer.setLastName("Mayer");
-		singer.setPersonalSite(new URL("http://johnmayer.com/"));
-		singer.setBirthDate(conversionService.getDateTimeFormatter().parse("1977-10-16", Locale.ENGLISH));
-		return singer;
-	}
+    @Bean
+    public Singer john() throws Exception {
+        Singer singer = new Singer();
+        singer.setFirstName("John");
+        singer.setLastName("Mayer");
+        singer.setPersonalSite(new URL("http://johnmayer.com/"));
+        singer.setBirthDate(conversionService.getDateTimeFormatter().parse("1977-10-16", Locale.ENGLISH));
+        return singer;
+    }
 
 }

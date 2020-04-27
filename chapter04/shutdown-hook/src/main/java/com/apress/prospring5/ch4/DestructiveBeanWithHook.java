@@ -3,6 +3,7 @@ package com.apress.prospring5.ch4;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
+
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class DestructiveBeanWithHook {
@@ -16,7 +17,7 @@ public class DestructiveBeanWithHook {
         if (filePath == null) {
             throw new IllegalArgumentException(
                     "You must specify the filePath property of " +
-                    DestructiveBeanWithHook.class);
+                            DestructiveBeanWithHook.class);
         }
 
         this.file = new File(filePath);
@@ -29,7 +30,7 @@ public class DestructiveBeanWithHook {
     public void destroy() {
         System.out.println("Destroying Bean");
 
-        if(!file.delete()) {
+        if (!file.delete()) {
             System.err.println("ERROR: failed to delete file.");
         }
 

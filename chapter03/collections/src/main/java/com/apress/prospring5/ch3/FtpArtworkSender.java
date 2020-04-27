@@ -8,11 +8,11 @@ public class FtpArtworkSender implements ArtworkSender {
 
     @Override
     public String getFriendlyName() {
-        return "File Transfer Protocol"; 
+        return "File Transfer Protocol";
     }
 
     @Override
     public String getShortName() {
-        return "ftp"; 
+        return "ftp";
     }
 }

@@ -10,19 +10,19 @@ import org.springframework.stereotype.Component;
 @Component("documentarist")
 public class NewDocumentarist {
 
-	protected GrammyGuitarist guitarist;
+    protected GrammyGuitarist guitarist;
 
-	public void execute() {
-		guitarist.sing();
-		Guitar guitar = new Guitar();
-		guitar.setBrand("Gibson");
-		guitarist.sing(guitar);
-		guitarist.talk();
-	}
+    public void execute() {
+        guitarist.sing();
+        Guitar guitar = new Guitar();
+        guitar.setBrand("Gibson");
+        guitarist.sing(guitar);
+        guitarist.talk();
+    }
 
-	@Autowired
-	@Qualifier("johnMayer")
-	public void setGuitarist(GrammyGuitarist guitarist) {
-		this.guitarist = guitarist;
-	}
+    @Autowired
+    @Qualifier("johnMayer")
+    public void setGuitarist(GrammyGuitarist guitarist) {
+        this.guitarist = guitarist;
+    }
 }

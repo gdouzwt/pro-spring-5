@@ -18,10 +18,11 @@ import javax.persistence.EntityManagerFactory;
 @ComponentScan(basePackages = "com.apress.prospring5.ch9")
 public class ServicesConfig {
 
-	@Autowired EntityManagerFactory entityManagerFactory;
+    @Autowired
+    EntityManagerFactory entityManagerFactory;
 
-	@Bean
-	public PlatformTransactionManager transactionManager() {
-		return new JpaTransactionManager(entityManagerFactory);
-	}
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        return new JpaTransactionManager(entityManagerFactory);
+    }
 }

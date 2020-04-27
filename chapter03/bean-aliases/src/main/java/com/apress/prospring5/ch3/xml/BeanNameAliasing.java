@@ -17,15 +17,15 @@ public class BeanNameAliasing {
         String s5 = (String) ctx.getBean("jim");
         String s6 = (String) ctx.getBean("ion");
 
-        System.out.println((s1 == s2)); 
-        System.out.println((s2 == s3)); 
-        System.out.println((s3 == s4)); 
-        System.out.println((s4 == s5)); 
+        System.out.println((s1 == s2));
+        System.out.println((s2 == s3));
+        System.out.println((s3 == s4));
+        System.out.println((s4 == s5));
         System.out.println((s5 == s6));
 
-        Map<String,String> beans = ctx.getBeansOfType(String.class);
+        Map<String, String> beans = ctx.getBeansOfType(String.class);
 
-        if(beans.size() == 1) {
+        if (beans.size() == 1) {
             System.out.println("There is only one String bean.");
         }
 

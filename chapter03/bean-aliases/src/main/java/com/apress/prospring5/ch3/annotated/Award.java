@@ -12,9 +12,9 @@ import java.lang.annotation.*;
 @Documented
 public @interface Award {
 
-	@AliasFor("prize")
-	String[] value() default {};
+    @AliasFor("prize")
+    String[] value() default {};
 
-	@AliasFor("value")
-	String[] prize() default {};
+    @AliasFor("value")
+    String[] prize() default {};
 }

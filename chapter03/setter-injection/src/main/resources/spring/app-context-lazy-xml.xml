@@ -7,9 +7,9 @@
           http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="renderer"
-        class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"
-        p:messageProvider-ref="provider" lazy-init="true"/>
+          class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"
+          p:messageProvider-ref="provider" lazy-init="true"/>
 
     <bean id="provider"
-        class="com.apress.prospring5.ch2.decoupled.HelloWorldMessageProvider" lazy-init="true"/>
+          class="com.apress.prospring5.ch2.decoupled.HelloWorldMessageProvider" lazy-init="true"/>
 </beans>

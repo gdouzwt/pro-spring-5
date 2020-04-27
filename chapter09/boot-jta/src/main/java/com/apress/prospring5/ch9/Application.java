@@ -30,36 +30,38 @@ import static org.hibernate.cfg.AvailableSettings.STATEMENT_FETCH_SIZE;
 @SpringBootApplication(scanBasePackages = "com.apress.prospring5.ch9.services")
 public class Application implements CommandLineRunner {
 
-	private static Logger logger = LoggerFactory.getLogger(Application.class);
+    private static Logger logger = LoggerFactory.getLogger(Application.class);
 
-	public static void main(String... args) throws Exception {
-		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+    public static void main(String... args) throws Exception {
+        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
 
-		System.in.read();
-		ctx.close();
-	}
+        System.in.read();
+        ctx.close();
+    }
 
-	@Autowired SingerService singerService;
+    @Autowired
+    SingerService singerService;
 
-	@Override public void run(String... args) throws Exception {
-		Singer singer = new Singer();
-		singer.setFirstName("John");
-		singer.setLastName("Mayer");
-		singer.setBirthDate(new Date(
-				(new GregorianCalendar(1977, 9, 16)).getTime().getTime()));
-		singerService.save(singer);
+    @Override
+    public void run(String... args) throws Exception {
+        Singer singer = new Singer();
+        singer.setFirstName("John");
+        singer.setLastName("Mayer");
+        singer.setBirthDate(new Date(
+                (new GregorianCalendar(1977, 9, 16)).getTime().getTime()));
+        singerService.save(singer);
 
-		long count = singerService.count();
-		if (count == 1) {
-			logger.info("--> Singer saved successfully");
-		}  else {
-			logger.error("--> Singer was not saved, check the configuration!!");
-		}
+        long count = singerService.count();
+        if (count == 1) {
+            logger.info("--> Singer saved successfully");
+        } else {
+            logger.error("--> Singer was not saved, check the configuration!!");
+        }
 
-		try {
-			singerService.save(null);
-		} catch (Exception ex) {
-			logger.error(ex.getMessage() + "Final count:" + singerService.count());
-		}
-	}
+        try {
+            singerService.save(null);
+        } catch (Exception ex) {
+            logger.error(ex.getMessage() + "Final count:" + singerService.count());
+        }
+    }
 }

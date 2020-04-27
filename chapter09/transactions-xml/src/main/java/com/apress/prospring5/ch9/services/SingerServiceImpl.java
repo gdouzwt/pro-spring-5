@@ -22,6 +22,7 @@ public class SingerServiceImpl implements SingerService {
 
     /**
      * API  changed in  2.0.0.M3 findOne became findById
+     *
      * @param id
      * @return
      */

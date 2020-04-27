@@ -6,13 +6,13 @@ import org.springframework.context.support.GenericApplicationContext;
 
 public class TaskExecutorDemo {
 
-	public static void main(String... args) throws Exception {
-		GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+    public static void main(String... args) throws Exception {
+        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-		TaskToExecute taskToExecute = ctx.getBean(TaskToExecute.class);
-		taskToExecute.executeTask();
+        TaskToExecute taskToExecute = ctx.getBean(TaskToExecute.class);
+        taskToExecute.executeTask();
 
-		System.in.read();
-		ctx.close();
-	}
+        System.in.read();
+        ctx.close();
+    }
 }

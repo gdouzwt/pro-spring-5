@@ -26,44 +26,44 @@ import java.util.Properties;
 @ComponentScan(basePackages = "com.apress.prospring5.ch9.services")
 public class ServicesConfig {
 
-	private Logger logger = LoggerFactory.getLogger(ServicesConfig.class);
+    private Logger logger = LoggerFactory.getLogger(ServicesConfig.class);
 
 
-	@Bean(initMethod = "init", destroyMethod = "shutdownForce")
-	public UserTransactionService userTransactionService(){
-		Properties atProps = new Properties();
-		atProps.put("com.atomikos.icatch.service", "com.atomikos.icatch.standalone.UserTransactionServiceFactory");
-		return new UserTransactionServiceImp(atProps);
-	}
+    @Bean(initMethod = "init", destroyMethod = "shutdownForce")
+    public UserTransactionService userTransactionService() {
+        Properties atProps = new Properties();
+        atProps.put("com.atomikos.icatch.service", "com.atomikos.icatch.standalone.UserTransactionServiceFactory");
+        return new UserTransactionServiceImp(atProps);
+    }
 
-	@Bean (initMethod = "init", destroyMethod = "close")
-	@DependsOn("userTransactionService")
-	public UserTransactionManager  atomikosTransactionManager(){
-		UserTransactionManager utm = new UserTransactionManager();
-		utm.setStartupTransactionService(false);
-		utm.setForceShutdown(true);
-		return utm;
-	}
+    @Bean(initMethod = "init", destroyMethod = "close")
+    @DependsOn("userTransactionService")
+    public UserTransactionManager atomikosTransactionManager() {
+        UserTransactionManager utm = new UserTransactionManager();
+        utm.setStartupTransactionService(false);
+        utm.setForceShutdown(true);
+        return utm;
+    }
 
-	@Bean
-	@DependsOn("userTransactionService")
-	public UserTransaction userTransaction(){
-		UserTransactionImp ut = new UserTransactionImp();
-		try {
-			ut.setTransactionTimeout(300);
-		} catch (SystemException se) {
-			logger.error("Configuration  exception.", se);
-			return null;
-		}
-		return ut;
-	}
+    @Bean
+    @DependsOn("userTransactionService")
+    public UserTransaction userTransaction() {
+        UserTransactionImp ut = new UserTransactionImp();
+        try {
+            ut.setTransactionTimeout(300);
+        } catch (SystemException se) {
+            logger.error("Configuration  exception.", se);
+            return null;
+        }
+        return ut;
+    }
 
-	@Bean
-	public PlatformTransactionManager transactionManager(){
-		JtaTransactionManager ptm = new JtaTransactionManager();
-		ptm.setTransactionManager(atomikosTransactionManager());
-		ptm.setUserTransaction(userTransaction());
-		return ptm;
-	}
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        JtaTransactionManager ptm = new JtaTransactionManager();
+        ptm.setTransactionManager(atomikosTransactionManager());
+        ptm.setUserTransaction(userTransaction());
+        return ptm;
+    }
 
 }

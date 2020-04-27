@@ -18,24 +18,24 @@ import java.util.List;
 @Service("scheduledCarService")
 @Repository
 @Transactional
-public class ScheduledCarServiceImpl extends CarServiceImpl{
+public class ScheduledCarServiceImpl extends CarServiceImpl {
 
-	@Override
-	@Scheduled(fixedDelay=10000)
-	public void updateCarAgeJob() {
-		List<Car> cars = findAll();
+    @Override
+    @Scheduled(fixedDelay = 10000)
+    public void updateCarAgeJob() {
+        List<Car> cars = findAll();
 
-		DateTime currentDate = DateTime.now();
-		logger.info("Car age update job started");
+        DateTime currentDate = DateTime.now();
+        logger.info("Car age update job started");
 
-		cars.forEach(car -> {
-			int age = Years.yearsBetween(car.getManufactureDate(), currentDate).getYears();
+        cars.forEach(car -> {
+            int age = Years.yearsBetween(car.getManufactureDate(), currentDate).getYears();
 
-			car.setAge(age);
-			save(car);
-			logger.info("Car age update --> " + car);
-		});
+            car.setAge(age);
+            save(car);
+            logger.info("Car age update --> " + car);
+        });
 
-		logger.info("Car age update job completed successfully");
-	}
+        logger.info("Car age update job completed successfully");
+    }
 }

@@ -30,55 +30,58 @@ import java.util.List;
 @ComponentScan(basePackages = {"com.apress.prospring5.ch12"})
 public class WebConfig implements WebMvcConfigurer {
 
-	@Autowired ApplicationContext ctx;
+    @Autowired
+    ApplicationContext ctx;
 
-	/**
-	 * Setting the MappingJackson2HttpMessageConverter and configuring it
-	 *
-	 * @return
-	 */
-	@Bean
-	public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
-		MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
-		mappingJackson2HttpMessageConverter.setObjectMapper(objectMapper());
-		return mappingJackson2HttpMessageConverter;
-	}
+    /**
+     * Setting the MappingJackson2HttpMessageConverter and configuring it
+     *
+     * @return
+     */
+    @Bean
+    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
+        MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+        mappingJackson2HttpMessageConverter.setObjectMapper(objectMapper());
+        return mappingJackson2HttpMessageConverter;
+    }
 
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
-	@Bean
-	public ObjectMapper objectMapper() {
-		ObjectMapper objMapper = new ObjectMapper();
-		objMapper.enable(SerializationFeature.INDENT_OUTPUT);
-		objMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		objMapper.setDateFormat(df);
-		return objMapper;
-	}
+    @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper objMapper = new ObjectMapper();
+        objMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        objMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        objMapper.setDateFormat(df);
+        return objMapper;
+    }
 
-	@Override
-	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		converters.add(mappingJackson2HttpMessageConverter());
-		converters.add(singerMessageConverter());
-	}
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(mappingJackson2HttpMessageConverter());
+        converters.add(singerMessageConverter());
+    }
 
-	@Bean MarshallingHttpMessageConverter singerMessageConverter() {
-		MarshallingHttpMessageConverter mc = new MarshallingHttpMessageConverter();
-		mc.setMarshaller(castorMarshaller());
-		mc.setUnmarshaller(castorMarshaller());
-		List<MediaType> mediaTypes = new ArrayList<>();
-		MediaType mt = new MediaType("application", "xml");
-		mediaTypes.add(mt);
-		mc.setSupportedMediaTypes(mediaTypes);
-		return mc;
-	}
+    @Bean
+    MarshallingHttpMessageConverter singerMessageConverter() {
+        MarshallingHttpMessageConverter mc = new MarshallingHttpMessageConverter();
+        mc.setMarshaller(castorMarshaller());
+        mc.setUnmarshaller(castorMarshaller());
+        List<MediaType> mediaTypes = new ArrayList<>();
+        MediaType mt = new MediaType("application", "xml");
+        mediaTypes.add(mt);
+        mc.setSupportedMediaTypes(mediaTypes);
+        return mc;
+    }
 
-	@Bean CastorMarshaller castorMarshaller() {
-		CastorMarshaller castorMarshaller = new CastorMarshaller();
-		castorMarshaller.setMappingLocation(ctx.getResource("classpath:spring/oxm-mapping.xml"));
-		return castorMarshaller;
-	}
+    @Bean
+    CastorMarshaller castorMarshaller() {
+        CastorMarshaller castorMarshaller = new CastorMarshaller();
+        castorMarshaller.setMappingLocation(ctx.getResource("classpath:spring/oxm-mapping.xml"));
+        return castorMarshaller;
+    }
 }

@@ -15,18 +15,18 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-	private static Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
 
-	@Bean
-	public DataSource dataSource() {
-		try {
-			EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-			return dbBuilder.setType(EmbeddedDatabaseType.H2)
-					.addScripts("classpath:/org/springframework/batch/core/schema-h2.sql",
-							"classpath:support/singer.sql").build();
-		} catch (Exception e) {
-			logger.error("Embedded DataSource bean cannot be created!", e);
-			return null;
-		}
-	}
+    @Bean
+    public DataSource dataSource() {
+        try {
+            EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
+            return dbBuilder.setType(EmbeddedDatabaseType.H2)
+                    .addScripts("classpath:/org/springframework/batch/core/schema-h2.sql",
+                            "classpath:support/singer.sql").build();
+        } catch (Exception e) {
+            logger.error("Embedded DataSource bean cannot be created!", e);
+            return null;
+        }
+    }
 }

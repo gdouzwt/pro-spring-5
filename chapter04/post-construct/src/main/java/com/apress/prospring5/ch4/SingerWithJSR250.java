@@ -1,6 +1,7 @@
 package com.apress.prospring5.ch4;
 
 import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -23,15 +24,15 @@ public class SingerWithJSR250 {
     private void init() throws Exception {
         System.out.println("Initializing bean");
 
-       if (name == null) {
+        if (name == null) {
             System.out.println("Using default name");
             name = DEFAULT_NAME;
         }
 
         if (age == Integer.MIN_VALUE) {
             throw new IllegalArgumentException(
-                    "You must set the age property of any beans of type " + 
-                    SingerWithJSR250.class);
+                    "You must set the age property of any beans of type " +
+                            SingerWithJSR250.class);
         }
     }
 

@@ -5,7 +5,7 @@
     height: 90px;
 }
 
-body,div,td {
+body, div, td {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #666;
@@ -48,56 +48,56 @@ body {
 }
 
 #headerWrapper {
-    width:950px;
+    width: 950px;
     min-width: 950px;
     max-width: 950px;
     margin-right: auto;
     margin-left: auto;
 
     /* fix max-width incompatibility in IE6 */
-    width:expression(document.body.clientWidth > 950? "950px": "auto" );
+    width: expression(document.body.clientWidth > 950? "950px": "auto" );
 
-    overflow:hidden;
-    display:block;
+    overflow: hidden;
+    display: block;
 }
 
 #wrapper {
-    width:950px;
+    width: 950px;
     min-width: 950px;
     max-width: 950px;
     margin-right: auto;
     margin-left: auto;
 
     /* fix max-width incompatibility in IE6 */
-    width:expression(document.body.clientWidth > 950? "950px": "auto" );
+    width: expression(document.body.clientWidth > 950? "950px": "auto" );
 
-    overflow:hidden;
-    display:block;
+    overflow: hidden;
+    display: block;
 }
 
 /* header and footer elements */
 
 #main {
-    overflow:hidden;
-    display:box;
+    overflow: hidden;
+    display: box;
 }
 
 #menu {
     background: #eee;
-    position:relative;
-    float:left;
-    left:0px;
-    width:220px;
-    margin-right:15px;
+    position: relative;
+    float: left;
+    left: 0px;
+    width: 220px;
+    margin-right: 15px;
 }
 
-#menu ul{
+#menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-#menu ul li{
+#menu ul li {
     padding: 0px;
 }
 
@@ -106,14 +106,14 @@ body {
     display: block;
     margin: 0;
     padding: 2px 6px;
-    color:#FFFFFF;
+    color: #FFFFFF;
 }
 
 #menu h2 {
     color: #fff;
     background: #648C1D;
     text-transform: uppercase;
-    font-weight:bold;
+    font-weight: bold;
     font-size: 12px;
 }
 
@@ -130,22 +130,25 @@ body {
 }
 
 #footer {
-    background:#fff;
-    border:none;
-    margin-top:15px;
-    border-top:1px solid #999999;
+    background: #fff;
+    border: none;
+    margin-top: 15px;
+    border-top: 1px solid #999999;
 }
 
 #footer .new {
-    float:left;
+    float: left;
 }
 
-#footer a:link {color: #7db223;}
+#footer a:link {
+    color: #7db223;
+}
 
 .quicklinks {
-    clear:both;
+    clear: both;
     padding-bottom: 15px
 }
+
 .quicklinks span {
     float: right;
 }
@@ -155,18 +158,18 @@ table.navigation {
 }
 
 label {
-    width:150px;
-    float:left;
+    width: 150px;
+    float: left;
     margin-left: 5px;
     margin-top: 5px;
 }
 
 input {
-    height:20px;
+    height: 20px;
 }
 
 input, textarea, select {
-    border:1px solid #B3B3B3;
+    border: 1px solid #B3B3B3;
 }
 
 input.image {
@@ -176,7 +179,7 @@ input.image {
 }
 
 submit {
-    height:25px;
+    height: 25px;
 }
 
 div {
@@ -184,17 +187,21 @@ div {
 }
 
 div .box {
-    display:block;
-    margin-left:105px;
+    display: block;
+    margin-left: 105px;
 }
 
 /* menu elements*/
 
-a.menu, a.menu:link, a.menu:visited {display:block; width:150px; height:25px;}
+a.menu, a.menu:link, a.menu:visited {
+    display: block;
+    width: 150px;
+    height: 25px;
+}
 
 /* text styles */
 
-h1,h2,h3 {
+h1, h2, h3 {
     font-family: Helvetica, sans-serif;
     color: #7db223;
 }
@@ -212,7 +219,7 @@ h2 {
 h3 {
     font-size: 15px;
     line-height: 21px;
-    color:#555;
+    color: #555;
 }
 
 h4 {
@@ -267,9 +274,10 @@ li {
 }
 
 ul li {
-    margin:0 0 0.25em 0;
-    padding:0;
+    margin: 0 0 0.25em 0;
+    padding: 0;
 }
+
 /* table elements */
 
 table {
@@ -286,13 +294,13 @@ table table {
     width: 100%;
 }
 
-table td,table th {
+table td, table th {
     padding: 2px;
     border: 1px solid #CCCCCC;
 }
 
 table td form {
-    text-align:center;
+    text-align: center;
     vertical-align: middle;
     margin: 0px;
 }
@@ -311,9 +319,13 @@ table thead {
     background-color: #BBBBBB;
 }
 
-table a:link {color: #303030;}
+table a:link {
+    color: #303030;
+}
 
-.utilbox {width: 18px;}
+.utilbox {
+    width: 18px;
+}
 
 caption {
     caption-side: top;
@@ -366,51 +378,51 @@ fieldset th {
 }
 
 .table-buttons {
-    background-color:#fff;
-    border:none;
+    background-color: #fff;
+    border: none;
 }
 
 .table-buttons td {
-    border:none;
+    border: none;
 }
 
 .submit input {
     border: 1px solid #BBBBBB;
-    color:#777777;
-    padding:2px 7px;
-    font-size:11px;
-    text-transform:uppercase;
-    font-weight:bold;
-    height:24px;
+    color: #777777;
+    padding: 2px 7px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 24px;
 }
 
 .updated {
-    background:#ecf1e5;
-    font-size:11px;
-    margin-left:2px;
-    border:4px solid #ecf1e5;
+    background: #ecf1e5;
+    font-size: 11px;
+    margin-left: 2px;
+    border: 4px solid #ecf1e5;
 }
 
 .updated td {
-    padding:2px 8px;
-    font-size:11px;
-    color:#888888;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: #888888;
 }
 
 .dijitArrowButton {
     height: 20px;
 }
 
-.dijitTextArea{
-    min-height:5.5em !important;
-    max-height:22em !important;
+.dijitTextArea {
+    min-height: 5.5em !important;
+    max-height: 22em !important;
     overflow-y: auto !important;
     max-width: 175px;
 }
 
-.RichTextEditable{
-    min-height:18em !important;
-    max-height:18em !important;
+.RichTextEditable {
+    min-height: 18em !important;
+    max-height: 18em !important;
 }
 
 .flag {

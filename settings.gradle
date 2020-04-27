@@ -157,20 +157,20 @@ include 'chapter18:batch-jsr352'
 include 'chapter18:integration'
 include 'chapter18:integration-cfg'
 include 'chapter18:xd'
-include 'chapter18:webflux-boot'
+//include 'chapter18:webflux-boot'
 include 'chapter18:webflux'
 
-include 'chapter18:boot-tests'
+//include 'chapter18:boot-tests'
 
 println(' This project is a collection of simple code samples. It is meant to be used together with the ' +
-		'"Spring Pro, Fifth Edition" ' +
-		' published by Apress in order to learn and practice with all Spring Web libraries. ')
+        '"Spring Pro, Fifth Edition" ' +
+        ' published by Apress in order to learn and practice with all Spring Web libraries. ')
 
 //we check if the modules have gradle configuration files
 rootProject.children.each { project ->
-	project.buildFileName = "${project.name}.gradle"
-	assert project.projectDir.isDirectory()
-	assert project.buildFile.exists()
-	assert project.buildFile.isFile()
+    project.buildFileName = "${project.name}.gradle"
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.exists()
+    assert project.buildFile.isFile()
 }
 

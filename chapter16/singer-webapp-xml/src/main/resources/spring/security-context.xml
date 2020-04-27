@@ -8,9 +8,9 @@
         http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http use-expressions="true">
-        <intercept-url pattern='/*' access='permitAll' />
+        <intercept-url pattern='/*' access='permitAll'/>
         <form-login login-page="/singers" authentication-failure-url="/security/loginfail"
-                    default-target-url="/singers" />
+                    default-target-url="/singers"/>
         <csrf disabled="true"/>
         <logout logout-success-url="/singers"/>
     </http>
@@ -20,10 +20,11 @@
             <password-encoder ref="encoder"/>
             <user-service>
                 <!-- pass is still user -->
-                <user name="user" password="$2a$10$RmUal0VbYmacU1ISvPYbquhjnoPE/.BA0EVtb.Hc7wDwZv/h9jzIe" authorities="ROLE_USER" />
+                <user name="user" password="$2a$10$RmUal0VbYmacU1ISvPYbquhjnoPE/.BA0EVtb.Hc7wDwZv/h9jzIe"
+                      authorities="ROLE_USER"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
 
-    <beans:bean  id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 </beans:beans>

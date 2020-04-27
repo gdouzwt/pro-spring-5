@@ -9,7 +9,7 @@ import java.util.List;
  * Created by iuliana.cosmina on 5/7/17.
  */
 public interface AlbumService {
-	List<Album> findBySinger(Singer singer);
+    List<Album> findBySinger(Singer singer);
 
-	List<Album> findByTitle(String title);
+    List<Album> findByTitle(String title);
 }

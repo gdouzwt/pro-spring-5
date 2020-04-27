@@ -12,8 +12,8 @@ import java.util.List;
  * Created by iuliana.cosmina on 5/7/17.
  */
 public interface AlbumRepository extends JpaRepository<Album, Long> {
-	List<Album> findBySinger(Singer singer);
+    List<Album> findBySinger(Singer singer);
 
-	@Query("select a from Album a where a.title like %:title%")
-	List<Album> findByTitle(@Param("title") String title);
+    @Query("select a from Album a where a.title like %:title%")
+    List<Album> findByTitle(@Param("title") String title);
 }

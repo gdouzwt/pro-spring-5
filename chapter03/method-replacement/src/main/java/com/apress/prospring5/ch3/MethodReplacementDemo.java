@@ -1,7 +1,7 @@
 package com.apress.prospring5.ch3;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.util.StopWatch; 
+import org.springframework.util.StopWatch;
 
 public class MethodReplacementDemo {
     public static void main(String... args) {
@@ -36,5 +36,5 @@ public class MethodReplacementDemo {
 
         System.out.println("1000000 invocations took: "
                 + stopWatch.getTotalTimeMillis() + " ms");
-    } 
+    }
 }

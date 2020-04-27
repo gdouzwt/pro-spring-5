@@ -8,12 +8,12 @@ import org.springframework.batch.core.listener.StepExecutionListenerSupport;
 
 public class StepExecutionStatsListener extends StepExecutionListenerSupport {
 
-	public static Logger logger = LoggerFactory.getLogger(StepExecutionStatsListener.class);
+    public static Logger logger = LoggerFactory.getLogger(StepExecutionStatsListener.class);
 
-	@Override
-	public ExitStatus afterStep(StepExecution stepExecution) {
-		logger.info("--> Wrote: " + stepExecution.getWriteCount()
-				+ " items in step: " + stepExecution.getStepName());
-		return null;
-	}
+    @Override
+    public ExitStatus afterStep(StepExecution stepExecution) {
+        logger.info("--> Wrote: " + stepExecution.getWriteCount()
+                + " items in step: " + stepExecution.getStepName());
+        return null;
+    }
 }

@@ -11,7 +11,7 @@ import org.springframework.context.support.GenericApplicationContext;
 public class AsyncTaskDemo {
     private static Logger logger = LoggerFactory.getLogger(AsyncTaskDemo.class);
 
-    public static void main(String... args) throws Exception{
+    public static void main(String... args) throws Exception {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         AsyncService asyncService = ctx.getBean("asyncService", AsyncService.class);

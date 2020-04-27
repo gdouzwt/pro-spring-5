@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 
 @Configuration
-@ComponentScan(basePackages={"com.apress.prospring5.ch4.annotated"})
+@ComponentScan(basePackages = {"com.apress.prospring5.ch4.annotated"})
 public class AppConfigTwo {
 
-	@Autowired
-	MessageProvider provider;
+    @Autowired
+    MessageProvider provider;
 
 
-	@Bean(name = "messageRenderer")
-	public MessageRenderer messageRenderer() {
-		MessageRenderer renderer = new StandardOutMessageRenderer();
-		renderer.setMessageProvider(provider);
-		return renderer;
-	}
+    @Bean(name = "messageRenderer")
+    public MessageRenderer messageRenderer() {
+        MessageRenderer renderer = new StandardOutMessageRenderer();
+        renderer.setMessageProvider(provider);
+        return renderer;
+    }
 }

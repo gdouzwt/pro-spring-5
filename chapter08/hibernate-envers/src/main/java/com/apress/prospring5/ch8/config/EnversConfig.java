@@ -34,59 +34,59 @@ import java.util.Properties;
 @EnableJpaAuditing(auditorAwareRef = "auditorAwareBean")
 public class EnversConfig {
 
-	private static Logger logger = LoggerFactory.getLogger(EnversConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(EnversConfig.class);
 
-	@Bean
-	public DataSource dataSource() {
-		try {
-			EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-			return dbBuilder.setType(EmbeddedDatabaseType.H2).addScripts("classpath:db/schema.sql", "classpath:db/test-data.sql").build();
-		} catch (Exception e) {
-			logger.error("Embedded DataSource bean cannot be created!", e);
-			return null;
-		}
-	}
+    @Bean
+    public DataSource dataSource() {
+        try {
+            EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
+            return dbBuilder.setType(EmbeddedDatabaseType.H2).addScripts("classpath:db/schema.sql", "classpath:db/test-data.sql").build();
+        } catch (Exception e) {
+            logger.error("Embedded DataSource bean cannot be created!", e);
+            return null;
+        }
+    }
 
-	@Bean
-	public PlatformTransactionManager transactionManager() {
-		return new JpaTransactionManager(entityManagerFactory());
-	}
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        return new JpaTransactionManager(entityManagerFactory());
+    }
 
-	@Bean
-	public JpaVendorAdapter jpaVendorAdapter() {
-		return new HibernateJpaVendorAdapter();
-	}
+    @Bean
+    public JpaVendorAdapter jpaVendorAdapter() {
+        return new HibernateJpaVendorAdapter();
+    }
 
-	@Bean
-	public Properties hibernateProperties() {
-		Properties hibernateProp = new Properties();
-		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-		hibernateProp.put("hibernate.format_sql", true);
-		hibernateProp.put("hibernate.show_sql", true);
-		hibernateProp.put("hibernate.max_fetch_depth", 3);
-		hibernateProp.put("hibernate.jdbc.batch_size", 10);
-		hibernateProp.put("hibernate.jdbc.fetch_size", 50);
-		//Properties for Hibernate Envers
-		hibernateProp.put("org.hibernate.envers.audit_table_suffix", "_H");
-		hibernateProp.put("org.hibernate.envers.revision_field_name", "AUDIT_REVISION");
-		hibernateProp.put("org.hibernate.envers.revision_type_field_name", "ACTION_TYPE");
-		hibernateProp.put("org.hibernate.envers.audit_strategy", "org.hibernate.envers.strategy.ValidityAuditStrategy");
-		hibernateProp.put("org.hibernate.envers.audit_strategy_validity_end_rev_field_name", "AUDIT_REVISION_END");
-		hibernateProp.put("org.hibernate.envers.audit_strategy_validity_store_revend_timestamp", "True");
-		hibernateProp.put("org.hibernate.envers.audit_strategy_validity_revend_timestamp_field_name",
-				"AUDIT_REVISION_END_TS");
+    @Bean
+    public Properties hibernateProperties() {
+        Properties hibernateProp = new Properties();
+        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        hibernateProp.put("hibernate.format_sql", true);
+        hibernateProp.put("hibernate.show_sql", true);
+        hibernateProp.put("hibernate.max_fetch_depth", 3);
+        hibernateProp.put("hibernate.jdbc.batch_size", 10);
+        hibernateProp.put("hibernate.jdbc.fetch_size", 50);
+        //Properties for Hibernate Envers
+        hibernateProp.put("org.hibernate.envers.audit_table_suffix", "_H");
+        hibernateProp.put("org.hibernate.envers.revision_field_name", "AUDIT_REVISION");
+        hibernateProp.put("org.hibernate.envers.revision_type_field_name", "ACTION_TYPE");
+        hibernateProp.put("org.hibernate.envers.audit_strategy", "org.hibernate.envers.strategy.ValidityAuditStrategy");
+        hibernateProp.put("org.hibernate.envers.audit_strategy_validity_end_rev_field_name", "AUDIT_REVISION_END");
+        hibernateProp.put("org.hibernate.envers.audit_strategy_validity_store_revend_timestamp", "True");
+        hibernateProp.put("org.hibernate.envers.audit_strategy_validity_revend_timestamp_field_name",
+                "AUDIT_REVISION_END_TS");
 
-		return hibernateProp;
-	}
+        return hibernateProp;
+    }
 
-	@Bean
-	public EntityManagerFactory entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setPackagesToScan("com.apress.prospring5.ch8.entities");
-		factoryBean.setDataSource(dataSource());
-		factoryBean.setJpaProperties(hibernateProperties());
-		factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
-		factoryBean.afterPropertiesSet();
-		return factoryBean.getObject();
-	}
+    @Bean
+    public EntityManagerFactory entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+        factoryBean.setPackagesToScan("com.apress.prospring5.ch8.entities");
+        factoryBean.setDataSource(dataSource());
+        factoryBean.setJpaProperties(hibernateProperties());
+        factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
+        factoryBean.afterPropertiesSet();
+        return factoryBean.getObject();
+    }
 }

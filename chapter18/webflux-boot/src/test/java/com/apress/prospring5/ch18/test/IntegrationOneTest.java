@@ -18,20 +18,20 @@ import java.time.Duration;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class IntegrationOneTest {
-	private final Logger logger = LoggerFactory.getLogger(IntegrationOneTest.class);
+    private final Logger logger = LoggerFactory.getLogger(IntegrationOneTest.class);
 
-	@Test
-	public void test1One() {
-		Flux<String> numbers = Flux.just("1", "2", "3");
-		Flux<Long> periodFlux = Flux.interval(Duration.ofSeconds(2));
-		Flux.zip(numbers, periodFlux).map(Tuple2::getT1).doOnNext(logger::info);
-	}
+    @Test
+    public void test1One() {
+        Flux<String> numbers = Flux.just("1", "2", "3");
+        Flux<Long> periodFlux = Flux.interval(Duration.ofSeconds(2));
+        Flux.zip(numbers, periodFlux).map(Tuple2::getT1).doOnNext(logger::info);
+    }
 
-	@Test
-	public void test2One() {
-		Flux<String> numbers = Flux.just("11", "22", "33");
-		Flux<Long> periodFlux = Flux.interval(Duration.ofSeconds(2));
-		Flux.zip(numbers, periodFlux).map(Tuple2::getT1).doOnNext(logger::info);
-	}
+    @Test
+    public void test2One() {
+        Flux<String> numbers = Flux.just("11", "22", "33");
+        Flux<Long> periodFlux = Flux.interval(Duration.ofSeconds(2));
+        Flux.zip(numbers, periodFlux).map(Tuple2::getT1).doOnNext(logger::info);
+    }
 
 }

@@ -13,20 +13,20 @@
     <spring:url value="/singers" var="showSingerUrl"/>
 
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             $("#list").jqGrid({
-                url:'${showSingerUrl}/listgrid',
+                url: '${showSingerUrl}/listgrid',
                 datatype: 'json',
                 mtype: 'GET',
-                colNames:['${labelSingerFirstName}', '${labelSingerLastName}',
+                colNames: ['${labelSingerFirstName}', '${labelSingerLastName}',
                     '${labelSingerBirthDate}'],
-                colModel :[
-                    {name:'firstName', index:'firstName', width:150},
-                    {name:'lastName', index:'lastName', width:100},
-                    {name:'birthDateString', index:'birthDate', width:100}
+                colModel: [
+                    {name: 'firstName', index: 'firstName', width: 150},
+                    {name: 'lastName', index: 'lastName', width: 100},
+                    {name: 'birthDateString', index: 'birthDate', width: 100}
                 ],
-                jsonReader : {
-                    root:"singerData",
+                jsonReader: {
+                    root: "singerData",
                     page: "currentPage",
                     total: "totalPages",
                     records: "totalRecords",
@@ -34,8 +34,8 @@
                     id: "id"
                 },
                 pager: '#pager',
-                rowNum:10,
-                rowList:[10,20,30],
+                rowNum: 10,
+                rowList: [10, 20, 30],
                 sortname: 'firstName',
                 sortorder: 'asc',
                 viewrecords: true,
@@ -43,8 +43,8 @@
                 height: 250,
                 width: 500,
                 caption: '${labelSingerList}',
-                onSelectRow: function(id){
-                    document.location.href ="${showSingerUrl}/" + id;
+                onSelectRow: function (id) {
+                    document.location.href = "${showSingerUrl}/" + id;
                 }
             });
         });
@@ -57,7 +57,11 @@
     <h2>${labelSingerList}</h2>
 
     <div>
-        <table id="list"><tr><td/></tr></table>
+        <table id="list">
+            <tr>
+                <td/>
+            </tr>
+        </table>
     </div>
     <div id="pager"></div>
 </div>

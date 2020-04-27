@@ -6,11 +6,11 @@ import org.springframework.context.support.GenericApplicationContext;
 
 public class ScheduleTaskAnnotationDemo {
 
-	public static void main(String... args) throws Exception {
-		GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+    public static void main(String... args) throws Exception {
+        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-		System.in.read();
+        System.in.read();
 
-		ctx.close();
-	}
+        ctx.close();
+    }
 } 

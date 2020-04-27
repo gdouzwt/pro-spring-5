@@ -3,20 +3,21 @@ package com.apress.prospring5.ch4;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
+
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class DestructiveBeanWithInterface {
     private File file;
     private String filePath;
-    
+
     @PostConstruct
     public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing Bean");
 
         if (filePath == null) {
             throw new IllegalArgumentException(
-                    "You must specify the filePath property of " + 
-                    DestructiveBeanWithInterface.class);
+                    "You must specify the filePath property of " +
+                            DestructiveBeanWithInterface.class);
         }
 
         this.file = new File(filePath);
@@ -29,7 +30,7 @@ public class DestructiveBeanWithInterface {
     public void destroy() {
         System.out.println("Destroying Bean");
 
-        if(!file.delete()) {
+        if (!file.delete()) {
             System.err.println("ERROR: failed to delete file.");
         }
 

@@ -36,7 +36,7 @@ public class SimpleThrowsAdvice implements ThrowsAdvice {
     }
 
     public void afterThrowing(Method method, Object[] args, Object target,
-            IllegalArgumentException ex) throws Throwable {
+                              IllegalArgumentException ex) throws Throwable {
         System.out.println("***");
         System.out.println("IllegalArgumentException Capture");
         System.out.println("Caught: " + ex.getClass().getName());

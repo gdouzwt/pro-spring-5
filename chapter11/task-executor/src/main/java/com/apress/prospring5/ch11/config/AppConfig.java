@@ -14,10 +14,11 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  */
 @Configuration
 @EnableAsync
-@ComponentScan(basePackages  = {"com.apress.prospring5.ch11"} )
+@ComponentScan(basePackages = {"com.apress.prospring5.ch11"})
 public class AppConfig {
 
-	@Bean TaskExecutor taskExecutor() {
-		return new SimpleAsyncTaskExecutor();
-	}
+    @Bean
+    TaskExecutor taskExecutor() {
+        return new SimpleAsyncTaskExecutor();
+    }
 }

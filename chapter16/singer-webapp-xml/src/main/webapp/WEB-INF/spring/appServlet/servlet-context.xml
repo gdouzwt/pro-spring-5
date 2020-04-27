@@ -39,7 +39,7 @@
         </beans:property>
     </beans:bean>
 
-    <context:component-scan base-package="com.apress.prospring5.ch16" />
+    <context:component-scan base-package="com.apress.prospring5.ch16"/>
 
     <interceptors>
         <beans:bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
@@ -67,7 +67,8 @@
             class="org.springframework.web.multipart.support.StandardServletMultipartResolver"
             id="multipartResolver"/>
 
-    <beans:bean id="typeConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    <beans:bean id="typeConversionService"
+                class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <beans:property name="formatters">
             <util:set>
                 <beans:bean class="com.apress.prospring5.ch16.util.DateFormatter"/>

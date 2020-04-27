@@ -15,23 +15,23 @@ import org.joda.time.DateTime;
 import java.text.SimpleDateFormat;
 
 @Entity
-@Table(name="car")
+@Table(name = "car")
 public class Car {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
     private Long id;
 
-    @Column(name="LICENSE_PLATE")
+    @Column(name = "LICENSE_PLATE")
     private String licensePlate;
 
-    @Column(name="MANUFACTURER")
+    @Column(name = "MANUFACTURER")
     private String manufacturer;
 
-    @Column(name="MANUFACTURE_DATE")
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    @Column(name = "MANUFACTURE_DATE")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime manufactureDate;
-    @Column(name="AGE")
+    @Column(name = "AGE")
     private int age;
 
     @Version

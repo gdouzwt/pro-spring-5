@@ -6,13 +6,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "singer")
 @NamedQueries({
-        @NamedQuery(name=Singer.FIND_ALL, query="select s from Singer s"),
-        @NamedQuery(name=Singer.COUNT_ALL, query="select count(s) from Singer s")
+        @NamedQuery(name = Singer.FIND_ALL, query = "select s from Singer s"),
+        @NamedQuery(name = Singer.COUNT_ALL, query = "select count(s) from Singer s")
 })
 public class Singer implements Serializable {
 
@@ -38,7 +39,7 @@ public class Singer implements Serializable {
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
-    @OneToMany(mappedBy = "singer", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Album> albums = new HashSet<>();
 
     public Long getId() {
@@ -87,7 +88,7 @@ public class Singer implements Serializable {
     }
 
     public void setAlbums(Set<Album> albums) {
-     this.albums = albums;
+        this.albums = albums;
     }
 
     public boolean addAlbum(Album album) {
@@ -102,6 +103,6 @@ public class Singer implements Serializable {
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-            + ", Last name: " + lastName + ", Birthday: " + birthDate;
+                + ", Last name: " + lastName + ", Birthday: " + birthDate;
     }
 }

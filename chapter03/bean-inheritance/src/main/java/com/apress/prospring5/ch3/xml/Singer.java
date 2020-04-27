@@ -14,7 +14,7 @@ public class Singer {
     public void setAge(int age) {
         this.age = age;
     }
-        
+
     public String toString() {
         return "\tName: " + name + "\n\t" + "Age: " + age;
     }

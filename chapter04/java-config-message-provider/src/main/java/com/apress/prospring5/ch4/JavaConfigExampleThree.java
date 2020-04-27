@@ -12,7 +12,7 @@ public class JavaConfigExampleThree {
                 new ClassPathXmlApplicationContext("classpath:spring/app-context-xml-02.xml");
 
         MessageRenderer renderer =
-            ctx.getBean("messageRenderer", MessageRenderer.class);
+                ctx.getBean("messageRenderer", MessageRenderer.class);
 
         renderer.render();
     }

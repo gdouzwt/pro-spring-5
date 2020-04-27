@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfigSix {
 
-	@Bean
-	public MessageProvider provider() {
-		return new ConfigurableMessageProvider("Love on the weekend");
-	}
+    @Bean
+    public MessageProvider provider() {
+        return new ConfigurableMessageProvider("Love on the weekend");
+    }
 }

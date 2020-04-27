@@ -14,9 +14,9 @@ public class TaskToExecute {
     private TaskExecutor taskExecutor;
 
     public void executeTask() {
-        for(int i=0; i < 10; ++ i) {
+        for (int i = 0; i < 10; ++i) {
             taskExecutor.execute(() ->
-                logger.info("Hello from thread: " + Thread.currentThread().getName()));
+                    logger.info("Hello from thread: " + Thread.currentThread().getName()));
         }
     }
 }

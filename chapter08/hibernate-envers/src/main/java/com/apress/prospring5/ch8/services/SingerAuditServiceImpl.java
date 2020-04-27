@@ -17,34 +17,35 @@ import java.util.List;
 @Transactional
 public class SingerAuditServiceImpl implements SingerAuditService {
 
-	@Autowired
-	private SingerAuditRepository singerAuditRepository;
+    @Autowired
+    private SingerAuditRepository singerAuditRepository;
 
-	@PersistenceContext
-	private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-	@Transactional(readOnly = true)
-	public List<SingerAudit> findAll() {
-		return Lists.newArrayList(singerAuditRepository.findAll());
-	}
+    @Transactional(readOnly = true)
+    public List<SingerAudit> findAll() {
+        return Lists.newArrayList(singerAuditRepository.findAll());
+    }
 
-	/**
-	 * API  changed in  2.0.0.M3 findOne became findById
-	 * @param id
-	 * @return
-	 */
-	public SingerAudit findById(Long id) {
-		return singerAuditRepository.findById(id).get();
-	}
+    /**
+     * API  changed in  2.0.0.M3 findOne became findById
+     *
+     * @param id
+     * @return
+     */
+    public SingerAudit findById(Long id) {
+        return singerAuditRepository.findById(id).get();
+    }
 
-	public SingerAudit save(SingerAudit singer) {
-		return singerAuditRepository.save(singer);
-	}
+    public SingerAudit save(SingerAudit singer) {
+        return singerAuditRepository.save(singer);
+    }
 
-	@Transactional(readOnly = true)
-	@Override
-	public SingerAudit findAuditByRevision(Long id, int revision) {
-		AuditReader auditReader = AuditReaderFactory.get(entityManager);
-		return auditReader.find(SingerAudit.class, id, revision);
-	}
+    @Transactional(readOnly = true)
+    @Override
+    public SingerAudit findAuditByRevision(Long id, int revision) {
+        AuditReader auditReader = AuditReaderFactory.get(entityManager);
+        return auditReader.find(SingerAudit.class, id, revision);
+    }
 }

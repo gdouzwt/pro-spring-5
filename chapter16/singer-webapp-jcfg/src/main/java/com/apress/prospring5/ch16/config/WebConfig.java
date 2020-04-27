@@ -30,126 +30,128 @@ import java.util.Locale;
 @ComponentScan(basePackages = {"com.apress.prospring5.ch16"})
 public class WebConfig implements WebMvcConfigurer {
 
-	//Declare our static resources. I added cache to the java config but it's not required.
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/")
-				.setCachePeriod(31556926);
-	}
+    //Declare our static resources. I added cache to the java config but it's not required.
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/")
+                .setCachePeriod(31556926);
+    }
 
-	@Bean StandardServletMultipartResolver multipartResolver() {
-		return new StandardServletMultipartResolver();
-	}
+    @Bean
+    StandardServletMultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
+    }
 
-	@Bean
-	UrlBasedViewResolver tilesViewResolver() {
-		UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
-		tilesViewResolver.setViewClass(TilesView.class);
-		return tilesViewResolver;
-	}
+    @Bean
+    UrlBasedViewResolver tilesViewResolver() {
+        UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
+        tilesViewResolver.setViewClass(TilesView.class);
+        return tilesViewResolver;
+    }
 
-	@Bean
-	TilesConfigurer tilesConfigurer() {
-		TilesConfigurer tilesConfigurer = new TilesConfigurer();
-		tilesConfigurer.setDefinitions(
-				"/WEB-INF/layouts/layouts.xml",
-				"/WEB-INF/views/**/views.xml"
-		);
-		tilesConfigurer.setCheckRefresh(true);
-		return tilesConfigurer;
-	}
+    @Bean
+    TilesConfigurer tilesConfigurer() {
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setDefinitions(
+                "/WEB-INF/layouts/layouts.xml",
+                "/WEB-INF/views/**/views.xml"
+        );
+        tilesConfigurer.setCheckRefresh(true);
+        return tilesConfigurer;
+    }
 
-	@Bean
-	public Validator validator() {
-		final LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-		validator.setValidationMessageSource(messageSource());
-		return validator;
-	}
+    @Bean
+    public Validator validator() {
+        final LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
+        validator.setValidationMessageSource(messageSource());
+        return validator;
+    }
 
-	// <=> <mvc:annotation-driven validator="validator"/>
-	@Override
-	public Validator getValidator() {
-		return validator();
-	}
+    // <=> <mvc:annotation-driven validator="validator"/>
+    @Override
+    public Validator getValidator() {
+        return validator();
+    }
 
-	// <=> replacement for 'typeConversionService'  bean
-	@Override
-	public void addFormatters(FormatterRegistry formatterRegistry) {
-		formatterRegistry.addFormatter(dateFormatter());
-	}
+    // <=> replacement for 'typeConversionService'  bean
+    @Override
+    public void addFormatters(FormatterRegistry formatterRegistry) {
+        formatterRegistry.addFormatter(dateFormatter());
+    }
 
-	@Bean
-	public DateFormatter dateFormatter() {
-		return new DateFormatter();
-	}
+    @Bean
+    public DateFormatter dateFormatter() {
+        return new DateFormatter();
+    }
 
-	@Bean
-	ReloadableResourceBundleMessageSource messageSource() {
-		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		messageSource.setBasenames("WEB-INF/i18n/messages", "WEB-INF/i18n/application");
-		messageSource.setDefaultEncoding("UTF-8");
-		messageSource.setFallbackToSystemLocale(false);
-		return messageSource;
-	}
+    @Bean
+    ReloadableResourceBundleMessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasenames("WEB-INF/i18n/messages", "WEB-INF/i18n/application");
+        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setFallbackToSystemLocale(false);
+        return messageSource;
+    }
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(localeChangeInterceptor());
-		registry.addInterceptor(themeChangeInterceptor());
-		registry.addInterceptor(webChangeInterceptor());
-	}
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+        registry.addInterceptor(themeChangeInterceptor());
+        registry.addInterceptor(webChangeInterceptor());
+    }
 
-	@Bean
-	LocaleChangeInterceptor localeChangeInterceptor() {
-		LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-		interceptor.setParamName("lang");
-		return interceptor;
-	}
+    @Bean
+    LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+        interceptor.setParamName("lang");
+        return interceptor;
+    }
 
-	@Bean ResourceBundleThemeSource themeSource() {
-		return new ResourceBundleThemeSource();
-	}
+    @Bean
+    ResourceBundleThemeSource themeSource() {
+        return new ResourceBundleThemeSource();
+    }
 
-	@Bean
-	ThemeChangeInterceptor themeChangeInterceptor() {
-		return new ThemeChangeInterceptor();
-	}
+    @Bean
+    ThemeChangeInterceptor themeChangeInterceptor() {
+        return new ThemeChangeInterceptor();
+    }
 
-	@Bean
-	WebContentInterceptor webChangeInterceptor() {
-		WebContentInterceptor webContentInterceptor = new WebContentInterceptor();
-		webContentInterceptor.setCacheSeconds(0);
-		webContentInterceptor.setSupportedMethods("GET", "POST", "PUT", "DELETE");
-		return webContentInterceptor;
-	}
+    @Bean
+    WebContentInterceptor webChangeInterceptor() {
+        WebContentInterceptor webContentInterceptor = new WebContentInterceptor();
+        webContentInterceptor.setCacheSeconds(0);
+        webContentInterceptor.setSupportedMethods("GET", "POST", "PUT", "DELETE");
+        return webContentInterceptor;
+    }
 
-	@Bean
-	CookieLocaleResolver localeResolver() {
-		CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
-		cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
-		cookieLocaleResolver.setCookieMaxAge(3600);
-		cookieLocaleResolver.setCookieName("locale");
-		return cookieLocaleResolver;
-	}
+    @Bean
+    CookieLocaleResolver localeResolver() {
+        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+        cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
+        cookieLocaleResolver.setCookieMaxAge(3600);
+        cookieLocaleResolver.setCookieName("locale");
+        return cookieLocaleResolver;
+    }
 
-	@Bean
-	CookieThemeResolver themeResolver() {
-		CookieThemeResolver cookieThemeResolver = new CookieThemeResolver();
-		cookieThemeResolver.setDefaultThemeName("standard");
-		cookieThemeResolver.setCookieMaxAge(3600);
-		cookieThemeResolver.setCookieName("theme");
-		return cookieThemeResolver;
-	}
+    @Bean
+    CookieThemeResolver themeResolver() {
+        CookieThemeResolver cookieThemeResolver = new CookieThemeResolver();
+        cookieThemeResolver.setDefaultThemeName("standard");
+        cookieThemeResolver.setCookieMaxAge(3600);
+        cookieThemeResolver.setCookieName("theme");
+        return cookieThemeResolver;
+    }
 
-	// <=> <mvc:default-servlet-handler/>
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+    // <=> <mvc:default-servlet-handler/>
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
-	// <=> <mvc:view-controller .../>
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("singers/list");
-	}
+    // <=> <mvc:view-controller .../>
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("singers/list");
+    }
 }

@@ -12,16 +12,16 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class Application {
 
-	private static Logger logger = LoggerFactory.getLogger(Application.class);
+    private static Logger logger = LoggerFactory.getLogger(Application.class);
 
-	public static void main(String[] args) throws Exception {
-		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-		assert (ctx != null);
+    public static void main(String[] args) throws Exception {
+        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+        assert (ctx != null);
 
-		NewDocumentarist documentarist = ctx.getBean("documentarist", NewDocumentarist.class);
-		documentarist.execute();
+        NewDocumentarist documentarist = ctx.getBean("documentarist", NewDocumentarist.class);
+        documentarist.execute();
 
-		System.in.read();
-		ctx.close();
-	}
+        System.in.read();
+        ctx.close();
+    }
 }

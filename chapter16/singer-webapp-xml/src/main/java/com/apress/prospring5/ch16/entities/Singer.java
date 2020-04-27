@@ -24,13 +24,13 @@ public class Singer implements Serializable {
     @Column(name = "VERSION")
     private int version;
 
-    @NotBlank(message="{validation.firstname.NotBlank.message}")
-    @Size(min=2, max=60, message="{validation.firstname.Size.message}")
+    @NotBlank(message = "{validation.firstname.NotBlank.message}")
+    @Size(min = 2, max = 60, message = "{validation.firstname.Size.message}")
     @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @NotBlank(message="{validation.lastname.NotBlank.message}")
-    @Size(min=1, max=40, message="{validation.lastname.Size.message}")
+    @NotBlank(message = "{validation.lastname.NotBlank.message}")
+    @Size(min = 1, max = 40, message = "{validation.lastname.Size.message}")
     @Column(name = "LAST_NAME")
     private String lastName;
 
@@ -42,7 +42,7 @@ public class Singer implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @Basic(fetch= FetchType.LAZY)
+    @Basic(fetch = FetchType.LAZY)
     @Lob
     @Column(name = "PHOTO")
     private byte[] photo;
@@ -104,6 +104,7 @@ public class Singer implements Serializable {
     public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
+
     @Transient
     public String getBirthDateString() {
         String birthDateString = "";

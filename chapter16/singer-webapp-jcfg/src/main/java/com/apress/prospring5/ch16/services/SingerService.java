@@ -8,7 +8,10 @@ import org.springframework.data.domain.Pageable;
 
 public interface SingerService {
     List<Singer> findAll();
+
     Singer findById(Long id);
+
     Singer save(Singer singer);
+
     Page<Singer> findAllByPage(Pageable pageable);
 }

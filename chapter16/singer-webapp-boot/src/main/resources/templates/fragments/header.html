@@ -24,7 +24,7 @@
                     <li><a href="#" th:href="@{/singers/new}">Add Singer</a></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right" >
+                <ul class="nav navbar-nav navbar-right">
                     <li th:if="${#authorization.expression('!isAuthenticated()')}">
                         <a href="/login" th:href="@{/login}">
                             <span class="glyphicon glyphicon-log-in"></span>&nbsp;Log in
@@ -34,7 +34,8 @@
                         <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
                             <span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout
                         </a>
-                        <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                        <form style="visibility: hidden" id="form" method="post" action="#"
+                              th:action="@{/logout}"></form>
                     </li>
                 </ul>
 

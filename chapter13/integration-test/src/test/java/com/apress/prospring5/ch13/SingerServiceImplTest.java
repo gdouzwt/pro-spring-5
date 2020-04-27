@@ -35,7 +35,7 @@ public class SingerServiceImplTest extends AbstractTransactionalJUnit4SpringCont
     @PersistenceContext
     private EntityManager em;
 
-    @DataSets(setUpDataSet= "/com/apress/prospring5/ch13/SingerServiceImplTest.xls")
+    @DataSets(setUpDataSet = "/com/apress/prospring5/ch13/SingerServiceImplTest.xls")
     @Test
     public void testFindAll() throws Exception {
         List<Singer> result = singerService.findAll();
@@ -44,14 +44,14 @@ public class SingerServiceImplTest extends AbstractTransactionalJUnit4SpringCont
         assertEquals(1, result.size());
     }
 
-    @DataSets(setUpDataSet= "/com/apress/prospring5/ch13/SingerServiceImplTest.xls")
+    @DataSets(setUpDataSet = "/com/apress/prospring5/ch13/SingerServiceImplTest.xls")
     @Test
     public void testFindByFirstNameAndLastNameOne() throws Exception {
         Singer result = singerService.findByFirstNameAndLastName("John", "Mayer");
         assertNotNull(result);
     }
 
-    @DataSets(setUpDataSet= "/com/apress/prospring5/ch13/SingerServiceImplTest.xls")
+    @DataSets(setUpDataSet = "/com/apress/prospring5/ch13/SingerServiceImplTest.xls")
     @Test
     public void testFindByFirstNameAndLastNameTwo() throws Exception {
         Singer result = singerService.findByFirstNameAndLastName("BB", "King");
@@ -73,7 +73,7 @@ public class SingerServiceImplTest extends AbstractTransactionalJUnit4SpringCont
         assertEquals(1, singers.size());
     }
 
-    @Test(expected=AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testAddSingerWithJSR349Error() throws Exception {
         deleteFromTables("SINGER");
 

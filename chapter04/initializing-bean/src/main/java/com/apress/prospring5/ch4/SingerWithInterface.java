@@ -29,8 +29,8 @@ public class SingerWithInterface implements InitializingBean {
 
         if (age == Integer.MIN_VALUE) {
             throw new IllegalArgumentException(
-                    "You must set the age property of any beans of type " 
-                    + SingerWithInterface.class);
+                    "You must set the age property of any beans of type "
+                            + SingerWithInterface.class);
         }
     }
 
@@ -51,7 +51,7 @@ public class SingerWithInterface implements InitializingBean {
     }
 
     private static SingerWithInterface getBean(String beanName,
-            ApplicationContext ctx) {
+                                               ApplicationContext ctx) {
         try {
             SingerWithInterface bean = (SingerWithInterface) ctx.getBean(beanName);
             System.out.println(bean);

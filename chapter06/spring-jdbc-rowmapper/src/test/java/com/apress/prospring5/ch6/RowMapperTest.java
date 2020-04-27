@@ -18,23 +18,23 @@ import static org.junit.Assert.assertTrue;
  */
 public class RowMapperTest {
 
-	@Test
-	public void testRowMapper() {
-		GenericApplicationContext ctx = new AnnotationConfigApplicationContext(NamedJdbcCfg.class);
-		SingerDao singerDao = ctx.getBean(SingerDao.class);
-		assertNotNull(singerDao);
-		List<Singer> singers = singerDao.findAll();
-		assertTrue(singers.size() == 3);
+    @Test
+    public void testRowMapper() {
+        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(NamedJdbcCfg.class);
+        SingerDao singerDao = ctx.getBean(SingerDao.class);
+        assertNotNull(singerDao);
+        List<Singer> singers = singerDao.findAll();
+        assertTrue(singers.size() == 3);
 
-		singers.forEach(singer -> {
-			System.out.println(singer);
-			if (singer.getAlbums() != null) {
-				for (Album album : singer.getAlbums()) {
-					System.out.println("---" + album);
-				}
-			}
-		});
+        singers.forEach(singer -> {
+            System.out.println(singer);
+            if (singer.getAlbums() != null) {
+                for (Album album : singer.getAlbums()) {
+                    System.out.println("---" + album);
+                }
+            }
+        });
 
-		ctx.close();
-	}
+        ctx.close();
+    }
 }

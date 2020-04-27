@@ -21,110 +21,109 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by iuliana.cosmina on 4/16/17.
  * Observation: before running these tests make sure to have the MySQL database in the initial state defined in the SQL scripts
- *
  */
 public class AnnotationJdbcTest {
 
-	private GenericApplicationContext ctx;
-	private SingerDao singerDao;
+    private GenericApplicationContext ctx;
+    private SingerDao singerDao;
 
-	@Before
-	public void setUp() {
-		ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-		singerDao = ctx.getBean(SingerDao.class);
-		assertNotNull(singerDao);
-	}
+    @Before
+    public void setUp() {
+        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        singerDao = ctx.getBean(SingerDao.class);
+        assertNotNull(singerDao);
+    }
 
-	@Test
-	public void testFindAll() {
-		List<Singer> singers = singerDao.findAll();
-		assertTrue(singers.size() == 3);
-		listSingers(singers);
-		ctx.close();
-	}
+    @Test
+    public void testFindAll() {
+        List<Singer> singers = singerDao.findAll();
+        assertTrue(singers.size() == 3);
+        listSingers(singers);
+        ctx.close();
+    }
 
-	@Test
-	public void testFindByFirstName() {
-		List<Singer> singers = singerDao.findByFirstName("John");
-		assertTrue(singers.size() == 1);
-		listSingers(singers);
-		ctx.close();
-	}
+    @Test
+    public void testFindByFirstName() {
+        List<Singer> singers = singerDao.findByFirstName("John");
+        assertTrue(singers.size() == 1);
+        listSingers(singers);
+        ctx.close();
+    }
 
-	@Test
-	public void testSingerUpdate() {
-		Singer singer = new Singer();
-		singer.setId(1L);
-		singer.setFirstName("John Clayton");
-		singer.setLastName("Mayer");
-		singer.setBirthDate(new Date(
-				(new GregorianCalendar(1977, 9, 16)).getTime().getTime()));
-		singerDao.update(singer);
+    @Test
+    public void testSingerUpdate() {
+        Singer singer = new Singer();
+        singer.setId(1L);
+        singer.setFirstName("John Clayton");
+        singer.setLastName("Mayer");
+        singer.setBirthDate(new Date(
+                (new GregorianCalendar(1977, 9, 16)).getTime().getTime()));
+        singerDao.update(singer);
 
-		List<Singer> singers = singerDao.findAll();
-		listSingers(singers);
-	}
+        List<Singer> singers = singerDao.findAll();
+        listSingers(singers);
+    }
 
-	@Test
-	public void testSingerInsert(){
-		Singer singer = new Singer();
-		singer.setFirstName("Ed");
-		singer.setLastName("Sheeran");
-		singer.setBirthDate(new Date(
-				(new GregorianCalendar(1991, 1, 17)).getTime().getTime()));
-		singerDao.insert(singer);
+    @Test
+    public void testSingerInsert() {
+        Singer singer = new Singer();
+        singer.setFirstName("Ed");
+        singer.setLastName("Sheeran");
+        singer.setBirthDate(new Date(
+                (new GregorianCalendar(1991, 1, 17)).getTime().getTime()));
+        singerDao.insert(singer);
 
-		List<Singer> singers = singerDao.findAll();
-		listSingers(singers);
-	}
+        List<Singer> singers = singerDao.findAll();
+        listSingers(singers);
+    }
 
-	@Test
-	public void testSingerInsertWithAlbum(){
-		Singer singer = new Singer();
-		singer.setFirstName("BB");
-		singer.setLastName("King");
-		singer.setBirthDate(new Date(
-				(new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
+    @Test
+    public void testSingerInsertWithAlbum() {
+        Singer singer = new Singer();
+        singer.setFirstName("BB");
+        singer.setLastName("King");
+        singer.setBirthDate(new Date(
+                (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
 
-		Album album = new Album();
-		album.setTitle("My Kind of Blues");
-		album.setReleaseDate(new Date(
-				(new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
-		singer.addAlbum(album);
+        Album album = new Album();
+        album.setTitle("My Kind of Blues");
+        album.setReleaseDate(new Date(
+                (new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
+        singer.addAlbum(album);
 
-		album = new Album();
-		album.setTitle("A Heart Full of Blues");
-		album.setReleaseDate(new Date(
-				(new GregorianCalendar(1962, 3, 20)).getTime().getTime()));
-		singer.addAlbum(album);
+        album = new Album();
+        album.setTitle("A Heart Full of Blues");
+        album.setReleaseDate(new Date(
+                (new GregorianCalendar(1962, 3, 20)).getTime().getTime()));
+        singer.addAlbum(album);
 
-		singerDao.insertWithAlbum(singer);
+        singerDao.insertWithAlbum(singer);
 
-		List<Singer> singers = singerDao.findAllWithAlbums();
-		listSingers(singers);
-	}
+        List<Singer> singers = singerDao.findAllWithAlbums();
+        listSingers(singers);
+    }
 
-	@Test
-	public void testFindFirstNameById(){
-		String firstName = singerDao.findFirstNameById(2L);
-		assertEquals("Eric", firstName);
-		System.out.println("Retrieved value: " + firstName);
-	}
+    @Test
+    public void testFindFirstNameById() {
+        String firstName = singerDao.findFirstNameById(2L);
+        assertEquals("Eric", firstName);
+        System.out.println("Retrieved value: " + firstName);
+    }
 
 
-	private void listSingers(List<Singer> singers){
-		singers.forEach(singer -> {
-			System.out.println(singer);
-			if (singer.getAlbums() != null) {
-				for (Album album : singer.getAlbums()) {
-					System.out.println("\t--> " + album);
-				}
-			}
-		});
-	}
+    private void listSingers(List<Singer> singers) {
+        singers.forEach(singer -> {
+            System.out.println(singer);
+            if (singer.getAlbums() != null) {
+                for (Album album : singer.getAlbums()) {
+                    System.out.println("\t--> " + album);
+                }
+            }
+        });
+    }
 
-	@After
-	public void tearDown() {
-		ctx.close();
-	}
+    @After
+    public void tearDown() {
+        ctx.close();
+    }
 }

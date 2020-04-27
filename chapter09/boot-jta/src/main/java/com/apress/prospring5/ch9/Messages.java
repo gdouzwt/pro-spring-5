@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Messages {
-	private static Logger logger = LoggerFactory.getLogger(Messages.class);
+    private static Logger logger = LoggerFactory.getLogger(Messages.class);
 
-	@JmsListener(destination="singers")
-	public void onMessage(String content){
-		logger.info("--> Received content: " + content);
-	}
+    @JmsListener(destination = "singers")
+    public void onMessage(String content) {
+        logger.info("--> Received content: " + content);
+    }
 }

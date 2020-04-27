@@ -6,7 +6,7 @@ import com.apress.prospring5.ch3.Oracle;
 public class InjectRef {
     private Oracle oracle;
 
-    public void setOracle(Oracle oracle) { 
+    public void setOracle(Oracle oracle) {
         this.oracle = oracle;
     }
 

@@ -27,39 +27,42 @@ import java.util.List;
 @Configuration
 public class RestClientConfig {
 
-	@Autowired ApplicationContext ctx;
+    @Autowired
+    ApplicationContext ctx;
 
-	@Bean
-	public HttpComponentsClientHttpRequestFactory httpRequestFactory() {
-		HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-		HttpClient httpClient = HttpClientBuilder.create().build();
-		httpRequestFactory.setHttpClient(httpClient);
-		return httpRequestFactory;
-	}
+    @Bean
+    public HttpComponentsClientHttpRequestFactory httpRequestFactory() {
+        HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        httpRequestFactory.setHttpClient(httpClient);
+        return httpRequestFactory;
+    }
 
-	@Bean
-	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplate(httpRequestFactory());
-		List<HttpMessageConverter<?>> mcvs = new ArrayList<>();
-		mcvs.add(singerMessageConverter());
-		restTemplate.setMessageConverters(mcvs);
-		return restTemplate;
-	}
+    @Bean
+    public RestTemplate restTemplate() {
+        RestTemplate restTemplate = new RestTemplate(httpRequestFactory());
+        List<HttpMessageConverter<?>> mcvs = new ArrayList<>();
+        mcvs.add(singerMessageConverter());
+        restTemplate.setMessageConverters(mcvs);
+        return restTemplate;
+    }
 
-	@Bean MarshallingHttpMessageConverter singerMessageConverter() {
-		MarshallingHttpMessageConverter mc = new MarshallingHttpMessageConverter();
-		mc.setMarshaller(castorMarshaller());
-		mc.setUnmarshaller(castorMarshaller());
-		List<MediaType> mediaTypes = new ArrayList<>();
-		MediaType mt = new MediaType("application", "xml");
-		mediaTypes.add(mt);
-		mc.setSupportedMediaTypes(mediaTypes);
-		return mc;
-	}
+    @Bean
+    MarshallingHttpMessageConverter singerMessageConverter() {
+        MarshallingHttpMessageConverter mc = new MarshallingHttpMessageConverter();
+        mc.setMarshaller(castorMarshaller());
+        mc.setUnmarshaller(castorMarshaller());
+        List<MediaType> mediaTypes = new ArrayList<>();
+        MediaType mt = new MediaType("application", "xml");
+        mediaTypes.add(mt);
+        mc.setSupportedMediaTypes(mediaTypes);
+        return mc;
+    }
 
-	@Bean CastorMarshaller castorMarshaller() {
-		CastorMarshaller castorMarshaller = new CastorMarshaller();
-		castorMarshaller.setMappingLocation(ctx.getResource( "classpath:spring/oxm-mapping.xml"));
-		return castorMarshaller;
-	}
+    @Bean
+    CastorMarshaller castorMarshaller() {
+        CastorMarshaller castorMarshaller = new CastorMarshaller();
+        castorMarshaller.setMappingLocation(ctx.getResource("classpath:spring/oxm-mapping.xml"));
+        return castorMarshaller;
+    }
 }

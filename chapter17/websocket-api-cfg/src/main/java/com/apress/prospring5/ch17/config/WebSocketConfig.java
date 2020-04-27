@@ -14,14 +14,14 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
-	@Override
-	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(echoHandler(), "/echoHandler");
-	}
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(echoHandler(), "/echoHandler");
+    }
 
-	@Bean
-	public EchoHandler echoHandler() {
-		return new EchoHandler();
-	}
+    @Bean
+    public EchoHandler echoHandler() {
+        return new EchoHandler();
+    }
 
 }

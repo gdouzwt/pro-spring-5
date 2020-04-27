@@ -1,13 +1,14 @@
 package com.apress.prospring5.ch4;
 
 import java.io.File;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class DestructiveBean implements InitializingBean {
     private File file;
     private String filePath;
-    
+
     public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing Bean");
 
@@ -25,7 +26,7 @@ public class DestructiveBean implements InitializingBean {
     public void destroy() {
         System.out.println("Destroying Bean");
 
-        if(!file.delete()) {
+        if (!file.delete()) {
             System.err.println("ERROR: failed to delete file.");
         }
 
@@ -39,7 +40,7 @@ public class DestructiveBean implements InitializingBean {
     public static void main(String... args) throws Exception {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:spring/app-context-xml.xml");
-        ctx.refresh(); 
+        ctx.refresh();
 
         DestructiveBean bean = (DestructiveBean) ctx.getBean("destructiveBean");
 

@@ -13,17 +13,17 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class Application {
 
-	private static Logger logger = LoggerFactory.getLogger(Application.class);
+    private static Logger logger = LoggerFactory.getLogger(Application.class);
 
-	public static void main(String... args) throws Exception {
-		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-		assert (ctx != null);
+    public static void main(String... args) throws Exception {
+        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+        assert (ctx != null);
 
-		SingerDao singerDao = ctx.getBean(SingerDao.class);
-		String singerName = singerDao.findNameById(1L);
-		logger.info("Retrieved singer: " + singerName);
+        SingerDao singerDao = ctx.getBean(SingerDao.class);
+        String singerName = singerDao.findNameById(1L);
+        logger.info("Retrieved singer: " + singerName);
 
-		System.in.read();
-		ctx.close();
-	}
+        System.in.read();
+        ctx.close();
+    }
 }

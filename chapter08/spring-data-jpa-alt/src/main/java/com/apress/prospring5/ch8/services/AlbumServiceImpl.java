@@ -15,15 +15,17 @@ import java.util.List;
 @Service("springJpaAlbumService")
 @Transactional
 public class AlbumServiceImpl implements AlbumService {
-	@Autowired
-	private AlbumRepository albumRepository;
+    @Autowired
+    private AlbumRepository albumRepository;
 
-	@Transactional(readOnly=true)
-	@Override public List<Album> findBySinger(Singer singer) {
-		return albumRepository.findBySinger(singer);
-	}
+    @Transactional(readOnly = true)
+    @Override
+    public List<Album> findBySinger(Singer singer) {
+        return albumRepository.findBySinger(singer);
+    }
 
-	@Override public List<Album> findByTitle(String title) {
-		return albumRepository.findByTitle(title);
-	}
+    @Override
+    public List<Album> findByTitle(String title) {
+        return albumRepository.findByTitle(title);
+    }
 }

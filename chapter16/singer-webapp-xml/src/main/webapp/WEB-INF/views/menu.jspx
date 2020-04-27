@@ -3,15 +3,15 @@
      xmlns:spring="http://www.springframework.org/tags"
      xmlns:sec="http://www.springframework.org/security/tags"
      version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8" />
-    <jsp:output omit-xml-declaration="yes" />
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
 
     <spring:message code="menu_header_text" var="menuHeaderText"/>
     <spring:message code="menu_add_singer" var="menuAddSinger"/>
     <spring:url value="/singers?form" var="addSingerUrl"/>
 
     <spring:message code="label_login" var="labelLogin"/>
-    <spring:url var="loginUrl" value="/login" />
+    <spring:url var="loginUrl" value="/login"/>
 
     <h3>${menuHeaderText}</h3>
     <sec:authorize access="hasRole('ROLE_USER')">

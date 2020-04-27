@@ -17,20 +17,20 @@ import java.time.Duration;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class IntegrationTwoTest {
-	private final Logger logger = LoggerFactory.getLogger(IntegrationTwoTest.class);
+    private final Logger logger = LoggerFactory.getLogger(IntegrationTwoTest.class);
 
 
-	@Test
-	public void test1Two() {
-		Flux<String> numbers = Flux.just("a", "b", "c");
-		Flux<Long> periodFlux = Flux.interval(Duration.ofSeconds(2));
-		Flux.zip(numbers, periodFlux).map(Tuple2::getT1).doOnNext(logger::info);
-	}
+    @Test
+    public void test1Two() {
+        Flux<String> numbers = Flux.just("a", "b", "c");
+        Flux<Long> periodFlux = Flux.interval(Duration.ofSeconds(2));
+        Flux.zip(numbers, periodFlux).map(Tuple2::getT1).doOnNext(logger::info);
+    }
 
-	@Test
-	public void test2Two() {
-		Flux<String> numbers = Flux.just("aa", "bb", "bb");
-		Flux<Long> periodFlux = Flux.interval(Duration.ofSeconds(3));
-		Flux.zip(numbers, periodFlux).map(Tuple2::getT1).doOnNext(logger::info);
-	}
+    @Test
+    public void test2Two() {
+        Flux<String> numbers = Flux.just("aa", "bb", "bb");
+        Flux<Long> periodFlux = Flux.interval(Duration.ofSeconds(3));
+        Flux.zip(numbers, periodFlux).map(Tuple2::getT1).doOnNext(logger::info);
+    }
 }

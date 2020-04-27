@@ -55,9 +55,9 @@ public class SingerControllerTest {
 
         SingerService singerService = mock(SingerService.class);
         when(singerService.save(newSinger)).thenAnswer(invocation -> {
-			singers.add(newSinger);
-			return newSinger;
-		});
+            singers.add(newSinger);
+            return newSinger;
+        });
 
         SingerController singerController = new SingerController();
         ReflectionTestUtils.setField(singerController, "singerService",

@@ -27,35 +27,38 @@ import java.util.Map;
 @ComponentScan("com.apress.prospring5.ch12")
 public class AppConfig {
 
-	@Autowired
-	private BeanFactory springContextBeanFactory;
+    @Autowired
+    private BeanFactory springContextBeanFactory;
 
-	@Bean ActiveMQQueue prospring5() {
-		return new ActiveMQQueue("/queue/prospring5");
-	}
+    @Bean
+    ActiveMQQueue prospring5() {
+        return new ActiveMQQueue("/queue/prospring5");
+    }
 
-	@Bean ConnectionFactory connectionFactory() {
-		Map<String, Object> connDetails = new HashMap<>();
-		connDetails.put(TransportConstants.HOST_PROP_NAME, "0.0.0.0");
-		connDetails.put(TransportConstants.PORT_PROP_NAME, "61617");
-		connDetails.put(TransportConstants.PROTOCOLS_PROP_NAME, "tcp");
-		TransportConfiguration transportConfiguration = new TransportConfiguration(
-				NettyConnectorFactory.class.getName(), connDetails);
-		return new ActiveMQConnectionFactory(false, transportConfiguration);
-	}
+    @Bean
+    ConnectionFactory connectionFactory() {
+        Map<String, Object> connDetails = new HashMap<>();
+        connDetails.put(TransportConstants.HOST_PROP_NAME, "0.0.0.0");
+        connDetails.put(TransportConstants.PORT_PROP_NAME, "61617");
+        connDetails.put(TransportConstants.PROTOCOLS_PROP_NAME, "tcp");
+        TransportConfiguration transportConfiguration = new TransportConfiguration(
+                NettyConnectorFactory.class.getName(), connDetails);
+        return new ActiveMQConnectionFactory(false, transportConfiguration);
+    }
 
-	@Bean
-	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
-		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-		factory.setConnectionFactory(connectionFactory());
-		factory.setDestinationResolver(new BeanFactoryDestinationResolver(springContextBeanFactory));
-		factory.setConcurrency("3-10");
-		return factory;
-	}
+    @Bean
+    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory());
+        factory.setDestinationResolver(new BeanFactoryDestinationResolver(springContextBeanFactory));
+        factory.setConcurrency("3-10");
+        return factory;
+    }
 
-	@Bean JmsTemplate jmsTemplate() {
-		JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
-		jmsTemplate.setDefaultDestination(prospring5());
-		return jmsTemplate;
-	}
+    @Bean
+    JmsTemplate jmsTemplate() {
+        JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
+        jmsTemplate.setDefaultDestination(prospring5());
+        return jmsTemplate;
+    }
 }

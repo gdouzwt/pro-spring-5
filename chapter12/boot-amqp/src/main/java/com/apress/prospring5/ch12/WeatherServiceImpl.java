@@ -10,7 +10,7 @@ public class WeatherServiceImpl {
 
     private static Logger logger = LoggerFactory.getLogger(WeatherServiceImpl.class);
 
-    @RabbitListener(queues="forecasts")
+    @RabbitListener(queues = "forecasts")
     public void getForecast(String stateCode) {
 
         if ("FL".equals(stateCode)) {

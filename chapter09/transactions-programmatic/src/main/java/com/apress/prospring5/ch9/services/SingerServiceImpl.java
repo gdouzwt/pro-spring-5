@@ -16,37 +16,37 @@ import java.util.List;
 @Repository
 public class SingerServiceImpl implements SingerService {
 
-	@Autowired
-	private SingerRepository singerRepository;
-	@Autowired
-	private TransactionTemplate transactionTemplate;
-	@PersistenceContext
-	private EntityManager em;
+    @Autowired
+    private SingerRepository singerRepository;
+    @Autowired
+    private TransactionTemplate transactionTemplate;
+    @PersistenceContext
+    private EntityManager em;
 
-	@Override
-	public List<Singer> findAll() {
-		return Lists.newArrayList(singerRepository.findAll());
-	}
+    @Override
+    public List<Singer> findAll() {
+        return Lists.newArrayList(singerRepository.findAll());
+    }
 
-	/**
-	 * API  changed in  2.0.0.M3 findOne became findById
-	 *
-	 * @param id
-	 * @return
-	 */
-	@Override
-	public Singer findById(Long id) {
-		return singerRepository.findById(id).get();
-	}
+    /**
+     * API  changed in  2.0.0.M3 findOne became findById
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Singer findById(Long id) {
+        return singerRepository.findById(id).get();
+    }
 
-	@Override
-	public Singer save(Singer singer) {
-		return singerRepository.save(singer);
-	}
+    @Override
+    public Singer save(Singer singer) {
+        return singerRepository.save(singer);
+    }
 
-	@Override
-	public long countAll() {
-		return transactionTemplate.execute(transactionStatus -> em.createNamedQuery(Singer.COUNT_ALL,
-				Long.class).getSingleResult());
-	}
+    @Override
+    public long countAll() {
+        return transactionTemplate.execute(transactionStatus -> em.createNamedQuery(Singer.COUNT_ALL,
+                Long.class).getSingleResult());
+    }
 }

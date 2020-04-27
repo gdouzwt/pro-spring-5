@@ -9,8 +9,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "singer")
 @NamedQueries({
-        @NamedQuery(name=Singer.FIND_ALL, query="select s from Singer s"),
-        @NamedQuery(name=Singer.COUNT_ALL, query="select count(s) from Singer s")
+        @NamedQuery(name = Singer.FIND_ALL, query = "select s from Singer s"),
+        @NamedQuery(name = Singer.COUNT_ALL, query = "select count(s) from Singer s")
 })
 public class Singer implements Serializable {
 
@@ -79,6 +79,6 @@ public class Singer implements Serializable {
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-            + ", Last name: " + lastName + ", Birthday: " + birthDate;
+                + ", Last name: " + lastName + ", Birthday: " + birthDate;
     }
 }

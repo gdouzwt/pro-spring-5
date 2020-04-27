@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value="/singer")
+@RequestMapping(value = "/singer")
 public class SingerController {
     final Logger logger = LoggerFactory.getLogger(SingerController.class);
 
@@ -27,13 +27,13 @@ public class SingerController {
         return new Singers(singerService.findAll());
     }
 
-    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Singer findSingerById(@PathVariable Long id) {
         return singerService.findById(id);
     }
 
-    @RequestMapping(value="/", method=RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseBody
     public Singer create(@RequestBody Singer singer) {
         logger.info("Creating singer: " + singer);
@@ -42,7 +42,7 @@ public class SingerController {
         return singer;
     }
 
-    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public void update(@RequestBody Singer singer,
                        @PathVariable Long id) {
@@ -51,7 +51,7 @@ public class SingerController {
         logger.info("Singer updated successfully with info: " + singer);
     }
 
-    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public void delete(@PathVariable Long id) {
         logger.info("Deleting singer with id: " + id);

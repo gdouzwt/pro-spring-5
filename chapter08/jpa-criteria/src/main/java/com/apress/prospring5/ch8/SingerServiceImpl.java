@@ -24,32 +24,32 @@ import org.apache.commons.logging.LogFactory;
 @SuppressWarnings("unchecked")
 public class SingerServiceImpl implements SingerService {
     final static String ALL_SINGER_NATIVE_QUERY =
-        "select id, first_name, last_name, birth_date, version from singer";
+            "select id, first_name, last_name, birth_date, version from singer";
 
     private Log log = LogFactory.getLog(SingerServiceImpl.class);
 
     @PersistenceContext
     private EntityManager em;
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     @Override
     public List<Singer> findAll() {
         List<Singer> singers = em.createNamedQuery(Singer.FIND_ALL, Singer.class).getResultList();
         return singers;
     }
-    
-    @Transactional(readOnly=true)
+
+    @Transactional(readOnly = true)
     @Override
     public List<Singer> findAllWithAlbum() {
         List<Singer> singers = em.createNamedQuery(Singer.FIND_ALL_WITH_ALBUM, Singer.class).getResultList();
         return singers;
     }
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     @Override
     public Singer findById(Long id) {
         TypedQuery<Singer> query = em.createNamedQuery(
-            Singer.FIND_SINGER_BY_ID, Singer.class);
+                Singer.FIND_SINGER_BY_ID, Singer.class);
         query.setParameter("id", id);
 
         return query.getSingleResult();
@@ -75,21 +75,21 @@ public class SingerServiceImpl implements SingerService {
         Singer mergedSinger = em.merge(singer);
         em.remove(mergedSinger);
 
-        log.info("Singer with id: " + singer.getId()  + " deleted successfully");
+        log.info("Singer with id: " + singer.getId() + " deleted successfully");
     }
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     @Override
     public List<Singer> findAllByNativeQuery() {
         return em.createNativeQuery(ALL_SINGER_NATIVE_QUERY,
-            "singerResult").getResultList();
-    }   
+                "singerResult").getResultList();
+    }
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     @Override
     public List<Singer> findByCriteriaQuery(String firstName, String lastName) {
-        log.info("Finding singer for firstName: " + firstName 
-                  + " and lastName: " + lastName);
+        log.info("Finding singer for firstName: " + firstName
+                + " and lastName: " + lastName);
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Singer> criteriaQuery = cb.createQuery(Singer.class);
@@ -102,14 +102,14 @@ public class SingerServiceImpl implements SingerService {
         Predicate criteria = cb.conjunction();
 
         if (firstName != null) {
-            Predicate p = cb.equal(singerRoot.get(Singer_.firstName), 
-                firstName);
-             criteria = cb.and(criteria, p);
+            Predicate p = cb.equal(singerRoot.get(Singer_.firstName),
+                    firstName);
+            criteria = cb.and(criteria, p);
         }
 
         if (lastName != null) {
-            Predicate p = cb.equal(singerRoot.get(Singer_.lastName), 
-                lastName);
+            Predicate p = cb.equal(singerRoot.get(Singer_.lastName),
+                    lastName);
             criteria = cb.and(criteria, p);
         }
 

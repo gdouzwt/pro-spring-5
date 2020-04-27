@@ -30,66 +30,67 @@ import java.util.Properties;
 @PropertySource("classpath:db/jdbc.properties")
 public class AdvancedConfig {
 
-	private static Logger logger = LoggerFactory.getLogger(AdvancedConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(AdvancedConfig.class);
 
-	@Value("${driverClassName}")
-	private String driverClassName;
-	@Value("${url}")
-	private String url;
-	@Value("${username}")
-	private String username;
-	@Value("${password}")
-	private String password;
+    @Value("${driverClassName}")
+    private String driverClassName;
+    @Value("${url}")
+    private String url;
+    @Value("${username}")
+    private String username;
+    @Value("${password}")
+    private String password;
 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
 
-	@Bean(destroyMethod = "close")
-	public DataSource dataSource() {
-		try {
-			BasicDataSource dataSource = new BasicDataSource();
-			dataSource.setDriverClassName(driverClassName);
-			dataSource.setUrl(url);
-			dataSource.setUsername(username);
-			dataSource.setPassword(password);
-			return dataSource;
-		} catch (Exception e) {
-			logger.error("DBCP DataSource bean cannot be created!", e);
-			return null;
-		}
-	}
+    @Bean(destroyMethod = "close")
+    public DataSource dataSource() {
+        try {
+            BasicDataSource dataSource = new BasicDataSource();
+            dataSource.setDriverClassName(driverClassName);
+            dataSource.setUrl(url);
+            dataSource.setUsername(username);
+            dataSource.setPassword(password);
+            return dataSource;
+        } catch (Exception e) {
+            logger.error("DBCP DataSource bean cannot be created!", e);
+            return null;
+        }
+    }
 
-	private Properties hibernateProperties() {
-		Properties hibernateProp = new Properties();
-		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-		hibernateProp.put("hibernate.hbm2ddl.auto", "create-drop");
-		hibernateProp.put("hibernate.format_sql", true);
-		hibernateProp.put("hibernate.use_sql_comments", true);
-		hibernateProp.put("hibernate.show_sql", true);
-		hibernateProp.put("hibernate.max_fetch_depth", 3);
-		hibernateProp.put("hibernate.jdbc.batch_size", 10);
-		hibernateProp.put("hibernate.jdbc.fetch_size", 50);
-		return hibernateProp;
-	}
+    private Properties hibernateProperties() {
+        Properties hibernateProp = new Properties();
+        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        hibernateProp.put("hibernate.hbm2ddl.auto", "create-drop");
+        hibernateProp.put("hibernate.format_sql", true);
+        hibernateProp.put("hibernate.use_sql_comments", true);
+        hibernateProp.put("hibernate.show_sql", true);
+        hibernateProp.put("hibernate.max_fetch_depth", 3);
+        hibernateProp.put("hibernate.jdbc.batch_size", 10);
+        hibernateProp.put("hibernate.jdbc.fetch_size", 50);
+        return hibernateProp;
+    }
 
-	@Bean
-	public SessionFactory sessionFactory() {
-		return new LocalSessionFactoryBuilder(dataSource())
-				.scanPackages("com.apress.prospring5.ch7.entities")
-				.addProperties(hibernateProperties())
-				.buildSessionFactory();
-	}
+    @Bean
+    public SessionFactory sessionFactory() {
+        return new LocalSessionFactoryBuilder(dataSource())
+                .scanPackages("com.apress.prospring5.ch7.entities")
+                .addProperties(hibernateProperties())
+                .buildSessionFactory();
+    }
 
-	@Bean public PlatformTransactionManager transactionManager() throws IOException {
-		return new HibernateTransactionManager(sessionFactory());
-	}
+    @Bean
+    public PlatformTransactionManager transactionManager() throws IOException {
+        return new HibernateTransactionManager(sessionFactory());
+    }
 
-	@Bean(destroyMethod = "destroy")
-	public CleanUp cleanUp() {
-		return new CleanUp(new JdbcTemplate(dataSource()));
-	}
+    @Bean(destroyMethod = "destroy")
+    public CleanUp cleanUp() {
+        return new CleanUp(new JdbcTemplate(dataSource()));
+    }
 
 }

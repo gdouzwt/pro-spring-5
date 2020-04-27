@@ -12,11 +12,11 @@ import static org.junit.Assert.assertNotNull;
  */
 public class TestHelloWorldSpringDI {
 
-	@Test
-	public void testHello() {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext
-				("spring/app-context.xml");
-		MessageRenderer mr = ctx.getBean("renderer", MessageRenderer.class);
-		assertNotNull(mr);
-	}
+    @Test
+    public void testHello() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext
+                ("spring/app-context.xml");
+        MessageRenderer mr = ctx.getBean("renderer", MessageRenderer.class);
+        assertNotNull(mr);
+    }
 }

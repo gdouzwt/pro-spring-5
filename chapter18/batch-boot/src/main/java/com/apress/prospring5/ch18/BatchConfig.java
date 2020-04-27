@@ -31,53 +31,55 @@ import javax.sql.DataSource;
 @EnableBatchProcessing
 public class BatchConfig {
 
-	@Autowired
-	private JobBuilderFactory jobs;
-	@Autowired
-	private StepBuilderFactory steps;
+    @Autowired
+    private JobBuilderFactory jobs;
+    @Autowired
+    private StepBuilderFactory steps;
 
-	@Autowired DataSource dataSource;
+    @Autowired
+    DataSource dataSource;
 
-	@Autowired SingerItemProcessor itemProcessor;
+    @Autowired
+    SingerItemProcessor itemProcessor;
 
-	@Bean
-	public Job job(JobExecutionStatsListener listener) {
-		return jobs.get("singerJob").listener(listener) .flow(step1())
-				.end()
-				.build();
-	}
+    @Bean
+    public Job job(JobExecutionStatsListener listener) {
+        return jobs.get("singerJob").listener(listener).flow(step1())
+                .end()
+                .build();
+    }
 
-	@Bean
-	protected Step step1() {
-		return steps.get("step1")
-				.<Singer, Singer>chunk(10)
-				.reader(itemReader())
-				.processor(itemProcessor)
-				.writer(itemWriter())
-				.build();
-	}
+    @Bean
+    protected Step step1() {
+        return steps.get("step1")
+                .<Singer, Singer>chunk(10)
+                .reader(itemReader())
+                .processor(itemProcessor)
+                .writer(itemWriter())
+                .build();
+    }
 
-	@Bean
-	public ItemReader itemReader() {
-		FlatFileItemReader<Singer> itemReader = new FlatFileItemReader<>();
-		itemReader.setResource(new ClassPathResource("support/test-data.csv"));
-		itemReader.setLineMapper(new DefaultLineMapper<Singer>() {{
-			setLineTokenizer(new DelimitedLineTokenizer() {{
-				setNames(new String[] { "firstName", "lastName", "song" });
-			}});
-			setFieldSetMapper(new BeanWrapperFieldSetMapper<Singer>() {{
-				setTargetType(Singer.class);
-			}});
-		}});
-		return itemReader;
-	}
+    @Bean
+    public ItemReader itemReader() {
+        FlatFileItemReader<Singer> itemReader = new FlatFileItemReader<>();
+        itemReader.setResource(new ClassPathResource("support/test-data.csv"));
+        itemReader.setLineMapper(new DefaultLineMapper<Singer>() {{
+            setLineTokenizer(new DelimitedLineTokenizer() {{
+                setNames(new String[]{"firstName", "lastName", "song"});
+            }});
+            setFieldSetMapper(new BeanWrapperFieldSetMapper<Singer>() {{
+                setTargetType(Singer.class);
+            }});
+        }});
+        return itemReader;
+    }
 
-	@Bean
-	public ItemWriter itemWriter() {
-		JdbcBatchItemWriter<Singer> itemWriter = new JdbcBatchItemWriter<>();
-		itemWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
-		itemWriter.setSql("INSERT INTO SINGER (first_name, last_name, song) VALUES (:firstName, :lastName, :song)");
-		itemWriter.setDataSource(dataSource);
-		return itemWriter;
-	}
+    @Bean
+    public ItemWriter itemWriter() {
+        JdbcBatchItemWriter<Singer> itemWriter = new JdbcBatchItemWriter<>();
+        itemWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
+        itemWriter.setSql("INSERT INTO SINGER (first_name, last_name, song) VALUES (:firstName, :lastName, :song)");
+        itemWriter.setDataSource(dataSource);
+        return itemWriter;
+    }
 }

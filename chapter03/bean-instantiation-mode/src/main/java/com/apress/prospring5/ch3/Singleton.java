@@ -4,14 +4,14 @@ public class Singleton {
     private static Singleton instance;
 
     static {
-        instance = new Singleton(); 
+        instance = new Singleton();
     }
 
     public static Singleton getInstance() {
-        return instance; 
+        return instance;
     }
 
-    private Singleton(){
+    private Singleton() {
         // needed so developers cannot instantiate this class directly
     }
 }

@@ -12,9 +12,10 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 @ComponentScan(basePackages = "com.apress.prospring5.ch10")
 public class AppConfig {
 
-	@Bean LocalValidatorFactoryBean validator() {
-		return new LocalValidatorFactoryBean();
-	}
+    @Bean
+    LocalValidatorFactoryBean validator() {
+        return new LocalValidatorFactoryBean();
+    }
 }
 
 

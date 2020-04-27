@@ -13,11 +13,11 @@ import static org.junit.Assert.assertNotNull;
  */
 public class TestHelloWorldSpringAnnotated {
 
-	@Test
-	public void testHello() {
-		ApplicationContext ctx = new AnnotationConfigApplicationContext
-				(HelloWorldConfiguration.class);
-		MessageRenderer mr = ctx.getBean("renderer", MessageRenderer.class);
-		assertNotNull(mr);
-	}
+    @Test
+    public void testHello() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext
+                (HelloWorldConfiguration.class);
+        MessageRenderer mr = ctx.getBean("renderer", MessageRenderer.class);
+        assertNotNull(mr);
+    }
 }

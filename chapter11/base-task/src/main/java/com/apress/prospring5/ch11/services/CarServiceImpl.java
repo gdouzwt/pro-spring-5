@@ -26,7 +26,7 @@ public class CarServiceImpl implements CarService {
     CarRepository carRepository;
 
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<Car> findAll() {
         return Lists.newArrayList(carRepository.findAll());
     }

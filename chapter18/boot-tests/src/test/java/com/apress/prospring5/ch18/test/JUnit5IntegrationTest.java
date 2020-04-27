@@ -20,11 +20,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ContextConfiguration(classes = TestConfig.class)
 public class JUnit5IntegrationTest {
 
-	@Autowired FluxGenerator fluxGenerator;
+    @Autowired
+    FluxGenerator fluxGenerator;
 
-	@Test
-	public void testGenerator() {
-		List<String> list = fluxGenerator.generate("2", "3").collectList().block();
-		assertEquals(2, list.size());
-	}
+    @Test
+    public void testGenerator() {
+        List<String> list = fluxGenerator.generate("2", "3").collectList().block();
+        assertEquals(2, list.size());
+    }
 }

@@ -44,6 +44,6 @@ public class Album implements Serializable {
     @Override
     public String toString() {
         return "Album - Id: " + id + ", Singer id: " + singerId
-            + ", Title: " + title + ", Release Date: " + releaseDate;
+                + ", Title: " + title + ", Release Date: " + releaseDate;
     }
 }

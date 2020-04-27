@@ -22,41 +22,41 @@ import static org.junit.Assert.assertNotNull;
  */
 public class SingerSummaryJPATest {
 
-	private static Logger logger = LoggerFactory.getLogger(SingerSummaryJPATest.class);
-	private GenericApplicationContext ctx;
-	private SingerSummaryService singerSummaryService;
-	private SingerSummaryUntypeImpl singerSummaryUntype;
+    private static Logger logger = LoggerFactory.getLogger(SingerSummaryJPATest.class);
+    private GenericApplicationContext ctx;
+    private SingerSummaryService singerSummaryService;
+    private SingerSummaryUntypeImpl singerSummaryUntype;
 
-	@Before
-	public void setUp() {
-		ctx = new AnnotationConfigApplicationContext(JpaConfig.class);
-		singerSummaryService = ctx.getBean(SingerSummaryService.class);
-		singerSummaryUntype = ctx.getBean(SingerSummaryUntypeImpl.class);
-		assertNotNull(singerSummaryService);
-		assertNotNull(singerSummaryUntype);
-	}
+    @Before
+    public void setUp() {
+        ctx = new AnnotationConfigApplicationContext(JpaConfig.class);
+        singerSummaryService = ctx.getBean(SingerSummaryService.class);
+        singerSummaryUntype = ctx.getBean(SingerSummaryUntypeImpl.class);
+        assertNotNull(singerSummaryService);
+        assertNotNull(singerSummaryUntype);
+    }
 
-	@Test
-	public void testFindAll() {
-		List<SingerSummary> singers = singerSummaryService.findAll();
-		listSingerSummary(singers);
-		assertEquals(2, singers.size());
-	}
+    @Test
+    public void testFindAll() {
+        List<SingerSummary> singers = singerSummaryService.findAll();
+        listSingerSummary(singers);
+        assertEquals(2, singers.size());
+    }
 
-	@Test
-	public void testFindAllUntype() {
-		singerSummaryUntype.displayAllSingerSummary();
-	}
+    @Test
+    public void testFindAllUntype() {
+        singerSummaryUntype.displayAllSingerSummary();
+    }
 
-	private static void listSingerSummary(List<SingerSummary> singers) {
-		logger.info(" ---- Listing singers summary:");
-		for (SingerSummary singer : singers) {
-			logger.info(singer.toString());
-		}
-	}
+    private static void listSingerSummary(List<SingerSummary> singers) {
+        logger.info(" ---- Listing singers summary:");
+        for (SingerSummary singer : singers) {
+            logger.info(singer.toString());
+        }
+    }
 
-	@After
-	public void tearDown() {
-		ctx.close();
-	}
+    @After
+    public void tearDown() {
+        ctx.close();
+    }
 }

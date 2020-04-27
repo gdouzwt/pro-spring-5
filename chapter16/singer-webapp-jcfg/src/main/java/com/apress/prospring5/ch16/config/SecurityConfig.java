@@ -20,47 +20,47 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) {
-		try {
-			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			auth
-					.inMemoryAuthentication()
-					.passwordEncoder(passwordEncoder)
-					.withUser("user").password(passwordEncoder.encode("user")).roles("USER");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) {
+        try {
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            auth
+                    .inMemoryAuthentication()
+                    .passwordEncoder(passwordEncoder)
+                    .withUser("user").password(passwordEncoder.encode("user")).roles("USER");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-				.authorizeRequests()
-				.antMatchers("/*").permitAll()
-				.and()
-				.formLogin()
-				.usernameParameter("username")
-				.passwordParameter("password")
-				.loginProcessingUrl("/login")
-				.loginPage("/singers")
-				.failureUrl("/security/loginfail")
-				.defaultSuccessUrl("/singers")
-				.permitAll()
-				.and()
-				.logout()
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/singers")
-				.and()
-				.csrf().disable();
-		//csrfTokenRepository(repo());
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/*").permitAll()
+                .and()
+                .formLogin()
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .loginProcessingUrl("/login")
+                .loginPage("/singers")
+                .failureUrl("/security/loginfail")
+                .defaultSuccessUrl("/singers")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/singers")
+                .and()
+                .csrf().disable();
+        //csrfTokenRepository(repo());
+    }
 
-	//@Bean
-	public CsrfTokenRepository repo() {
-		HttpSessionCsrfTokenRepository repo = new HttpSessionCsrfTokenRepository();
-		repo.setParameterName("_csrf");
-		repo.setHeaderName("X-CSRF-TOKEN");
-		return repo;
-	}
+    //@Bean
+    public CsrfTokenRepository repo() {
+        HttpSessionCsrfTokenRepository repo = new HttpSessionCsrfTokenRepository();
+        repo.setParameterName("_csrf");
+        repo.setHeaderName("X-CSRF-TOKEN");
+        return repo;
+    }
 }

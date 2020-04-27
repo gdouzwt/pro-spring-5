@@ -19,39 +19,39 @@ import static org.junit.Assert.assertNotNull;
  */
 public class SingerJPATest {
 
-	private static Logger logger = LoggerFactory.getLogger(SingerJPATest.class);
-	private GenericApplicationContext ctx;
-	private SingerService singerService;
+    private static Logger logger = LoggerFactory.getLogger(SingerJPATest.class);
+    private GenericApplicationContext ctx;
+    private SingerService singerService;
 
-	@Before
-	public void setUp() {
-		ctx = new AnnotationConfigApplicationContext(JpaConfig.class);
-		singerService = ctx.getBean("jpaSingerService", SingerService.class);
-		assertNotNull(singerService);
-	}
+    @Before
+    public void setUp() {
+        ctx = new AnnotationConfigApplicationContext(JpaConfig.class);
+        singerService = ctx.getBean("jpaSingerService", SingerService.class);
+        assertNotNull(singerService);
+    }
 
-	@Test
-	public void testFindByCriteriaQuery() {
-		List<Singer> singers = singerService.findByCriteriaQuery("John", "Mayer");
-		assertEquals(1, singers.size());
-		listSingersWithAlbum(singers);
-	}
+    @Test
+    public void testFindByCriteriaQuery() {
+        List<Singer> singers = singerService.findByCriteriaQuery("John", "Mayer");
+        assertEquals(1, singers.size());
+        listSingersWithAlbum(singers);
+    }
 
-	private static void listSingersWithAlbum(List<Singer> singers) {
-		logger.info(" ---- Listing singers with instruments:");
-		singers.forEach(s -> {
-			logger.info(s.toString());
-			if (s.getAlbums() != null) {
-				s.getAlbums().forEach(a -> logger.info("\t" + a.toString()));
-			}
-			if (s.getInstruments() != null) {
-				s.getInstruments().forEach(i -> logger.info("\tInstrument: " + i.getInstrumentId()));
-			}
-		});
-	}
+    private static void listSingersWithAlbum(List<Singer> singers) {
+        logger.info(" ---- Listing singers with instruments:");
+        singers.forEach(s -> {
+            logger.info(s.toString());
+            if (s.getAlbums() != null) {
+                s.getAlbums().forEach(a -> logger.info("\t" + a.toString()));
+            }
+            if (s.getInstruments() != null) {
+                s.getInstruments().forEach(i -> logger.info("\tInstrument: " + i.getInstrumentId()));
+            }
+        });
+    }
 
-	@After
-	public void tearDown() {
-		ctx.close();
-	}
+    @After
+    public void tearDown() {
+        ctx.close();
+    }
 }

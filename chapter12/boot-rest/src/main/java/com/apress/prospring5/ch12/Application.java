@@ -13,14 +13,14 @@ import java.io.IOException;
  */
 @SpringBootApplication(scanBasePackages = "com.apress.prospring5.ch12")
 public class Application {
-	private static Logger logger = LoggerFactory.getLogger(Application.class);
+    private static Logger logger = LoggerFactory.getLogger(Application.class);
 
-	public static void main(String[] args) throws IOException {
-		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-		assert (ctx != null);
-		logger.info("Application Started ...");
+    public static void main(String[] args) throws IOException {
+        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+        assert (ctx != null);
+        logger.info("Application Started ...");
 
-		System.in.read();
-		ctx.close();
-	}
+        System.in.read();
+        ctx.close();
+    }
 }

@@ -47,11 +47,14 @@
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.transaction.factory_class">
-                    org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory</prop>
+                    org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+                </prop>
                 <prop key="hibernate.transaction.manager_lookup_class">
-                    com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup</prop>
+                    com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup
+                </prop>
                 <prop key="hibernate.dialect">
-                    org.hibernate.dialect.MySQL5Dialect</prop>
+                    org.hibernate.dialect.MySQL5Dialect
+                </prop>
                 <prop key="hibernate.max_fetch_depth">3</prop>
                 <prop key="hibernate.jdbc.fetch_size">50</prop>
                 <prop key="hibernate.jdbc.batch_size">10</prop>
@@ -70,7 +73,7 @@
         <property name="persistenceUnitName" value="emfB"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
           init-method="init" destroy-method="close">
@@ -86,5 +89,5 @@
         <property name="userTransaction" ref="atomikosUserTransaction"/>
     </bean>
 
-    <context:component-scan base-package="com.apress.prospring4.ch9 " />
+    <context:component-scan base-package="com.apress.prospring4.ch9 "/>
 </beans> 
