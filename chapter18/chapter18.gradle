@@ -9,6 +9,8 @@ subprojects {
     }
 
     dependencies {
+        compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+
         if (!project.name.contains("boot") && !project.name.contains("webflux")) {
             compile(spring.batchCore) {
                 //exclude these as jdbc will bring them on as transitive dependencies

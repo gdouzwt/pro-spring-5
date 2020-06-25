@@ -9,8 +9,8 @@ subprojects {
     }
 
     dependencies {
-        compile spring.context, misc.slf4jJcl, misc.logback
-        testCompile testing.junit
+        implementation spring.context, misc.slf4jJcl, misc.logback
+        testImplementation testing.junit
     }
 }
 

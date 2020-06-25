@@ -6,6 +6,8 @@ public class ConstructorConfusion {
 
     private String someValue;
 
+    //两个构造器注入，根据构造器参数的类型来判断注入哪一个
+
     public ConstructorConfusion(String someValue) {
         System.out.println("ConstructorConfusion(String) called");
         this.someValue = someValue;
@@ -13,7 +15,7 @@ public class ConstructorConfusion {
 
     public ConstructorConfusion(int someValue) {
         System.out.println("ConstructorConfusion(int) called");
-        this.someValue = "Number: " + Integer.toString(someValue);
+        this.someValue = "Number: " + someValue;
     }
 
     public static void main(String... args) {

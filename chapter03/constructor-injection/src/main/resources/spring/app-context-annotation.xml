@@ -13,7 +13,7 @@
             base-package="com.apress.prospring5.ch3.annotated"/>
 
     <bean id="message" class="java.lang.String"
-          c:_0="I hope that someone gets my message in a bottle"/>
+          c:_0="希望你会好好的 I hope that someone gets my message in a bottle"/>
 
     <bean id="message2" class="java.lang.String"
           c:_0="I know I won't be injected :("/>

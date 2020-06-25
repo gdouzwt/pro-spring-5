@@ -9,7 +9,10 @@ subprojects {
     }
 
     dependencies {
-        compile spring.context, misc.slf4jJcl, misc.logback
-        testCompile testing.junit
+        implementation spring.context
+        implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+
+        //, misc.slf4jJcl, misc.logback 关掉日志
+        testImplementation testing.junit
     }
 }

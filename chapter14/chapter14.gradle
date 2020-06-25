@@ -9,6 +9,8 @@ subprojects {
     }
 
     dependencies {
+        compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+
         compile spring.webmvc, misc.slf4jJcl, misc.logback, misc.lang3
     }
 }

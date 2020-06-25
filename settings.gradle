@@ -163,7 +163,7 @@ include 'chapter18:webflux'
 //include 'chapter18:boot-tests'
 
 println(' This project is a collection of simple code samples. It is meant to be used together with the ' +
-        '"Spring Pro, Fifth Edition" ' +
+        '"Pro Spring, Fifth Edition" ' +
         ' published by Apress in order to learn and practice with all Spring Web libraries. ')
 
 //we check if the modules have gradle configuration files

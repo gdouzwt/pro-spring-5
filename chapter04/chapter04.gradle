@@ -10,6 +10,8 @@ subprojects {
 
     dependencies {
         //we specify these dependencies for all submodules, except the boot module, that defines its own
+        compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+
         if (!project.name.contains("boot")) {
             compile spring.context, misc.slf4jJcl, misc.logback
         }

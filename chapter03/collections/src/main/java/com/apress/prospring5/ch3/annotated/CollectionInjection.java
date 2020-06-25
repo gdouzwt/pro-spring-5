@@ -1,16 +1,15 @@
 package com.apress.prospring5.ch3.annotated;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.context.support.GenericXmlApplicationContext;
-
-import javax.annotation.Resource;
 
 @Service("injectCollection")
 public class CollectionInjection {

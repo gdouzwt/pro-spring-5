@@ -9,7 +9,8 @@
 
     <bean id="injectRef" class="com.apress.prospring5.ch3.xml.InjectRef">
         <property name="oracle">
-            <ref bean="wiseworm"/>
+            <!--<ref local="oracle"/> 已经过时，不能用了-->
+            <ref bean="oracle"/>
         </property>
     </bean>
 </beans>

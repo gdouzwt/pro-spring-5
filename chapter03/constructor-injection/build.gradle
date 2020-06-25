@@ -12,3 +12,6 @@ jar {
                 "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
     }
 }
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
