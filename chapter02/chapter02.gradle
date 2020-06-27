@@ -10,6 +10,7 @@ subprojects {
 
     dependencies {
         implementation spring.context, misc.slf4jJcl, misc.logback
+        implementation group: 'jakarta.annotation', name: 'jakarta.annotation-api', version: '1.3.5'
         testImplementation testing.junit
     }
 }

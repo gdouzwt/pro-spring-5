@@ -2,6 +2,7 @@ package com.apress.prospring5.ch2.common;
 
 /**
  * Created by iuliana.cosmina on 4/9/17.
+ * 一个普通的类，表示联系人信息，名字，电话号码，电子邮件
  */
 public class Contact {
 
