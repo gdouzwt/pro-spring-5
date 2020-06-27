@@ -9,8 +9,8 @@ dependencies {
 jar {
     manifest {
         attributes("Created-By": "Iuliana Cosmina",
-                "Specification-Title": "Pro Spring 5",
-                "Main-Class": "com.apress.prospring5.ch9.TxAnnotationDemo",
-                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+            "Specification-Title": "Pro Spring 5",
+            "Main-Class": "com.apress.prospring5.ch9.TxAnnotationDemo",
+            "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
     }
 }

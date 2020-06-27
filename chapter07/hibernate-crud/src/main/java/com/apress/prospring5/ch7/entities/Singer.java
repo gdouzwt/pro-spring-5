@@ -6,23 +6,21 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 /**
  * Created by iuliana.cosmina on 4/22/17.
  */
 @Entity
 @Table(name = "singer")
 @NamedQueries({
-        @NamedQuery(name = Singer.FIND_SINGER_BY_ID,
-                query = "select distinct s from Singer s " +
-                        "left join fetch s.albums a " +
-                        "left join fetch s.instruments i " +
-                        "where s.id = :id"),
-        @NamedQuery(name = Singer.FIND_ALL_WITH_ALBUM,
-                query = "select distinct s from Singer s " +
-                        "left join fetch s.albums a " +
-                        "left join fetch s.instruments i")
+    @NamedQuery(name = Singer.FIND_SINGER_BY_ID,
+        query = "select distinct s from Singer s " +
+            "left join fetch s.albums a " +
+            "left join fetch s.instruments i " +
+            "where s.id = :id"),
+    @NamedQuery(name = Singer.FIND_ALL_WITH_ALBUM,
+        query = "select distinct s from Singer s " +
+            "left join fetch s.albums a " +
+            "left join fetch s.instruments i")
 })
 public class Singer extends AbstractEntity {
 
@@ -40,13 +38,13 @@ public class Singer extends AbstractEntity {
     private Date birthDate;
 
     @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL,
-            orphanRemoval = true)
+        orphanRemoval = true)
     private Set<Album> albums = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "singer_instrument",
-            joinColumns = @JoinColumn(name = "SINGER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
+        joinColumns = @JoinColumn(name = "SINGER_ID"),
+        inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
     private Set<Instrument> instruments = new HashSet<>();
 
 
@@ -107,7 +105,7 @@ public class Singer extends AbstractEntity {
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return String.format("Singer - id: %d, First name: %s, Last name: %s, Birthday: %s",
-                id, firstName, lastName, sdf.format(birthDate));
+            id, firstName, lastName, sdf.format(birthDate));
     }
 
     @Override

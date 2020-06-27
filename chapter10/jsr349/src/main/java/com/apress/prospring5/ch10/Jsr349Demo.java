@@ -41,9 +41,9 @@ public class Jsr349Demo {
         logger.info("No. of violations: " + violations.size());
         for (ConstraintViolation<Singer> violation : violations) {
             logger.info("Validation error for property: " +
-                    violation.getPropertyPath()
-                    + " with value: " + violation.getInvalidValue()
-                    + " with error message: " + violation.getMessage());
+                violation.getPropertyPath()
+                + " with value: " + violation.getInvalidValue()
+                + " with error message: " + violation.getMessage());
         }
     }
 }

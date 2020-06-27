@@ -69,6 +69,6 @@ public class Singer implements Serializable {
 
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " + birthDate;
+            + ", Last name: " + lastName + ", Birthday: " + birthDate;
     }
 }

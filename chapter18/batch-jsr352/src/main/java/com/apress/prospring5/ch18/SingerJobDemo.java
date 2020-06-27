@@ -21,7 +21,7 @@ public class SingerJobDemo {
 
         while (true) {
             if (batchStatus == BatchStatus.STOPPED || batchStatus == BatchStatus.COMPLETED
-                    || batchStatus == BatchStatus.FAILED) {
+                || batchStatus == BatchStatus.FAILED) {
                 return;
             }
 

@@ -21,7 +21,7 @@ public class Singer {
     private String lyric = "We found a message in a bottle we were drinking";
 
     public void setLyric(@Value("I'm busted up but I'm loving every minute of it")
-                                 String lyric) {
+                             String lyric) {
         this.lyric = lyric;
     }
 

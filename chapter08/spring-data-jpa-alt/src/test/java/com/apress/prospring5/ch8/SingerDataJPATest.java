@@ -15,9 +15,7 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by iuliana.cosmina on 5/7/17.
@@ -83,7 +81,7 @@ public class SingerDataJPATest {
         assertTrue(albums.size() > 0);
         assertEquals(2, albums.size());
         albums.forEach(a -> logger.info(a.toString() + ", Singer: " + a.getSinger().getFirstName() + " "
-                + a.getSinger().getLastName()));
+            + a.getSinger().getLastName()));
     }
 
     private static void listSingers(List<Singer> singers) {

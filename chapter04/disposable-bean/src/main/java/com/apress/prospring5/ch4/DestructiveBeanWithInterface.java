@@ -1,10 +1,10 @@
 package com.apress.prospring5.ch4;
 
-import java.io.File;
-
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.support.GenericXmlApplicationContext;
+
+import java.io.File;
 
 public class DestructiveBeanWithInterface implements InitializingBean, DisposableBean {
     private File file;
@@ -16,8 +16,8 @@ public class DestructiveBeanWithInterface implements InitializingBean, Disposabl
 
         if (filePath == null) {
             throw new IllegalArgumentException(
-                    "You must specify the filePath property of " +
-                            DestructiveBeanWithInterface.class);
+                "You must specify the filePath property of " +
+                    DestructiveBeanWithInterface.class);
         }
 
         this.file = new File(filePath);
@@ -47,7 +47,7 @@ public class DestructiveBeanWithInterface implements InitializingBean, Disposabl
         ctx.refresh();
 
         DestructiveBeanWithInterface bean =
-                (DestructiveBeanWithInterface) ctx.getBean("destructiveBean");
+            (DestructiveBeanWithInterface) ctx.getBean("destructiveBean");
 
         System.out.println("Calling destroy()");
         ctx.destroy();

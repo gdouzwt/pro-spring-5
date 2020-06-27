@@ -23,7 +23,7 @@ public class IntegrationOneTest {
     @Test
     public void test1One() {
         fluxGenerator.generate("1", "2", "3").collectList().block().forEach(s ->
-                executeSlow(2000, s)
+            executeSlow(2000, s)
         );
     }
 

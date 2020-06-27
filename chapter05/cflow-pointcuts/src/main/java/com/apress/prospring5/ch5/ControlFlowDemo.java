@@ -17,7 +17,7 @@ public class ControlFlowDemo {
 
         Pointcut pc = new ControlFlowPointcut(ControlFlowDemo.class, "test");
         Advisor advisor = new DefaultPointcutAdvisor(pc,
-                new SimpleBeforeAdvice());
+            new SimpleBeforeAdvice());
 
         ProxyFactory pf = new ProxyFactory();
         pf.setTarget(target);

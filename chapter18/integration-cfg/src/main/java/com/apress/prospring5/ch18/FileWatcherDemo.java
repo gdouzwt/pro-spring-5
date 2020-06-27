@@ -10,7 +10,7 @@ public class FileWatcherDemo {
 
     public static void main(String... args) throws Exception {
         GenericXmlApplicationContext ctx
-                = new GenericXmlApplicationContext("classpath:spring/integration-config.xml");
+            = new GenericXmlApplicationContext("classpath:spring/integration-config.xml");
         assert (ctx != null);
         logger.info("Application started...");
         System.in.read();

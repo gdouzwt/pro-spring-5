@@ -1,6 +1,5 @@
 package com.apress.prospring5.ch18.test;
 
-import com.apress.prospring5.ch18.Application;
 import com.apress.prospring5.ch18.FluxGenerator;
 import com.apress.prospring5.ch18.test.config.TestConfig;
 import org.junit.jupiter.api.Test;

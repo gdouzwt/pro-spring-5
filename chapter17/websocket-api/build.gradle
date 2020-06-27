@@ -4,7 +4,7 @@ war {
     archiveName = 'websocket-echo.war'
     manifest {
         attributes("Created-By": "Iuliana Cosmina",
-                "Specification-Title": "Pro Spring 5",
-                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+            "Specification-Title": "Pro Spring 5",
+            "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
     }
-} 
+}

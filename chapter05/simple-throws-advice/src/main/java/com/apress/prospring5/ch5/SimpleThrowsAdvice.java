@@ -1,9 +1,9 @@
 package com.apress.prospring5.ch5;
 
-import java.lang.reflect.Method;
-
 import org.springframework.aop.ThrowsAdvice;
 import org.springframework.aop.framework.ProxyFactory;
+
+import java.lang.reflect.Method;
 
 public class SimpleThrowsAdvice implements ThrowsAdvice {
     public static void main(String... args) throws Exception {

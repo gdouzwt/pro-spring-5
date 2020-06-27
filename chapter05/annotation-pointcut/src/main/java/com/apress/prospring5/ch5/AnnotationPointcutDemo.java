@@ -11,7 +11,7 @@ public class AnnotationPointcutDemo {
         Guitarist johnMayer = new Guitarist();
 
         AnnotationMatchingPointcut pc = AnnotationMatchingPointcut
-                .forMethodAnnotation(AdviceRequired.class);
+            .forMethodAnnotation(AdviceRequired.class);
         Advisor advisor = new DefaultPointcutAdvisor(pc, new SimpleAdvice());
 
         ProxyFactory pf = new ProxyFactory();

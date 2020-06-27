@@ -29,7 +29,7 @@ public class Singer implements Serializable {
     private String lastName;
 
     @JsonFormat
-            (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
@@ -87,7 +87,7 @@ public class Singer implements Serializable {
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " +
-                new SimpleDateFormat("yyyy-MM-dd").format(birthDate);
+            + ", Last name: " + lastName + ", Birthday: " +
+            new SimpleDateFormat("yyyy-MM-dd").format(birthDate);
     }
 }

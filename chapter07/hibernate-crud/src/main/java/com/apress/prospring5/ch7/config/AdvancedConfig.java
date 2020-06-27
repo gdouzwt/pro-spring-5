@@ -78,9 +78,9 @@ public class AdvancedConfig {
     @Bean
     public SessionFactory sessionFactory() {
         return new LocalSessionFactoryBuilder(dataSource())
-                .scanPackages("com.apress.prospring5.ch7.entities")
-                .addProperties(hibernateProperties())
-                .buildSessionFactory();
+            .scanPackages("com.apress.prospring5.ch7.entities")
+            .addProperties(hibernateProperties())
+            .buildSessionFactory();
     }
 
     @Bean

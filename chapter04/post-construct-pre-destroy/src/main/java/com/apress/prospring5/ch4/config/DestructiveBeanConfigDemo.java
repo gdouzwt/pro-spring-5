@@ -20,7 +20,7 @@ public class DestructiveBeanConfigDemo {
         DestructiveBeanWithJSR250 destructiveBean() {
             DestructiveBeanWithJSR250 destructiveBean = new DestructiveBeanWithJSR250();
             destructiveBean.setFilePath(System.getProperty("java.io.tmpdir") +
-                    System.getProperty("file.separator") + "test.txt");
+                System.getProperty("file.separator") + "test.txt");
             return destructiveBean;
         }
 
@@ -28,7 +28,7 @@ public class DestructiveBeanConfigDemo {
 
     public static void main(String... args) {
         GenericApplicationContext ctx =
-                new AnnotationConfigApplicationContext(DestructiveBeanConfig.class);
+            new AnnotationConfigApplicationContext(DestructiveBeanConfig.class);
 
         ctx.getBean(DestructiveBeanWithJSR250.class);
         ctx.registerShutdownHook();

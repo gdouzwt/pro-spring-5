@@ -17,7 +17,7 @@ public class Application {
 
     public static void main(String[] args) throws Exception {
         ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class)
-                .run(args);
+            .run(args);
         assert (ctx != null);
         logger.info("Application started...");
 

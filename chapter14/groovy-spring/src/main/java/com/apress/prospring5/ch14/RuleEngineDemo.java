@@ -23,7 +23,7 @@ public class RuleEngineDemo {
         singer.setFirstName("John");
         singer.setLastName("Mayer");
         singer.setBirthDate(
-                new DateTime(1977, 10, 16, 0, 0, 0, 0));
+            new DateTime(1977, 10, 16, 0, 0, 0, 0));
         singerService.applyRule(singer);
         logger.info("Singer: " + singer);
 

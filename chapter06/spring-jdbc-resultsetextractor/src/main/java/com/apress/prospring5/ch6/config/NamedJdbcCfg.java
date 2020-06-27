@@ -26,7 +26,7 @@ public class NamedJdbcCfg {
         try {
             EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
             return dbBuilder.setType(EmbeddedDatabaseType.H2)
-                    .addScripts("classpath:db/schema.sql", "classpath:db/test-data.sql").build();
+                .addScripts("classpath:db/schema.sql", "classpath:db/test-data.sql").build();
         } catch (Exception e) {
             logger.error("Embedded DataSource bean cannot be created!", e);
             return null;

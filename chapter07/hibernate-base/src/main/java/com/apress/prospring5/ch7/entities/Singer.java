@@ -14,15 +14,15 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "singer")
 @NamedQueries({
-        @NamedQuery(name = "Singer.findById",
-                query = "select distinct s from Singer s " +
-                        "left join fetch s.albums a " +
-                        "left join fetch s.instruments i " +
-                        "where s.id = :id"),
-        @NamedQuery(name = "Singer.findAllWithAlbum",
-                query = "select distinct s from Singer s " +
-                        "left join fetch s.albums a " +
-                        "left join fetch s.instruments i")
+    @NamedQuery(name = "Singer.findById",
+        query = "select distinct s from Singer s " +
+            "left join fetch s.albums a " +
+            "left join fetch s.instruments i " +
+            "where s.id = :id"),
+    @NamedQuery(name = "Singer.findAllWithAlbum",
+        query = "select distinct s from Singer s " +
+            "left join fetch s.albums a " +
+            "left join fetch s.instruments i")
 })
 public class Singer implements Serializable {
 
@@ -68,7 +68,7 @@ public class Singer implements Serializable {
     }
 
     @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL,
-            orphanRemoval = true)
+        orphanRemoval = true)
     public Set<Album> getAlbums() {
         return albums;
     }
@@ -76,8 +76,8 @@ public class Singer implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "singer_instrument",
-            joinColumns = @JoinColumn(name = "SINGER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
+        joinColumns = @JoinColumn(name = "SINGER_ID"),
+        inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
     public Set<Instrument> getInstruments() {
         return instruments;
     }
@@ -121,6 +121,6 @@ public class Singer implements Serializable {
 
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " + birthDate;
+            + ", Last name: " + lastName + ", Birthday: " + birthDate;
     }
 }

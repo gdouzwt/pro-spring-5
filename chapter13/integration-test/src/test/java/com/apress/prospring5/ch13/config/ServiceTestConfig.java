@@ -1,7 +1,5 @@
 package com.apress.prospring5.ch13.config;
 
-import javax.sql.DataSource;
-
 import com.apress.prospring5.ch13.init.DBInitializer;
 import org.dbunit.DataSourceDatabaseTester;
 import org.dbunit.util.fileloader.XlsDataFileLoader;
@@ -11,11 +9,13 @@ import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
+import javax.sql.DataSource;
+
 @Configuration
 @ComponentScan(basePackages = {"com.apress.prospring5.ch13"},
-        excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
-                value = DBInitializer.class)
-        })
+    excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
+        value = DBInitializer.class)
+    })
 @Profile("test")
 public class ServiceTestConfig {
     private static Logger logger = LoggerFactory.getLogger(ServiceTestConfig.class);
@@ -34,7 +34,7 @@ public class ServiceTestConfig {
     @Bean(name = "databaseTester")
     public DataSourceDatabaseTester dataSourceDatabaseTester() {
         DataSourceDatabaseTester databaseTester =
-                new DataSourceDatabaseTester(dataSource());
+            new DataSourceDatabaseTester(dataSource());
         return databaseTester;
     }
 

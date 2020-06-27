@@ -23,8 +23,8 @@ public class PlainSingerDao implements SingerDao {
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/musicdb?useSSL=true",
-                "prospring5", "prospring5");
+            "jdbc:mysql://localhost:3306/musicdb?useSSL=true",
+            "prospring5", "prospring5");
     }
 
     private void closeConnection(Connection connection) {
@@ -45,7 +45,7 @@ public class PlainSingerDao implements SingerDao {
         try {
             connection = getConnection();
             PreparedStatement statement =
-                    connection.prepareStatement("select * from singer");
+                connection.prepareStatement("select * from singer");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Singer singer = new Singer();
@@ -70,8 +70,8 @@ public class PlainSingerDao implements SingerDao {
         try {
             connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(
-                    "insert into Singer (first_name, last_name, birth_date) values (?, ?, ?)"
-                    , Statement.RETURN_GENERATED_KEYS);
+                "insert into Singer (first_name, last_name, birth_date) values (?, ?, ?)"
+                , Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, singer.getFirstName());
             statement.setString(2, singer.getLastName());
             statement.setDate(3, singer.getBirthDate());

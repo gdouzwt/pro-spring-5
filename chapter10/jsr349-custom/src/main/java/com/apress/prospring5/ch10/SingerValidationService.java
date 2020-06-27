@@ -1,13 +1,12 @@
 package com.apress.prospring5.ch10;
 
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
-
 import com.apress.prospring5.ch10.obj.Singer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import java.util.Set;
 
 @Service("singerValidationService")
 public class SingerValidationService {

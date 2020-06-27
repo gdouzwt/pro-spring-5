@@ -21,7 +21,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
         Map<String, Object> namedParameters = new HashMap<>();
         namedParameters.put("singerId", id);
         return namedParameterJdbcTemplate.queryForObject(sql,
-                namedParameters, String.class);
+            namedParameters, String.class);
     }
 
     public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {

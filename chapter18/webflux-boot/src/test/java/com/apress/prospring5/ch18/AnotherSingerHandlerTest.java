@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.reactive.server.FluxExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -28,28 +27,28 @@ public class AnotherSingerHandlerTest {
     @BeforeAll
     public static void init() {
         client = WebTestClient
-                .bindToServer()
-                .baseUrl("http://localhost:8080")
-                .build();
+            .bindToServer()
+            .baseUrl("http://localhost:8080")
+            .build();
     }
 
     @Test
     public void getSingerNotFound() throws Exception {
         client.get().uri("/singers/99").exchange().expectStatus().isNotFound()
-                .expectBody().isEmpty();
+            .expectBody().isEmpty();
     }
 
     @Test
     public void getSingerFound() throws Exception {
         client.get().uri("/singers/1").exchange().expectStatus().isOk()
-                .expectBody(Singer.class).consumeWith(seer -> {
+            .expectBody(Singer.class).consumeWith(seer -> {
             Singer singer = seer.getResponseBody();
             assertAll("singer", () ->
             {
                 assertNotNull(singer);
                 assertAll("singer",
-                        () -> assertEquals("John", singer.getFirstName()),
-                        () -> assertEquals("Mayer", singer.getLastName()));
+                    () -> assertEquals("John", singer.getFirstName()),
+                    () -> assertEquals("Mayer", singer.getLastName()));
             });
         });
     }
@@ -57,10 +56,10 @@ public class AnotherSingerHandlerTest {
     @Test
     public void getAll() throws Exception {
         client.get().uri("/singers").accept(MediaType.TEXT_EVENT_STREAM)
-                .exchange()
-                .expectStatus().isOk()
-                .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectBodyList(Singer.class).consumeWith(Assertions::assertNotNull);
+            .exchange()
+            .expectStatus().isOk()
+            .expectHeader().contentType(MediaType.APPLICATION_JSON)
+            .expectBodyList(Singer.class).consumeWith(Assertions::assertNotNull);
     }
 
     @Test
@@ -69,7 +68,7 @@ public class AnotherSingerHandlerTest {
         singer.setFirstName("Ed");
         singer.setLastName("Sheeran");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
+            (new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
 
         client.post().uri("/singers").body(Mono.just(singer), Singer.class).exchange().expectStatus().isOk();
     }
@@ -77,16 +76,16 @@ public class AnotherSingerHandlerTest {
     @Test
     public void testCustomRouting() {
         RouterFunction function = RouterFunctions.route(
-                RequestPredicates.GET("/test"),
-                request -> ServerResponse.ok().build()
+            RequestPredicates.GET("/test"),
+            request -> ServerResponse.ok().build()
         );
 
         WebTestClient
-                .bindToRouterFunction(function)
-                .build().get().uri("/test")
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody().isEmpty();
+            .bindToRouterFunction(function)
+            .build().get().uri("/test")
+            .exchange()
+            .expectStatus().isOk()
+            .expectBody().isEmpty();
 
     }
 }

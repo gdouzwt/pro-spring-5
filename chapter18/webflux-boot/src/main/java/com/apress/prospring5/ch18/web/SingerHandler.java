@@ -22,7 +22,7 @@ public class SingerHandler {
     ReactiveSingerRepo reactiveSingerRepo;
 
     public HandlerFunction<ServerResponse> list = serverRequest -> ServerResponse.ok()
-            .contentType(APPLICATION_JSON).body(reactiveSingerRepo.findAll(), Singer.class);
+        .contentType(APPLICATION_JSON).body(reactiveSingerRepo.findAll(), Singer.class);
 
 	/*public Mono<ServerResponse> list(ServerRequest request) {
 		Flux<Singer> singers = reactiveSingerRepo.findAll();
@@ -33,12 +33,12 @@ public class SingerHandler {
         Mono<Singer> singerMono = reactiveSingerRepo.findById(Long.valueOf(request.pathVariable("id")));
         Mono<ServerResponse> notFound = ServerResponse.notFound().build();
         return singerMono
-                .flatMap(singer -> ServerResponse.ok().contentType(APPLICATION_JSON).body(fromObject(singer)))
-                .switchIfEmpty(notFound);
+            .flatMap(singer -> ServerResponse.ok().contentType(APPLICATION_JSON).body(fromObject(singer)))
+            .switchIfEmpty(notFound);
     }
 
     public HandlerFunction<ServerResponse> save = serverRequest -> ServerResponse.ok()
-            .build(reactiveSingerRepo.save(serverRequest.bodyToMono(Singer.class)));
+        .build(reactiveSingerRepo.save(serverRequest.bodyToMono(Singer.class)));
 
 	/*public Mono<ServerResponse> save(ServerRequest request) {
 		Mono<Singer> data = request.bodyToMono(Singer.class);

@@ -21,8 +21,8 @@ public aspect MessageWrapper {
     }
 
     pointcut doWriting():
-            execution(*
-                    com.apress.prospring5.ch5.MessageWriter.writeMessage());
+        execution(*
+            com.apress.prospring5.ch5.MessageWriter.writeMessage());
 
     before(): doWriting() {
         System.out.println(prefix);

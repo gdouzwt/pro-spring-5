@@ -1,11 +1,8 @@
 package com.apress.prospring5.ch7.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by iuliana.cosmina on 4/21/17.
@@ -54,7 +51,7 @@ public class Album extends AbstractEntity {
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return String.format("Album - id: %d, Singer id: %d, Title: %s, Release Date: %s",
-                id, singer.getId(), title, sdf.format(releaseDate));
+            id, singer.getId(), title, sdf.format(releaseDate));
     }
 
     @Override

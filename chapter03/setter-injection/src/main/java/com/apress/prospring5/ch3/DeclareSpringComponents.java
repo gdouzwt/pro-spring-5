@@ -10,7 +10,7 @@ public class DeclareSpringComponents {
         ctx.load("classpath:spring/app-context-xml.xml");
         ctx.refresh();
         MessageRenderer messageRenderer = ctx.getBean("renderer",
-                MessageRenderer.class);
+            MessageRenderer.class);
         messageRenderer.render();
         ctx.close();
     }

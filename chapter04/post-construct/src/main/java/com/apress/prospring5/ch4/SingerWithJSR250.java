@@ -1,10 +1,10 @@
 package com.apress.prospring5.ch4;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+
+import javax.annotation.PostConstruct;
 
 public class SingerWithJSR250 {
     private static final String DEFAULT_NAME = "Eric Clapton";
@@ -31,8 +31,8 @@ public class SingerWithJSR250 {
 
         if (age == Integer.MIN_VALUE) {
             throw new IllegalArgumentException(
-                    "You must set the age property of any beans of type " +
-                            SingerWithJSR250.class);
+                "You must set the age property of any beans of type " +
+                    SingerWithJSR250.class);
         }
     }
 
@@ -59,7 +59,7 @@ public class SingerWithJSR250 {
             return bean;
         } catch (BeanCreationException ex) {
             System.out.println("An error occured in bean configuration: "
-                    + ex.getMessage());
+                + ex.getMessage());
             return null;
         }
     }

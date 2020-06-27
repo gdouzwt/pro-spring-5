@@ -1,8 +1,8 @@
 package com.apress.prospring5.ch4;
 
-import java.util.Locale;
-
 import org.springframework.context.support.GenericXmlApplicationContext;
+
+import java.util.Locale;
 
 public class MessageSourceDemo {
     public static void main(String... args) {
@@ -17,9 +17,9 @@ public class MessageSourceDemo {
         System.out.println(ctx.getMessage("msg", null, german));
 
         System.out.println(ctx.getMessage("nameMsg", new Object[]{"John",
-                "Mayer"}, english));
+            "Mayer"}, english));
         System.out.println(ctx.getMessage("nameMsg", new Object[]{"John",
-                "Mayer"}, german));
+            "Mayer"}, german));
 
         ctx.close();
     }

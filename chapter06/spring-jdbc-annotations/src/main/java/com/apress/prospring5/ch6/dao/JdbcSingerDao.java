@@ -73,7 +73,7 @@ public class JdbcSingerDao implements SingerDao {
         singer.setId(keyHolder.getKey().longValue());
         logger.info("New singer inserted with id: " + singer.getId());
         List<Album> albums =
-                singer.getAlbums();
+            singer.getAlbums();
         if (albums != null) {
             for (Album album : albums) {
                 paramMap = new HashMap<>();
@@ -90,8 +90,8 @@ public class JdbcSingerDao implements SingerDao {
     public List<Singer> findAllWithAlbums() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         String sql = "SELECT s.id, s.first_name, s.last_name, s.birth_date" +
-                ", a.id AS album_id, a.title, a.release_date FROM singer s " +
-                "LEFT JOIN album a ON s.id = a.singer_id";
+            ", a.id AS album_id, a.title, a.release_date FROM singer s " +
+            "LEFT JOIN album a ON s.id = a.singer_id";
         return jdbcTemplate.query(sql, rs -> {
             Map<Long, Singer> map = new HashMap<>();
             Singer singer;
@@ -107,7 +107,7 @@ public class JdbcSingerDao implements SingerDao {
                     singer.setAlbums(new ArrayList<>());
                     map.put(id, singer);
                 }
-                Long albumId = rs.getLong("album_id");
+                long albumId = rs.getLong("album_id");
                 if (albumId > 0) {
                     Album album = new Album();
                     album.setId(albumId);

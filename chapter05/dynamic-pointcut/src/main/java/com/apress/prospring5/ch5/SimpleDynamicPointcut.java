@@ -1,9 +1,9 @@
 package com.apress.prospring5.ch5;
 
-import java.lang.reflect.Method;
-
 import org.springframework.aop.ClassFilter;
 import org.springframework.aop.support.DynamicMethodMatcherPointcut;
+
+import java.lang.reflect.Method;
 
 public class SimpleDynamicPointcut extends DynamicMethodMatcherPointcut {
     @Override

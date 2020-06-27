@@ -1,7 +1,5 @@
 package com.apress.prospring5.ch5;
 
-import java.lang.reflect.Method;
-
 import com.apress.prospring5.ch2.common.Guitar;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.ClassFilter;
@@ -10,12 +8,14 @@ import org.springframework.aop.support.ComposablePointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.StaticMethodMatcher;
 
+import java.lang.reflect.Method;
+
 public class ComposablePointcutDemo {
     public static void main(String... args) {
         GrammyGuitarist johnMayer = new GrammyGuitarist();
 
         ComposablePointcut pc = new ComposablePointcut(ClassFilter.TRUE,
-                new SingMethodMatcher());
+            new SingMethodMatcher());
 
         System.out.println("Test 1 >> ");
         GrammyGuitarist proxy = getProxy(pc, johnMayer);
@@ -37,7 +37,7 @@ public class ComposablePointcutDemo {
     private static GrammyGuitarist getProxy(ComposablePointcut pc,
                                             GrammyGuitarist target) {
         Advisor advisor = new DefaultPointcutAdvisor(pc,
-                new SimpleBeforeAdvice());
+            new SimpleBeforeAdvice());
 
         ProxyFactory pf = new ProxyFactory();
         pf.setTarget(target);

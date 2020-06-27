@@ -17,6 +17,7 @@ public class HelloWorldConfiguration {
 
     /**
      * 定义 Bean
+     *
      * @return MessageProvider
      */
     @Bean
@@ -26,6 +27,7 @@ public class HelloWorldConfiguration {
 
     /**
      * 定义 Bean
+     *
      * @return MessageRenderer
      */
     @Bean

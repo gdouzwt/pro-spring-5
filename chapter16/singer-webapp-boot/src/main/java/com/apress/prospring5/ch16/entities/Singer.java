@@ -1,9 +1,10 @@
 package com.apress.prospring5.ch16.entities;
 
-import org.hibernate.validator.constraints.NotBlank;
+
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -92,7 +93,7 @@ public class Singer implements Serializable {
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " + birthDate
-                + ", Description: " + description;
+            + ", Last name: " + lastName + ", Birthday: " + birthDate
+            + ", Description: " + description;
     }
 }

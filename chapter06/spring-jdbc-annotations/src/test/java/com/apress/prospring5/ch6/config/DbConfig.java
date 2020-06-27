@@ -45,6 +45,7 @@ public class DbConfig {
             dataSource.setPassword(password);
             return dataSource;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

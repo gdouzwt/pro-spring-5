@@ -52,7 +52,7 @@ public class Singer {
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " + birthDate
-                + ", Age category: " + ageCategory;
+            + ", Last name: " + lastName + ", Birthday: " + birthDate
+            + ", Age category: " + ageCategory;
     }
 }

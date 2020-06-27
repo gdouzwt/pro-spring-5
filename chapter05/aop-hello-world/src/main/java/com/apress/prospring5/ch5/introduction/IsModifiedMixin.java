@@ -1,14 +1,14 @@
 package com.apress.prospring5.ch5.introduction;
 
+import org.aopalliance.intercept.MethodInvocation;
+import org.springframework.aop.support.DelegatingIntroductionInterceptor;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.aopalliance.intercept.MethodInvocation;
-import org.springframework.aop.support.DelegatingIntroductionInterceptor;
-
 public class IsModifiedMixin extends DelegatingIntroductionInterceptor
-        implements IsModified {
+    implements IsModified {
     private boolean isModified = false;
 
     private Map<Method, Method> methodCache = new HashMap<>();
@@ -22,7 +22,7 @@ public class IsModifiedMixin extends DelegatingIntroductionInterceptor
     public Object invoke(MethodInvocation invocation) throws Throwable {
         if (!isModified) {
             if ((invocation.getMethod().getName().startsWith("set"))
-                    && (invocation.getArguments().length == 1)) {
+                && (invocation.getArguments().length == 1)) {
 
                 Method getter = getGetter(invocation.getMethod());
 

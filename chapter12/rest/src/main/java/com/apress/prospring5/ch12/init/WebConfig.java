@@ -8,19 +8,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
-import org.springframework.oxm.castor.CastorMarshaller;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by iuliana.cosmina on 6/5/17.
@@ -60,13 +54,13 @@ public class WebConfig implements WebMvcConfigurer {
         return objMapper;
     }
 
-    @Override
+/*    @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(mappingJackson2HttpMessageConverter());
         converters.add(singerMessageConverter());
-    }
+    }*/
 
-    @Bean
+/*    @Bean
     MarshallingHttpMessageConverter singerMessageConverter() {
         MarshallingHttpMessageConverter mc = new MarshallingHttpMessageConverter();
         mc.setMarshaller(castorMarshaller());
@@ -76,12 +70,12 @@ public class WebConfig implements WebMvcConfigurer {
         mediaTypes.add(mt);
         mc.setSupportedMediaTypes(mediaTypes);
         return mc;
-    }
+    }*/
 
-    @Bean
+/*    @Bean
     CastorMarshaller castorMarshaller() {
         CastorMarshaller castorMarshaller = new CastorMarshaller();
         castorMarshaller.setMappingLocation(ctx.getResource("classpath:spring/oxm-mapping.xml"));
         return castorMarshaller;
-    }
+    }*/
 }

@@ -6,11 +6,11 @@
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/jdbc
         http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
-        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/data/jpa
         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- this is a sample configuration file, depicted here for legacy purposes, to show you how it was done before.
@@ -52,7 +52,7 @@
     </bean>
 
     <context:component-scan
-            base-package="com.apress.prospring5.ch9"/>
+        base-package="com.apress.prospring5.ch9"/>
 
     <jpa:repositories base-package="com.apress.prospring5.ch9"
                       entity-manager-factory-ref="emf"

@@ -1,46 +1,30 @@
 package com.apress.prospring5.ch8.entities;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
-import javax.persistence.Version;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.OneToMany;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.CascadeType;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.SqlResultSetMapping;
-import javax.persistence.EntityResult;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "singer")
 @NamedQueries({
-        @NamedQuery(name = Singer.FIND_ALL, query = "select s from Singer s"),
-        @NamedQuery(name = Singer.FIND_SINGER_BY_ID,
-                query = "select distinct s from Singer s " +
-                        "left join fetch s.albums a " +
-                        "left join fetch s.instruments i " +
-                        "where s.id = :id"),
-        @NamedQuery(name = Singer.FIND_ALL_WITH_ALBUM,
-                query = "select distinct s from Singer s " +
-                        "left join fetch s.albums a " +
-                        "left join fetch s.instruments i")
+    @NamedQuery(name = Singer.FIND_ALL, query = "select s from Singer s"),
+    @NamedQuery(name = Singer.FIND_SINGER_BY_ID,
+        query = "select distinct s from Singer s " +
+            "left join fetch s.albums a " +
+            "left join fetch s.instruments i " +
+            "where s.id = :id"),
+    @NamedQuery(name = Singer.FIND_ALL_WITH_ALBUM,
+        query = "select distinct s from Singer s " +
+            "left join fetch s.albums a " +
+            "left join fetch s.instruments i")
 })
 @SqlResultSetMapping(
-        name = "singerResult",
-        entities = @EntityResult(entityClass = Singer.class)
+    name = "singerResult",
+    entities = @EntityResult(entityClass = Singer.class)
 )
 public class Singer implements Serializable {
 
@@ -72,8 +56,8 @@ public class Singer implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "singer_instrument",
-            joinColumns = @JoinColumn(name = "SINGER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
+        joinColumns = @JoinColumn(name = "SINGER_ID"),
+        inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
     private Set<Instrument> instruments = new HashSet<>();
 
     public Long getId() {
@@ -149,6 +133,6 @@ public class Singer implements Serializable {
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " + birthDate;
+            + ", Last name: " + lastName + ", Birthday: " + birthDate;
     }
 }

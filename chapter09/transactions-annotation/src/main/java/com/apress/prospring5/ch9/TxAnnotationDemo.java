@@ -1,7 +1,5 @@
 package com.apress.prospring5.ch9;
 
-import java.util.List;
-
 import com.apress.prospring5.ch9.config.DataJpaConfig;
 import com.apress.prospring5.ch9.config.ServicesConfig;
 import com.apress.prospring5.ch9.entities.Singer;
@@ -9,11 +7,13 @@ import com.apress.prospring5.ch9.services.SingerService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
+import java.util.List;
+
 public class TxAnnotationDemo {
 
     public static void main(String... args) {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(ServicesConfig.class,
-                DataJpaConfig.class);
+            DataJpaConfig.class);
 
         SingerService singerService = ctx.getBean(SingerService.class);
 

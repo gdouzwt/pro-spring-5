@@ -10,9 +10,9 @@ public class MethodReplacementDemo {
         ctx.refresh();
 
         ReplacementTarget replacementTarget = (ReplacementTarget) ctx
-                .getBean("replacementTarget");
+            .getBean("replacementTarget");
         ReplacementTarget standardTarget = (ReplacementTarget) ctx
-                .getBean("standardTarget");
+            .getBean("standardTarget");
 
         displayInfo(replacementTarget);
         displayInfo(standardTarget);
@@ -35,6 +35,6 @@ public class MethodReplacementDemo {
         stopWatch.stop();
 
         System.out.println("1000000 invocations took: "
-                + stopWatch.getTotalTimeMillis() + " ms");
+            + stopWatch.getTotalTimeMillis() + " ms");
     }
 }

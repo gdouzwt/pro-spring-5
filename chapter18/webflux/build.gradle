@@ -1,8 +1,10 @@
 apply plugin: 'war'
 
 dependencies {
-    compile spring.webflux, spring.data, db.h2, hibernate.em, react.projReactorIpc, react.tomcatEmbedded,
-            misc.jacksonDatabind, misc.slf4jJcl, misc.logback
+    compile group: 'io.projectreactor.netty', name: 'reactor-netty', version: '0.9.9.RELEASE'
+    compile spring.webflux, spring.data, db.h2, hibernate.em,
+        react.projReactorIpc, react.tomcatEmbedded,
+        misc.jacksonDatabind, misc.slf4jJcl, misc.logback
     compile(hibernate.tx) {
         exclude group: 'org.hibernate', module: 'hibernate'
     }
@@ -16,7 +18,7 @@ war {
     archiveName = 'webflux.war'
     manifest {
         attributes("Created-By": "Iuliana Cosmina",
-                "Specification-Title": "Pro Spring 5",
-                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+            "Specification-Title": "Pro Spring 5",
+            "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
     }
 }

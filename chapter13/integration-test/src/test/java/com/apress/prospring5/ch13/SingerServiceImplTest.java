@@ -1,20 +1,11 @@
 package com.apress.prospring5.ch13;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.validation.ConstraintViolationException;
-
 import com.apress.prospring5.ch13.config.DataConfig;
 import com.apress.prospring5.ch13.config.ServiceConfig;
 import com.apress.prospring5.ch13.config.ServiceTestConfig;
 import com.apress.prospring5.ch13.entities.Singer;
 import com.apress.prospring5.ch13.services.SingerService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +15,17 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ServiceTestConfig.class, ServiceConfig.class, DataConfig.class})
 @TestExecutionListeners({ServiceTestExecutionListener.class})
 @ActiveProfiles("test")
+@Ignore
 public class SingerServiceImplTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Autowired
     SingerService singerService;

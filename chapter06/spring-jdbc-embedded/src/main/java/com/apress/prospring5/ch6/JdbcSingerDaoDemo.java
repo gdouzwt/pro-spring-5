@@ -12,7 +12,7 @@ public class JdbcSingerDaoDemo {
         SingerDao singerDao = ctx.getBean(SingerDao.class);
 
         System.out.println("First name for singer id 1 is: " +
-                singerDao.findFirstNameById(1l));
+            singerDao.findFirstNameById(1l));
 
         ctx.close();
     }

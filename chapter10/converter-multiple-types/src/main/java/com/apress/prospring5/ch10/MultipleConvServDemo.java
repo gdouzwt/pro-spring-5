@@ -1,12 +1,11 @@
 package com.apress.prospring5.ch10;
 
+import com.apress.prospring5.ch10.config.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.convert.ConversionService;
-
-import com.apress.prospring5.ch10.config.AppConfig;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,9 +1,9 @@
 package com.apress.prospring5.ch4;
 
-import java.io.File;
-
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.support.GenericXmlApplicationContext;
+
+import java.io.File;
 
 public class DestructiveBean implements InitializingBean {
     private File file;
@@ -14,7 +14,7 @@ public class DestructiveBean implements InitializingBean {
 
         if (filePath == null) {
             throw new IllegalArgumentException(
-                    "You must specify the filePath property of " + DestructiveBean.class);
+                "You must specify the filePath property of " + DestructiveBean.class);
         }
 
         this.file = new File(filePath);

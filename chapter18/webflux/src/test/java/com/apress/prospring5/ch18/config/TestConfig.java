@@ -18,9 +18,9 @@ public class TestConfig {
     @Bean
     WebTestClient testClient() {
         return WebTestClient.bindToRouterFunction(server.routingFunction())
-                .configureClient()
-                .baseUrl("http://localhost/singers")
-                .build();
+            .configureClient()
+            .baseUrl("http://localhost/singers")
+            .build();
     }
 
 }

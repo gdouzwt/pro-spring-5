@@ -42,7 +42,7 @@ public class AppConfig {
         connDetails.put(TransportConstants.PORT_PROP_NAME, "61617");
         connDetails.put(TransportConstants.PROTOCOLS_PROP_NAME, "tcp");
         TransportConfiguration transportConfiguration = new TransportConfiguration(
-                NettyConnectorFactory.class.getName(), connDetails);
+            NettyConnectorFactory.class.getName(), connDetails);
         return new ActiveMQConnectionFactory(false, transportConfiguration);
     }
 

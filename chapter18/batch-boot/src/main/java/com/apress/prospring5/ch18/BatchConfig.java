@@ -5,7 +5,6 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
@@ -15,12 +14,9 @@ import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.ResourceLoader;
 
 import javax.sql.DataSource;
 
@@ -45,18 +41,18 @@ public class BatchConfig {
     @Bean
     public Job job(JobExecutionStatsListener listener) {
         return jobs.get("singerJob").listener(listener).flow(step1())
-                .end()
-                .build();
+            .end()
+            .build();
     }
 
     @Bean
     protected Step step1() {
         return steps.get("step1")
-                .<Singer, Singer>chunk(10)
-                .reader(itemReader())
-                .processor(itemProcessor)
-                .writer(itemWriter())
-                .build();
+            .<Singer, Singer>chunk(10)
+            .reader(itemReader())
+            .processor(itemProcessor)
+            .writer(itemWriter())
+            .build();
     }
 
     @Bean

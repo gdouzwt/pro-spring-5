@@ -1,10 +1,10 @@
 package com.apress.prospring5.ch4;
 
-import java.io.File;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
+
+import java.io.File;
 
 public class ResourceDemo {
     public static void main(String... args) throws Exception {

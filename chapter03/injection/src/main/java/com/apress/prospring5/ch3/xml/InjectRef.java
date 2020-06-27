@@ -1,7 +1,7 @@
 package com.apress.prospring5.ch3.xml;
 
-import org.springframework.context.support.GenericXmlApplicationContext;
 import com.apress.prospring5.ch3.Oracle;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class InjectRef {
     private Oracle oracle;

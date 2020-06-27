@@ -37,7 +37,7 @@ public class AppConfig {
         connDetails.put(TransportConstants.HOST_PROP_NAME, "127.0.0.1");
         connDetails.put(TransportConstants.PORT_PROP_NAME, "5445");
         TransportConfiguration transportConfiguration = new TransportConfiguration(
-                NettyConnectorFactory.class.getName(), connDetails);
+            NettyConnectorFactory.class.getName(), connDetails);
         return new HornetQJMSConnectionFactory(false, transportConfiguration);
     }
 

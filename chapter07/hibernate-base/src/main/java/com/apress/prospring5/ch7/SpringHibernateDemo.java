@@ -2,8 +2,6 @@ package com.apress.prospring5.ch7;
 
 import com.apress.prospring5.ch7.config.AppConfig;
 import com.apress.prospring5.ch7.dao.SingerDao;
-import com.apress.prospring5.ch7.entities.Album;
-import com.apress.prospring5.ch7.entities.Instrument;
 import com.apress.prospring5.ch7.entities.Singer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

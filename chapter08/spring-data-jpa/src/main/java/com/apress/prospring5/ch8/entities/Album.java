@@ -83,7 +83,7 @@ public class Album implements Serializable {
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return String.format("Album - id: %d, Singer id: %d, Title: %s, Release Date: %s",
-                id, singer.getId(), title, sdf.format(releaseDate));
+            id, singer.getId(), title, sdf.format(releaseDate));
     }
 
     @Override

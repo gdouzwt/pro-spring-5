@@ -10,7 +10,7 @@ public class XmlConfigWithBeanFactory {
         DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader rdr = new XmlBeanDefinitionReader(factory);
         rdr.loadBeanDefinitions(new
-                ClassPathResource("spring/xml-bean-factory-config.xml"));
+            ClassPathResource("spring/xml-bean-factory-config.xml"));
         Oracle oracle = (Oracle) factory.getBean("oracle");
         System.out.println(oracle.defineMeaningOfLife());
     }

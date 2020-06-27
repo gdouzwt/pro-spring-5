@@ -28,7 +28,7 @@ public class ReactiveSingerRepoImpl implements ReactiveSingerRepo {
     @Override
     public Mono<Void> save(Mono<Singer> singerMono) {
         return singerMono.doOnNext(singer ->
-                singerRepository.save(singer)
+            singerRepository.save(singer)
         ).thenEmpty((Mono.empty()));
     }
 }

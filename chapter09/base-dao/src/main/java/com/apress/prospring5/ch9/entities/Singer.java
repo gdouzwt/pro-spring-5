@@ -1,5 +1,6 @@
 package com.apress.prospring5.ch9.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -7,13 +8,11 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import javax.persistence.*;
-
 @Entity
 @Table(name = "singer")
 @NamedQueries({
-        @NamedQuery(name = Singer.FIND_ALL, query = "select s from Singer s"),
-        @NamedQuery(name = Singer.COUNT_ALL, query = "select count(s) from Singer s")
+    @NamedQuery(name = Singer.FIND_ALL, query = "select s from Singer s"),
+    @NamedQuery(name = Singer.COUNT_ALL, query = "select count(s) from Singer s")
 })
 public class Singer implements Serializable {
 
@@ -103,6 +102,6 @@ public class Singer implements Serializable {
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " + birthDate;
+            + ", Last name: " + lastName + ", Birthday: " + birthDate;
     }
 }

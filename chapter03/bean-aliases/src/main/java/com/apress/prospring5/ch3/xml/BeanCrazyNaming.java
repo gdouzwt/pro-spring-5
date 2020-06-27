@@ -16,9 +16,9 @@ public class BeanCrazyNaming {
         ctx.refresh();
         Map<String, String> beans = ctx.getBeansOfType(String.class);
         beans.entrySet().forEach(b ->
-                System.out.println(
-                        "id: " + b.getKey() + "\n aliases: "
-                                + Arrays.toString(ctx.getAliases(b.getKey())) + "\n")
+            System.out.println(
+                "id: " + b.getKey() + "\n aliases: "
+                    + Arrays.toString(ctx.getAliases(b.getKey())) + "\n")
         );
         ctx.close();
     }

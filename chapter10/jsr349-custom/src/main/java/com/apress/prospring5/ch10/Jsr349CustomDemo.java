@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
 
 import javax.validation.ConstraintViolation;
 import java.util.Set;
@@ -20,7 +19,7 @@ public class Jsr349CustomDemo {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         SingerValidationService singerValidationService =
-                ctx.getBean("singerValidationService", SingerValidationService.class);
+            ctx.getBean("singerValidationService", SingerValidationService.class);
 
         Singer singer = new Singer();
         singer.setFirstName("John");
@@ -41,10 +40,10 @@ public class Jsr349CustomDemo {
     private static void listViolations(Set<ConstraintViolation<Singer>> violations) {
         logger.info("No. of violations: " + violations.size());
         violations.forEach(v ->
-                logger.info("Validation error for property: " +
-                        v.getPropertyPath()
-                        + " with value: " + v.getInvalidValue()
-                        + " with error message: " + v.getMessage())
+            logger.info("Validation error for property: " +
+                v.getPropertyPath()
+                + " with value: " + v.getInvalidValue()
+                + " with error message: " + v.getMessage())
         );
     }
 }

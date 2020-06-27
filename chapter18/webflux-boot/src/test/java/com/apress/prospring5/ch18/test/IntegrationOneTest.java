@@ -1,6 +1,5 @@
 package com.apress.prospring5.ch18.test;
 
-import com.apress.prospring5.ch18.entities.Singer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

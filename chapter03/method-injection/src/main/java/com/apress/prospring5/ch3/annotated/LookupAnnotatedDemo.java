@@ -23,7 +23,7 @@ public class LookupAnnotatedDemo {
         Singer singer2 = bean.getMySinger();
 
         System.out.println("[" + beanName + "]: Singer Instances the Same?  "
-                + (singer1 == singer2));
+            + (singer1 == singer2));
 
         StopWatch stopWatch = new StopWatch();
         stopWatch.start("lookupDemo");

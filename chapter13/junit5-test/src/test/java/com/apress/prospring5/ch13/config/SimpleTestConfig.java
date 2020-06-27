@@ -15,9 +15,9 @@ import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = {"com.apress.prospring5.ch13"},
-        excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
-                value = DBInitializer.class)
-        })
+    excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
+        value = DBInitializer.class)
+    })
 @Profile("test")
 public class SimpleTestConfig {
 

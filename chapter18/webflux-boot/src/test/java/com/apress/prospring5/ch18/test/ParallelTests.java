@@ -12,7 +12,7 @@ public class ParallelTests {
     @Test
     void executeTwoInParallel() {
         final Class<?>[] classes = {
-                IntegrationOneTest.class, IntegrationTwoTest.class
+            IntegrationOneTest.class, IntegrationTwoTest.class
         };
 
         JUnitCore.runClasses(new ParallelComputer(true, true), classes);

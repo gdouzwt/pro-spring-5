@@ -49,7 +49,7 @@ public class SingerHandlerTest {
         ClientRequest request = ClientRequest.method(HttpMethod.GET, uri).build();
 
         Mono<Singer> singerMono = exchange.exchange(request)
-                .flatMap(response -> response.bodyToMono(Singer.class));
+            .flatMap(response -> response.bodyToMono(Singer.class));
         Singer singer = singerMono.block();
         assertNull(singer);
     }
@@ -62,14 +62,14 @@ public class SingerHandlerTest {
         ClientRequest request = ClientRequest.method(HttpMethod.GET, uri).build();
 
         Mono<Singer> singerMono = exchange.exchange(request)
-                .flatMap(response -> response.bodyToMono(Singer.class));
+            .flatMap(response -> response.bodyToMono(Singer.class));
         Singer singer = singerMono.block();
         assertAll("singer", () ->
         {
             assertNotNull(singer);
             assertAll("singer",
-                    () -> assertEquals("John", singer.getFirstName()),
-                    () -> assertEquals("Mayer", singer.getLastName()));
+                () -> assertEquals("John", singer.getFirstName()),
+                () -> assertEquals("Mayer", singer.getLastName()));
         });
 
         logger.info("singer:" + singer.toString());
@@ -79,7 +79,7 @@ public class SingerHandlerTest {
         uri = URI.create(String.format("http://%s:%d/singers", HOST, PORT));
         logger.debug("UPDATE REQ: " + uri.toString());
         request = ClientRequest.method(HttpMethod.POST, uri)
-                .body(BodyInserters.fromObject(singer)).build();
+            .body(BodyInserters.fromObject(singer)).build();
 
         Mono<ClientResponse> response = exchange.exchange(request);
         assertEquals(HttpStatus.OK, response.block().statusCode());
@@ -93,7 +93,7 @@ public class SingerHandlerTest {
         ClientRequest request = ClientRequest.method(HttpMethod.GET, uri).build();
 
         Flux<Singer> singers = exchange.exchange(request)
-                .flatMapMany(response -> response.bodyToFlux(Singer.class));
+            .flatMapMany(response -> response.bodyToFlux(Singer.class));
 
         Mono<List<Singer>> singerList = singers.collectList();
         singerList.block().forEach(singer -> logger.info(singer.toString()));
@@ -107,10 +107,10 @@ public class SingerHandlerTest {
         singer.setFirstName("Ed");
         singer.setLastName("Sheeran");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
+            (new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
 
         ClientRequest request = ClientRequest.method(HttpMethod.POST, uri)
-                .body(BodyInserters.fromObject(singer)).build();
+            .body(BodyInserters.fromObject(singer)).build();
 
         Mono<ClientResponse> response = exchange.exchange(request);
         assertEquals(HttpStatus.OK, response.block().statusCode());

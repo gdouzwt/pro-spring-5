@@ -11,7 +11,7 @@ public class HelloWorldSpringAnnotated {
 
     public static void main(String... args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext
-                (HelloWorldConfiguration.class);
+            (HelloWorldConfiguration.class);
         MessageRenderer mr = ctx.getBean("renderer", MessageRenderer.class);
         mr.render();
     }

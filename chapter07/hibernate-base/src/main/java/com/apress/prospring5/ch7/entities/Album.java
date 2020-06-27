@@ -73,6 +73,6 @@ public class Album implements Serializable {
     @Override
     public String toString() {
         return "Album - Id: " + id + ", Singer id: " + singer.getId()
-                + ", Title: " + title + ", Release Date: " + releaseDate;
+            + ", Title: " + title + ", Release Date: " + releaseDate;
     }
 }

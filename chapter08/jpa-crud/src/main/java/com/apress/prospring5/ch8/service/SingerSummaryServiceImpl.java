@@ -21,11 +21,11 @@ public class SingerSummaryServiceImpl implements SingerSummaryService {
     @Override
     public List<SingerSummary> findAll() {
         List<SingerSummary> result = em.createQuery(
-                "select new com.apress.prospring5.ch8.view.SingerSummary("
-                        + "s.firstName, s.lastName, a.title) from Singer s "
-                        + "left join s.albums a "
-                        + "where a.releaseDate=(select max(a2.releaseDate) from Album a2 where a2.singer.id = s.id)",
-                SingerSummary.class).getResultList();
+            "select new com.apress.prospring5.ch8.view.SingerSummary("
+                + "s.firstName, s.lastName, a.title) from Singer s "
+                + "left join s.albums a "
+                + "where a.releaseDate=(select max(a2.releaseDate) from Album a2 where a2.singer.id = s.id)",
+            SingerSummary.class).getResultList();
         return result;
     }
 }

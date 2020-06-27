@@ -9,7 +9,7 @@ public class Publisher implements ApplicationContextAware {
     private ApplicationContext ctx;
 
     public void setApplicationContext(ApplicationContext applicationContext)
-            throws BeansException {
+        throws BeansException {
         this.ctx = applicationContext;
     }
 
@@ -19,7 +19,7 @@ public class Publisher implements ApplicationContextAware {
 
     public static void main(String... args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext(
-                "classpath:spring/app-context-xml.xml");
+            "classpath:spring/app-context-xml.xml");
 
         Publisher pub = (Publisher) ctx.getBean("publisher");
         pub.publish("I send an SOS to the world... ");

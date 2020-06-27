@@ -13,7 +13,7 @@ public class LazyConfigBeans {
         ctx.load("classpath:spring/app-context-lazy-xml.xml");
         ctx.refresh();
         MessageRenderer messageRenderer = ctx.getBean("renderer",
-                MessageRenderer.class);
+            MessageRenderer.class);
         messageRenderer.render();
         ctx.close();
     }

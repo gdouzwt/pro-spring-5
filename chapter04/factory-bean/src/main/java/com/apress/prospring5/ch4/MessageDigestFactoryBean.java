@@ -1,12 +1,12 @@
 package com.apress.prospring5.ch4;
 
-import java.security.MessageDigest;
-
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import java.security.MessageDigest;
+
 public class MessageDigestFactoryBean implements
-        FactoryBean<MessageDigest>, InitializingBean {
+    FactoryBean<MessageDigest>, InitializingBean {
     private String algorithmName = "MD5";
 
     private MessageDigest messageDigest = null;

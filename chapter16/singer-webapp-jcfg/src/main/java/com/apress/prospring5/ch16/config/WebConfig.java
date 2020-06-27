@@ -34,7 +34,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/")
-                .setCachePeriod(31556926);
+            .setCachePeriod(31556926);
     }
 
     @Bean
@@ -53,8 +53,8 @@ public class WebConfig implements WebMvcConfigurer {
     TilesConfigurer tilesConfigurer() {
         TilesConfigurer tilesConfigurer = new TilesConfigurer();
         tilesConfigurer.setDefinitions(
-                "/WEB-INF/layouts/layouts.xml",
-                "/WEB-INF/views/**/views.xml"
+            "/WEB-INF/layouts/layouts.xml",
+            "/WEB-INF/views/**/views.xml"
         );
         tilesConfigurer.setCheckRefresh(true);
         return tilesConfigurer;

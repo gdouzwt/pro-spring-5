@@ -20,12 +20,12 @@ class RuleFactoryImpl implements RuleFactory {
 
 
         rule.parameters = [
-                [0, 10, 'Kid'],
-                [11, 20, 'Youth'],
-                [21, 40, 'Adult'],
-                [41, 60, 'Matured'],
-                [61, 80, 'Middle-aged'],
-                [81, 120, 'Old']
+            [0, 10, 'Kid'],
+            [11, 20, 'Youth'],
+            [21, 40, 'Adult'],
+            [41, 60, 'Matured'],
+            [61, 80, 'Middle-aged'],
+            [81, 120, 'Old']
         ]
 
         /*

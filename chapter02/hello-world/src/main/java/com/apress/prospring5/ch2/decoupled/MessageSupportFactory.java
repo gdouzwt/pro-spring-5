@@ -52,6 +52,7 @@ public class MessageSupportFactory {
     public MessageRenderer getMessageRenderer() {
         return renderer;
     }
+
     // 接口，用来获取 provider
     public MessageProvider getMessageProvider() {
         return provider;

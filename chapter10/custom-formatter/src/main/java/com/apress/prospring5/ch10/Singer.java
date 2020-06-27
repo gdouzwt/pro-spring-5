@@ -46,6 +46,6 @@ public class Singer {
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return String.format("{First name: %s, Last name: %s, Birthday: %s, Site: %s}",
-                firstName, lastName, sdf.format(birthDate.toDate()), personalSite);
+            firstName, lastName, sdf.format(birthDate.toDate()), personalSite);
     }
 }

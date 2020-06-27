@@ -1,14 +1,10 @@
 package com.apress.prospring5.ch8.config;
 
-import org.hibernate.envers.boot.internal.EnversServiceImpl;
-import org.hibernate.envers.event.spi.EnversPostUpdateEventListenerImpl;
-import org.hibernate.event.spi.PostUpdateEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -74,7 +70,7 @@ public class EnversConfig {
         hibernateProp.put("org.hibernate.envers.audit_strategy_validity_end_rev_field_name", "AUDIT_REVISION_END");
         hibernateProp.put("org.hibernate.envers.audit_strategy_validity_store_revend_timestamp", "True");
         hibernateProp.put("org.hibernate.envers.audit_strategy_validity_revend_timestamp_field_name",
-                "AUDIT_REVISION_END_TS");
+            "AUDIT_REVISION_END_TS");
 
         return hibernateProp;
     }

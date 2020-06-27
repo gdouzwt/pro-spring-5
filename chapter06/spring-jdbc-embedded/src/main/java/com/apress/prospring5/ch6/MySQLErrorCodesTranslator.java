@@ -1,13 +1,13 @@
 package com.apress.prospring5.ch6;
 
-import java.sql.SQLException;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DeadlockLoserDataAccessException;
 import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
 
+import java.sql.SQLException;
+
 public class MySQLErrorCodesTranslator extends
-        SQLErrorCodeSQLExceptionTranslator {
+    SQLErrorCodeSQLExceptionTranslator {
     @Override
     protected DataAccessException customTranslate(String task,
                                                   String sql, SQLException sqlex) {

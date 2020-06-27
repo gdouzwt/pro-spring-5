@@ -13,7 +13,7 @@ public class AccessingFactoryBeans {
         ctx.getBean("shaDigest", MessageDigest.class);
 
         MessageDigestFactoryBean factoryBean =
-                (MessageDigestFactoryBean) ctx.getBean("&shaDigest");
+            (MessageDigestFactoryBean) ctx.getBean("&shaDigest");
         try {
             MessageDigest shaDigest = factoryBean.getObject();
             System.out.println(shaDigest.digest("Hello world".getBytes()));

@@ -2,7 +2,7 @@ package com.apress.prospring5.ch6;
 
 import com.apress.prospring5.ch6.config.NamedJdbcCfg;
 import com.apress.prospring5.ch6.dao.SingerDao;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 

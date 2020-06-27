@@ -6,8 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -50,12 +48,12 @@ public class ReactiveApplication {
 
     public static void main(String... args) throws Exception {
         ConfigurableApplicationContext ctx = new SpringApplicationBuilder(ReactiveApplication.class)
-                .properties(
-                        new HashMap<String, Object>() {{
-                            put("server.port", "8080");
-                            put("spring.jpa.hibernate.ddl-auto", "create-drop");
-                        }}
-                ).run(args);
+            .properties(
+                new HashMap<String, Object>() {{
+                    put("server.port", "8080");
+                    put("spring.jpa.hibernate.ddl-auto", "create-drop");
+                }}
+            ).run(args);
         assert (ctx != null);
         logger.info("Application started...");
         System.in.read();
@@ -72,9 +70,9 @@ public class ReactiveApplication {
     CommandLineRunner clr(WebClient client) {
         return args -> {
             client.get().uri("/all")
-                    .accept(MediaType.TEXT_EVENT_STREAM)
-                    .exchange()
-                    .flatMapMany(cr -> cr.bodyToFlux(Singer.class)).subscribe(System.out::println);
+                .accept(MediaType.TEXT_EVENT_STREAM)
+                .exchange()
+                .flatMapMany(cr -> cr.bodyToFlux(Singer.class)).subscribe(System.out::println);
         };
     }
 }

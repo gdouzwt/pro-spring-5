@@ -2,11 +2,11 @@ package com.apress.prospring5.ch14
 
 
 Singer singer = new Singer(firstName: 'John', lastName: 'Mayer', birthDate: new Date(
-        (new GregorianCalendar(1977, 9, 16)).getTime().getTime()))
+    (new GregorianCalendar(1977, 9, 16)).getTime().getTime()))
 
 Singer anotherSinger =
-        new Singer(firstName: 39, lastName: 'Mayer', birthDate: new Date(
-                (new GregorianCalendar(1977, 9, 16)).getTime().getTime()))
+    new Singer(firstName: 39, lastName: 'Mayer', birthDate: new Date(
+        (new GregorianCalendar(1977, 9, 16)).getTime().getTime()))
 
 println singer
 println anotherSinger

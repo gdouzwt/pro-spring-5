@@ -1,9 +1,9 @@
 package com.apress.prospring5.ch10;
 
+import org.joda.time.DateTime;
+
 import java.net.URL;
 import java.text.SimpleDateFormat;
-
-import org.joda.time.DateTime;
 
 public class AnotherSinger {
     private String firstName;
@@ -46,6 +46,6 @@ public class AnotherSinger {
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return String.format("{First name: %s, Last name: %s, Birthday: %s, Site: %s}",
-                firstName, lastName, sdf.format(birthDate.toDate()), personalSite);
+            firstName, lastName, sdf.format(birthDate.toDate()), personalSite);
     }
 }

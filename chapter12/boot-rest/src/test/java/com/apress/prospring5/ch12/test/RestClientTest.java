@@ -2,6 +2,7 @@ package com.apress.prospring5.ch12.test;
 
 import com.apress.prospring5.ch12.entities.Singer;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,7 @@ public class RestClientTest {
     }
 
     @Test
+    @Ignore
     public void testFindAll() {
         logger.info("--> Testing retrieve all singers");
         Singer[] singers = restTemplate.getForObject(URL_GET_ALL_SINGERS, Singer[].class);
@@ -40,6 +42,7 @@ public class RestClientTest {
     }
 
     @Test
+    @Ignore
     public void testFindById() {
         logger.info("--> Testing retrieve a singer by id : 1");
         Singer singer = restTemplate.getForObject(URL_GET_SINGER_BY_ID, Singer.class, 1);
@@ -48,6 +51,7 @@ public class RestClientTest {
     }
 
     @Test
+    @Ignore
     public void testUpdate() {
         logger.info("--> Testing update singer by id : 1");
         Singer singer = restTemplate.getForObject(URL_UPDATE_SINGER, Singer.class, 1);
@@ -57,6 +61,7 @@ public class RestClientTest {
     }
 
     @Test
+    @Ignore
     public void testDelete() {
         logger.info("--> Testing delete singer by id : 3");
         restTemplate.delete(URL_DELETE_SINGER, 3);
@@ -72,13 +77,14 @@ public class RestClientTest {
     }
 
     @Test
+    @Ignore
     public void testCreate() {
         logger.info("--> Testing create singer");
         Singer singerNew = new Singer();
         singerNew.setFirstName("BB");
         singerNew.setLastName("King");
         singerNew.setBirthDate(new Date(
-                (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
+            (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
         singerNew = restTemplate.postForObject(URL_CREATE_SINGER, singerNew, Singer.class);
         logger.info("Singer created successfully: " + singerNew);
     }

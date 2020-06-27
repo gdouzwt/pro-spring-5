@@ -3,8 +3,6 @@ package com.apress.prospring5.ch11.services;
 import com.apress.prospring5.ch11.entities.Car;
 import org.joda.time.DateTime;
 import org.joda.time.Years;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;

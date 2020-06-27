@@ -13,7 +13,7 @@ public class StepExecutionStatsListener extends StepExecutionListenerSupport {
     @Override
     public ExitStatus afterStep(StepExecution stepExecution) {
         logger.info("--> Wrote: " + stepExecution.getWriteCount()
-                + " items in step: " + stepExecution.getStepName());
+            + " items in step: " + stepExecution.getStepName());
         return null;
     }
 }

@@ -1,15 +1,10 @@
 package com.apress.prospring5.ch16.web;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Locale;
-
+import com.apress.prospring5.ch16.entities.Singer;
+import com.apress.prospring5.ch16.services.SingerService;
 import com.apress.prospring5.ch16.util.Message;
 import com.apress.prospring5.ch16.util.SingerGrid;
 import com.apress.prospring5.ch16.util.UrlUtil;
-import com.apress.prospring5.ch16.entities.Singer;
-import com.apress.prospring5.ch16.services.SingerService;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -23,16 +18,17 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
+
 
 @RequestMapping("/singers")
 @Controller
@@ -69,16 +65,16 @@ public class SingerController {
         logger.info("Updating singer");
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("message", new Message("error",
-                    messageSource.getMessage("singer_save_fail", new Object[]{}, locale)));
+                messageSource.getMessage("singer_save_fail", new Object[]{}, locale)));
             uiModel.addAttribute("singer", singer);
             return "singers/update";
         }
         uiModel.asMap().clear();
         redirectAttributes.addFlashAttribute("message", new Message("success",
-                messageSource.getMessage("singer_save_success", new Object[]{}, locale)));
+            messageSource.getMessage("singer_save_success", new Object[]{}, locale)));
         singerService.save(singer);
         return "redirect:/singers/" + UrlUtil.encodeUrlPathSegment(singer.getId().toString(),
-                httpServletRequest);
+            httpServletRequest);
     }
 
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
@@ -94,13 +90,13 @@ public class SingerController {
         logger.info("Creating singer");
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("message", new Message("error",
-                    messageSource.getMessage("singer_save_fail", new Object[]{}, locale)));
+                messageSource.getMessage("singer_save_fail", new Object[]{}, locale)));
             uiModel.addAttribute("singer", singer);
             return "singers/create";
         }
         uiModel.asMap().clear();
         redirectAttributes.addFlashAttribute("message", new Message("success",
-                messageSource.getMessage("singer_save_success", new Object[]{}, locale)));
+            messageSource.getMessage("singer_save_success", new Object[]{}, locale)));
 
         logger.info("Singer id: " + singer.getId());
 
@@ -131,7 +127,7 @@ public class SingerController {
 
         if (singer.getPhoto() != null) {
             logger.info("Downloading photo for id: {} with size: {}", singer.getId(),
-                    singer.getPhoto().length);
+                singer.getPhoto().length);
         }
 
         return singer.getPhoto();
@@ -160,14 +156,13 @@ public class SingerController {
         Sort sort = null;
         String orderBy = sortBy;
         if (orderBy != null && orderBy.equals("birthDateString"))
-            orderBy = "birthDate";
 
-        if (orderBy != null && order != null) {
-            if (order.equals("desc")) {
-                sort = new Sort(Sort.Direction.DESC, orderBy);
-            } else
-                sort = new Sort(Sort.Direction.ASC, orderBy);
-        }
+            if (orderBy != null && order != null) {
+                if (order.equals("desc")) {
+                    sort = Sort.by(orderBy).descending();
+                } else
+                    sort = Sort.by(orderBy).ascending();
+            }
 
         // Constructs page request for current page
         // Note: page number for Spring Data JPA starts with 0, while jqGrid starts with 1

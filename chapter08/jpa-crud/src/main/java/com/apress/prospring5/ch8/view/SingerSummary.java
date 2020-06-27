@@ -28,6 +28,6 @@ public class SingerSummary implements Serializable {
 
     public String toString() {
         return "First name: " + firstName + ", Last Name: " + lastName
-                + ", Most Recent Album: " + latestAlbum;
+            + ", Most Recent Album: " + latestAlbum;
     }
 }

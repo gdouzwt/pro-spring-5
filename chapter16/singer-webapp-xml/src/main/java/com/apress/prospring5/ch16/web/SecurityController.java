@@ -22,7 +22,7 @@ public class SecurityController {
     public String loginFail(Model uiModel, Locale locale) {
         logger.info("Login failed detected");
         uiModel.addAttribute("message", new Message("error",
-                messageSource.getMessage("message_login_fail", new Object[]{}, locale)));
+            messageSource.getMessage("message_login_fail", new Object[]{}, locale)));
         return "singers/list";
     }
 

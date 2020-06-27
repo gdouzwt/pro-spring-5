@@ -18,13 +18,13 @@ public class TxJtaDemo {
 
     public static void main(String... args) {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(ServicesConfig.class,
-                XAJpaConfig.class);
+            XAJpaConfig.class);
         SingerService singerService = ctx.getBean(SingerService.class);
         Singer singer = new Singer();
         singer.setFirstName("John");
         singer.setLastName("Mayer");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1977, 9, 16)).getTime().getTime()));
+            (new GregorianCalendar(1977, 9, 16)).getTime().getTime()));
         singerService.save(singer);
         if (singer.getId() != null) {
             logger.info("--> Singer saved successfully");
@@ -41,4 +41,4 @@ public class TxJtaDemo {
         }
         ctx.close();
     }
-} 
+}

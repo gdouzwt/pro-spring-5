@@ -2,7 +2,6 @@ package com.apress.prospring5.ch8;
 
 import com.apress.prospring5.ch8.config.JpaConfig;
 import com.apress.prospring5.ch8.entities.Album;
-import com.apress.prospring5.ch8.entities.Instrument;
 import com.apress.prospring5.ch8.entities.Singer;
 import com.apress.prospring5.ch8.service.SingerService;
 import org.junit.After;
@@ -74,18 +73,18 @@ public class SingerJPATest {
         singer.setFirstName("BB");
         singer.setLastName("King");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
+            (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
 
         Album album = new Album();
         album.setTitle("My Kind of Blues");
         album.setReleaseDate(new java.sql.Date(
-                (new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
+            (new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
         singer.addAlbum(album);
 
         album = new Album();
         album.setTitle("A Heart Full of Blues");
         album.setReleaseDate(new java.sql.Date(
-                (new GregorianCalendar(1962, 3, 20)).getTime().getTime()));
+            (new GregorianCalendar(1962, 3, 20)).getTime().getTime()));
         singer.addAlbum(album);
 
         singerService.save(singer);

@@ -1,6 +1,7 @@
 package com.apress.prospring5.ch16.web;
 
-import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
+@Ignore
 public class HelloControllerTest {
 
 
@@ -33,17 +35,17 @@ public class HelloControllerTest {
     @Test
     public void homePage() throws Exception {
         mockMvc.perform(get("/"))
-                .andExpect(content().string(containsString("ProSpring5")));
+            .andExpect(content().string(containsString("ProSpring5")));
     }
 
     @Test
     public void loginWithValidUserThenAuthenticated() throws Exception {
         SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login = formLogin()
-                .user("user")
-                .password("user");
+            .user("user")
+            .password("user");
 
         mockMvc.perform(login)
-                .andExpect(authenticated().withUsername("user"));
+            .andExpect(authenticated().withUsername("user"));
     }
 
 }

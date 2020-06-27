@@ -22,8 +22,8 @@ public class DataSourceConfig {
         try {
             EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
             return dbBuilder.setType(EmbeddedDatabaseType.H2)
-                    .addScripts("classpath:/org/springframework/batch/core/schema-h2.sql",
-                            "classpath:support/singer.sql").build();
+                .addScripts("classpath:/org/springframework/batch/core/schema-h2.sql",
+                    "classpath:support/singer.sql").build();
         } catch (Exception e) {
             logger.error("Embedded DataSource bean cannot be created!", e);
             return null;

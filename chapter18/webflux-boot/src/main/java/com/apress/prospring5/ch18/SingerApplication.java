@@ -9,10 +9,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.http.server.reactive.ServletHttpHandlerAdapter;
-
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -40,13 +38,13 @@ public class SingerApplication {
 
     public RouterFunction<ServerResponse> routingFunction() {
         return route(GET("/test"), serverRequest -> ok().body(fromObject("works!")))
-                .andRoute(GET("/singers"), singerHandler.list)
-                .andRoute(GET("/singers/{id}"), singerHandler::show)
-                .andRoute(POST("/singers"), singerHandler.save)
-                .filter((request, next) -> {
-                    logger.info("Before handler invocation: " + request.path());
-                    return next.handle(request);
-                });
+            .andRoute(GET("/singers"), singerHandler.list)
+            .andRoute(GET("/singers/{id}"), singerHandler::show)
+            .andRoute(POST("/singers"), singerHandler.save)
+            .filter((request, next) -> {
+                logger.info("Before handler invocation: " + request.path());
+                return next.handle(request);
+            });
     }
 
     @Bean
@@ -60,12 +58,12 @@ public class SingerApplication {
 
     public static void main(String... args) throws Exception {
         ConfigurableApplicationContext ctx = new SpringApplicationBuilder(SingerApplication.class)
-                .properties(
-                        new HashMap<String, Object>() {{
-                            put("server.port", "8080");
-                            put("spring.jpa.hibernate.ddl-auto", "create-drop");
-                        }}
-                ).run(args);
+            .properties(
+                new HashMap<String, Object>() {{
+                    put("server.port", "8080");
+                    put("spring.jpa.hibernate.ddl-auto", "create-drop");
+                }}
+            ).run(args);
         assert (ctx != null);
         logger.info("Application started...");
 

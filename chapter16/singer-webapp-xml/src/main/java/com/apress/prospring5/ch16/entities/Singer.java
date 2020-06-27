@@ -118,7 +118,7 @@ public class Singer implements Serializable {
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " + birthDate
-                + ", Description: " + description;
+            + ", Last name: " + lastName + ", Birthday: " + birthDate
+            + ", Description: " + description;
     }
 }

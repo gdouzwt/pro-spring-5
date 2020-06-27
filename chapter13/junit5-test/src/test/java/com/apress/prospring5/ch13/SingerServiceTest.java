@@ -55,12 +55,12 @@ public class SingerServiceTest {
     @Test
     @DisplayName("should return all singers")
     @SqlGroup({
-            @Sql(value = "classpath:db/test-data.sql",
-                    config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--"),
-                    executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD),
-            @Sql(value = "classpath:db/clean-up.sql",
-                    config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--"),
-                    executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD),
+        @Sql(value = "classpath:db/test-data.sql",
+            config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--"),
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD),
+        @Sql(value = "classpath:db/clean-up.sql",
+            config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--"),
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD),
     })
     public void findAll() {
         List<Singer> result = singerService.findAll();
@@ -71,12 +71,12 @@ public class SingerServiceTest {
     @Test
     @DisplayName("should return singer 'John Mayer'")
     @SqlGroup({
-            @Sql(value = "classpath:db/test-data.sql",
-                    config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--"),
-                    executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD),
-            @Sql(value = "classpath:db/clean-up.sql",
-                    config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--"),
-                    executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD),
+        @Sql(value = "classpath:db/test-data.sql",
+            config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--"),
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD),
+        @Sql(value = "classpath:db/clean-up.sql",
+            config = @SqlConfig(encoding = "utf-8", separator = ";", commentPrefix = "--"),
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD),
     })
     public void testFindByFirstNameAndLastNameOne() throws Exception {
         Singer result = singerService.findByFirstNameAndLastName("John", "Mayer");

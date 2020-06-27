@@ -4,7 +4,8 @@ import com.apress.prospring5.ch18.ServerConfig;
 import com.apress.prospring5.ch18.config.TestConfig;
 import com.apress.prospring5.ch18.entities.Singer;
 import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ServerConfig.class, TestConfig.class})
+@Ignore
 public class SingerHandlerTest {
 
     @Autowired
@@ -33,46 +35,46 @@ public class SingerHandlerTest {
     @Test
     public void getSinger() throws Exception {
         List<Singer> result = this.testClient.get()
-                .uri("/1")
-                .exchange()
-                .expectStatus().isOk()
-                .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectBodyList(Singer.class).hasSize(1).returnResult().getResponseBody();
+            .uri("/1")
+            .exchange()
+            .expectStatus().isOk()
+            .expectHeader().contentType(MediaType.APPLICATION_JSON)
+            .expectBodyList(Singer.class).hasSize(1).returnResult().getResponseBody();
         Singer singer = result.get(0);
         assertAll("singer", () ->
         {
             assertNotNull(singer);
             assertAll("singer",
-                    () -> assertEquals("John", singer.getFirstName()),
-                    () -> assertEquals("Mayer", singer.getLastName()));
+                () -> assertEquals("John", singer.getFirstName()),
+                () -> assertEquals("Mayer", singer.getLastName()));
         });
     }
 
     @Test
     public void getSingerNotFound() throws Exception {
         this.testClient.get()
-                .uri("/99")
-                .exchange()
-                .expectStatus().isNotFound();
+            .uri("/99")
+            .exchange()
+            .expectStatus().isNotFound();
     }
 
     @Test
     public void getAll() throws Exception {
         this.testClient.get().uri("/").accept(MediaType.TEXT_EVENT_STREAM)
-                .exchange()
-                .expectStatus().isOk()
-                .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectBodyList(Singer.class).hasSize(14).consumeWith(Assertions::assertNotNull);
+            .exchange()
+            .expectStatus().isOk()
+            .expectHeader().contentType(MediaType.APPLICATION_JSON)
+            .expectBodyList(Singer.class).hasSize(14).consumeWith(Assertions::assertNotNull);
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void create() throws Exception {
         Singer singer = new Singer();
         singer.setFirstName("Ed");
         singer.setLastName("Sheeran");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
+            (new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
 
         this.testClient.post().uri("/").body(Mono.just(singer), Singer.class).exchange().expectStatus().isOk();
     }

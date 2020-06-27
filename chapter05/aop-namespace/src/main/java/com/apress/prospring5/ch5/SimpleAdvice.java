@@ -9,8 +9,8 @@ public class SimpleAdvice {
 
     public void simpleBeforeAdvice(JoinPoint joinPoint) {
         System.out.println("Executing: " +
-                joinPoint.getSignature().getDeclaringTypeName() + " "
-                + joinPoint.getSignature().getName());
+            joinPoint.getSignature().getDeclaringTypeName() + " "
+            + joinPoint.getSignature().getName());
     }
 }
 

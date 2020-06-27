@@ -62,11 +62,11 @@ public class BatchConfig {
     @Bean
     protected Step step1() {
         return steps.get("step1").listener(executionStatsListener)
-                .<Singer, Singer>chunk(10)
-                .reader(itemReader(null))
-                .processor(itemProcessor)
-                .writer(itemWriter())
-                .build();
+            .<Singer, Singer>chunk(10)
+            .reader(itemReader(null))
+            .processor(itemProcessor)
+            .writer(itemWriter())
+            .build();
     }
 
     @Bean

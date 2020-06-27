@@ -3,7 +3,6 @@ package com.apress.prospring5.ch12;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.jms.JMSException;

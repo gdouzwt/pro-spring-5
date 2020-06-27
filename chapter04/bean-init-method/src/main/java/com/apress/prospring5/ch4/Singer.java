@@ -28,7 +28,7 @@ public class Singer {
 
         if (age == Integer.MIN_VALUE) {
             throw new IllegalArgumentException(
-                    "You must set the age property of any beans of type " + Singer.class);
+                "You must set the age property of any beans of type " + Singer.class);
         }
     }
 
@@ -55,7 +55,7 @@ public class Singer {
             return bean;
         } catch (BeanCreationException ex) {
             System.out.println("An error occurred in bean configuration: "
-                    + ex.getMessage());
+                + ex.getMessage());
             return null;
         }
     }

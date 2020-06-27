@@ -4,9 +4,10 @@ import com.apress.prospring5.ch13.SingerController;
 import com.apress.prospring5.ch13.entities.Singer;
 import com.apress.prospring5.ch13.entities.Singers;
 import com.apress.prospring5.ch13.services.SingerService;
+import org.jmock.Expectations;
+import org.jmock.Mockery;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.ui.ExtendedModelMap;
 
@@ -14,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-
-import org.jmock.Expectations;
-import org.jmock.Mockery;
 
 public class SingerControllerTest {
     private final List<Singer> singers = new ArrayList<>();

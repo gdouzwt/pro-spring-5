@@ -11,7 +11,12 @@ import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
 import org.springframework.http.server.reactive.ServletHttpHandlerAdapter;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Flux;
 import reactor.ipc.netty.http.server.HttpServer;
+import reactor.ipc.netty.http.server.HttpServerRequest;
+import reactor.ipc.netty.http.server.HttpServerResponse;
+
+import java.util.function.BiFunction;
 
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
@@ -19,6 +24,18 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
+//import org.springframework.http.server.reactive.HttpHandler;
+//import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
+//import org.springframework.http.server.reactive.ServletHttpHandlerAdapter;
+//import org.springframework.web.reactive.function.server.RouterFunction;
+//import org.springframework.web.reactive.function.server.ServerResponse;
+//import reactor.ipc.netty.http.server.HttpServer;
+//
+//import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+//import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+//import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+//import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+//import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
 
 /**
  * Created by iuliana.cosmina on 8/6/17.
@@ -35,13 +52,13 @@ public class Server {
 
     public RouterFunction<ServerResponse> routingFunction() {
         return route(GET("/test"), serverRequest -> ok().body(fromObject("works!")))
-                .andRoute(GET("/singers"), singerHandler.list)
-                .andRoute(GET("/singers/{id}"), singerHandler::show)
-                .andRoute(POST("/singers"), singerHandler.save)
-                .filter((request, next) -> {
-                    logger.info("Before handler invocation: " + request.path());
-                    return next.handle(request);
-                });
+            .andRoute(GET("/singers"), singerHandler.list)
+            .andRoute(GET("/singers/{id}"), singerHandler::show)
+            .andRoute(POST("/singers"), singerHandler.save)
+            .filter((request, next) -> {
+                logger.info("Before handler invocation: " + request.path());
+                return next.handle(request);
+            });
     }
 
     public void startReactorServer() throws InterruptedException {
@@ -50,7 +67,8 @@ public class Server {
 
         ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(httpHandler);
         HttpServer server = HttpServer.create(HOST, PORT);
-        server.newHandler(adapter).block();
+
+        server.newHandler(fuck()).block();
     }
 
     public void startTomcatServer() throws LifecycleException {
@@ -66,6 +84,10 @@ public class Server {
         rootContext.addServletMappingDecoded("/", "httpHandlerServlet");
         tomcatServer.start();
         logger.info("Embedded Tomcat server started...");
+    }
+
+    public BiFunction<HttpServerRequest, HttpServerResponse, Flux<Void>> fuck() {
+        return (httpServerRequest, httpServerResponse) -> null;
     }
 
 }

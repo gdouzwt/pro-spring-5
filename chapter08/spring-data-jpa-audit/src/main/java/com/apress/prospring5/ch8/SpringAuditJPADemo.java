@@ -1,9 +1,5 @@
 package com.apress.prospring5.ch8;
 
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Date;
-
 import com.apress.prospring5.ch8.config.AuditConfig;
 import com.apress.prospring5.ch8.entities.SingerAudit;
 import com.apress.prospring5.ch8.services.SingerAuditService;
@@ -11,7 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
+
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 public class SpringAuditJPADemo {
     private static Logger logger = LoggerFactory.getLogger(SpringAuditJPADemo.class);
@@ -31,7 +30,7 @@ public class SpringAuditJPADemo {
         singer.setFirstName("BB");
         singer.setLastName("King");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
+            (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
         singerAuditService.save(singer);
         singers = singerAuditService.findAll();
         listSingers(singers);

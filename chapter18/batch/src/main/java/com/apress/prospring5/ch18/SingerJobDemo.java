@@ -12,14 +12,14 @@ import java.util.Date;
 public class SingerJobDemo {
     public static void main(String... args) throws Exception {
         ApplicationContext applicationContext
-                = new ClassPathXmlApplicationContext("/spring/singerJob.xml");
+            = new ClassPathXmlApplicationContext("/spring/singerJob.xml");
 
         Job job = applicationContext.getBean(Job.class);
         JobLauncher jobLauncher = applicationContext.getBean(JobLauncher.class);
 
         JobParameters jobParameters = new JobParametersBuilder()
-                .addDate("date", new Date())
-                .toJobParameters();
+            .addDate("date", new Date())
+            .toJobParameters();
 
         jobLauncher.run(job, jobParameters);
     }

@@ -19,7 +19,7 @@ public class Jsr349AssertTrueDemo {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         SingerValidationService singerValidationService =
-                ctx.getBean("singerValidationService", SingerValidationService.class);
+            ctx.getBean("singerValidationService", SingerValidationService.class);
 
         Singer singer = new Singer();
         singer.setFirstName("John");
@@ -40,8 +40,8 @@ public class Jsr349AssertTrueDemo {
     private static void listViolations(Set<ConstraintViolation<Singer>> violations) {
         logger.info("No. of violations: " + violations.size());
         violations.forEach(v ->
-                logger.info("Validation error for property: " + v.getPropertyPath()
-                        + " with value: " + v.getInvalidValue()
-                        + " with error message: " + v.getMessage()));
+            logger.info("Validation error for property: " + v.getPropertyPath()
+                + " with value: " + v.getInvalidValue()
+                + " with error message: " + v.getMessage()));
     }
 }

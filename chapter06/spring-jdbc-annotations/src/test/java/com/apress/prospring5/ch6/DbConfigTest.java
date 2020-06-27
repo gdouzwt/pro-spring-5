@@ -1,7 +1,7 @@
 package com.apress.prospring5.ch6;
 
 import com.apress.prospring5.ch6.config.DbConfig;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,8 +14,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 
 /**
  * Created by iuliana.cosmina on 4/14/17.
@@ -36,6 +37,7 @@ public class DbConfigTest {
         assertNotNull(dataSource);
         testDataSource(dataSource);
 
+
         ctx.close();
     }
 
@@ -51,22 +53,16 @@ public class DbConfigTest {
     }
 
     private void testDataSource(DataSource dataSource) throws SQLException {
-        Connection connection = null;
-        try {
-            connection = dataSource.getConnection();
+        try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT 1");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int mockVal = resultSet.getInt("1");
-                assertTrue(mockVal == 1);
+                assertEquals(1, mockVal);
             }
             statement.close();
         } catch (Exception e) {
             logger.debug("Something unexpected happened.", e);
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
         }
     }
 }

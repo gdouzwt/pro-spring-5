@@ -1,10 +1,10 @@
 package com.apress.prospring5.ch9;
 
-import java.util.List;
-
 import com.apress.prospring5.ch9.entities.Singer;
 import com.apress.prospring5.ch9.services.SingerService;
 import org.springframework.context.support.GenericXmlApplicationContext;
+
+import java.util.List;
 
 public class TxDeclarativeDemo {
     public static void main(String... args) {

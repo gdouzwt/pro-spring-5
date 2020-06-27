@@ -1,11 +1,11 @@
 package com.apress.prospring5.ch8.entities;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
+import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "album")
@@ -83,7 +83,7 @@ public class Album implements Serializable {
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return String.format("Album - id: %d, Singer id: %d, Title: %s, Release Date: %s",
-                id, singer.getId(), title, sdf.format(releaseDate));
+            id, singer.getId(), title, sdf.format(releaseDate));
     }
 
     @Override

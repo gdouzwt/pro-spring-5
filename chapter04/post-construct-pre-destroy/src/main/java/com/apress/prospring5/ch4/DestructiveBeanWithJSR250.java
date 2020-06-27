@@ -1,10 +1,10 @@
 package com.apress.prospring5.ch4;
 
-import java.io.File;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-
-import org.springframework.context.support.GenericXmlApplicationContext;
+import java.io.File;
 
 public class DestructiveBeanWithJSR250 {
     private File file;
@@ -16,8 +16,8 @@ public class DestructiveBeanWithJSR250 {
 
         if (filePath == null) {
             throw new IllegalArgumentException(
-                    "You must specify the filePath property of " +
-                            DestructiveBeanWithJSR250.class);
+                "You must specify the filePath property of " +
+                    DestructiveBeanWithJSR250.class);
         }
 
         this.file = new File(filePath);
@@ -47,7 +47,7 @@ public class DestructiveBeanWithJSR250 {
         ctx.refresh();
 
         DestructiveBeanWithJSR250 bean =
-                (DestructiveBeanWithJSR250) ctx.getBean("destructiveBean");
+            (DestructiveBeanWithJSR250) ctx.getBean("destructiveBean");
 
         System.out.println("Calling destroy()");
         ctx.destroy();

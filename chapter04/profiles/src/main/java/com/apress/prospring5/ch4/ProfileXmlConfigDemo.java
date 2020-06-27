@@ -1,8 +1,8 @@
 package com.apress.prospring5.ch4;
 
-import java.util.List;
-
 import org.springframework.context.support.GenericXmlApplicationContext;
+
+import java.util.List;
 
 public class ProfileXmlConfigDemo {
     public static void main(String... args) {
@@ -11,7 +11,7 @@ public class ProfileXmlConfigDemo {
         ctx.refresh();
 
         FoodProviderService foodProviderService =
-                ctx.getBean("foodProviderService", FoodProviderService.class);
+            ctx.getBean("foodProviderService", FoodProviderService.class);
 
         List<Food> lunchSet = foodProviderService.provideLunchSet();
 

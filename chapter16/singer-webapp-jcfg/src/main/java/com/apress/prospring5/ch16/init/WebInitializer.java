@@ -16,14 +16,14 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[]{
-                SecurityConfig.class, DataServiceConfig.class
+            SecurityConfig.class, DataServiceConfig.class
         };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[]{
-                WebConfig.class
+            WebConfig.class
         };
     }
 
@@ -48,7 +48,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     private MultipartConfigElement getMultipartConfigElement() {
         return new MultipartConfigElement(
-                null, MAX_FILE_SIZE, MAX_REQUEST_SIZE, FILE_SIZE_THRESHOLD);
+            null, MAX_FILE_SIZE, MAX_REQUEST_SIZE, FILE_SIZE_THRESHOLD);
     }
 
     private static final long MAX_FILE_SIZE = 5000000;

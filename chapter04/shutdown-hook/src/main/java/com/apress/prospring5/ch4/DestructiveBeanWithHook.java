@@ -1,10 +1,10 @@
 package com.apress.prospring5.ch4;
 
+import org.springframework.context.support.GenericXmlApplicationContext;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
-
-import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class DestructiveBeanWithHook {
     private File file;
@@ -16,8 +16,8 @@ public class DestructiveBeanWithHook {
 
         if (filePath == null) {
             throw new IllegalArgumentException(
-                    "You must specify the filePath property of " +
-                            DestructiveBeanWithHook.class);
+                "You must specify the filePath property of " +
+                    DestructiveBeanWithHook.class);
         }
 
         this.file = new File(filePath);

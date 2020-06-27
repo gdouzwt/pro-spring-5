@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.util.StopWatch;
 
-import java.util.Arrays;
-
 /**
  * Created by iuliana.cosmina on 2/19/17.
  */
@@ -39,7 +37,7 @@ public class LookupConfigDemo {
         Singer singer2 = bean.getMySinger();
 
         System.out.println("[" + beanName + "]: Singer Instances the Same?  "
-                + (singer1 == singer2));
+            + (singer1 == singer2));
 
         StopWatch stopWatch = new StopWatch();
         stopWatch.start("lookupDemo");

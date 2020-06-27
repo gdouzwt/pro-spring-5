@@ -25,16 +25,16 @@ public class IntroductionDemo {
         System.out.println("Is IsModified?: " + (proxy instanceof IsModified));
 
         System.out.println("Has been modified?: " +
-                proxyInterface.isModified());
+            proxyInterface.isModified());
 
         proxy.setName("John Mayer");
 
         System.out.println("Has been modified?: " +
-                proxyInterface.isModified());
+            proxyInterface.isModified());
 
         proxy.setName("Eric Clapton");
 
         System.out.println("Has been modified?: " +
-                proxyInterface.isModified());
+            proxyInterface.isModified());
     }
 }

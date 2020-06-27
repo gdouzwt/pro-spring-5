@@ -14,7 +14,7 @@
     <bean id="destructiveBean"
           class="com.apress.prospring5.ch4.DestructiveBeanWithInterface"
           p:filePath=
-                  "#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
+              "#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
 
     <bean id="shutdownHook"
           class="com.apress.prospring5.ch4.ShutdownHookBean"/>

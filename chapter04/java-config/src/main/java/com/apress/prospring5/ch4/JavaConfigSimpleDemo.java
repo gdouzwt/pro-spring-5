@@ -30,10 +30,10 @@ public class JavaConfigSimpleDemo {
 
     public static void main(String... args) {
         ApplicationContext ctx = new
-                AnnotationConfigApplicationContext(AppConfig.class);
+            AnnotationConfigApplicationContext(AppConfig.class);
 
         MessageRenderer renderer =
-                ctx.getBean("messageRenderer", MessageRenderer.class);
+            ctx.getBean("messageRenderer", MessageRenderer.class);
 
         renderer.render();
     }

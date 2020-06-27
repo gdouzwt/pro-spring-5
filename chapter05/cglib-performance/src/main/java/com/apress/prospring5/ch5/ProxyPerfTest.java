@@ -10,7 +10,7 @@ public class ProxyPerfTest {
         SimpleBean target = new DefaultSimpleBean();
 
         Advisor advisor = new DefaultPointcutAdvisor(new TestPointcut(),
-                new NoOpBeforeAdvice());
+            new NoOpBeforeAdvice());
 
         runCglibTests(advisor, target);
         runCglibFrozenTests(advisor, target);

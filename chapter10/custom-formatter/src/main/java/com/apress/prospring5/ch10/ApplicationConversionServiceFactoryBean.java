@@ -18,7 +18,7 @@ import java.util.Set;
 
 @Component("conversionService")
 public class ApplicationConversionServiceFactoryBean extends
-        FormattingConversionServiceFactoryBean {
+    FormattingConversionServiceFactoryBean {
     private static Logger logger = LoggerFactory.getLogger(ApplicationConversionServiceFactoryBean.class);
 
     private static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd";

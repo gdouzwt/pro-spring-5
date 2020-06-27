@@ -18,7 +18,7 @@ public class ConvFormatServDemo {
         logger.info("Singer info: " + john);
         ConversionService conversionService = ctx.getBean("conversionService", ConversionService.class);
         logger.info("Birthdate of singer is : " +
-                conversionService.convert(john.getBirthDate(), String.class));
+            conversionService.convert(john.getBirthDate(), String.class));
 
         ctx.close();
     }

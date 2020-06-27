@@ -1,10 +1,10 @@
 package com.apress.prospring5.ch4.highschool;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.apress.prospring5.ch4.Food;
 import com.apress.prospring5.ch4.FoodProviderService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FoodProviderServiceImpl implements FoodProviderService {
     @Override

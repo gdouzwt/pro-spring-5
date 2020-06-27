@@ -2,15 +2,20 @@ apply plugin: 'idea'
 
 dependencies {
     annotationProcessor hibernate.jpaModelGen
-    compile hibernate.querydslapt
+    implementation hibernate.querydslapt
+    implementation group: 'jakarta.annotation', name: 'jakarta.annotation-api', version: '1.3.5'
+//    implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '2.3.3'
+    implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.2'
+//    implementation group: 'javax.xml.bind', name: 'jaxb-impl', version: '2.0.2'
+
 }
 
 jar {
     manifest {
         attributes(
-                "Created-By": "Iuliana Cosmina",
-                "Specification-Title": "Pro Spring 5",
-                'Main-Class': 'com.apress.prospring5.ch8.SpringJPADemo',
-                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+            "Created-By": "Iuliana Cosmina",
+            "Specification-Title": "Pro Spring 5",
+            'Main-Class': 'com.apress.prospring5.ch8.SpringJPADemo',
+            "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
     }
 }

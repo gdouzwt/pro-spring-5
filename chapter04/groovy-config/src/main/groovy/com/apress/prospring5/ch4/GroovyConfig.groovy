@@ -1,8 +1,8 @@
 package com.apress.prospring5.ch4
 
 import com.apress.prospring5.ch3.xml.Singer
-import org.springframework.context.support.GenericApplicationContext
 import org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader
+import org.springframework.context.support.GenericApplicationContext
 
 def ctx = new GenericApplicationContext()
 def reader = new GroovyBeanDefinitionReader(ctx)

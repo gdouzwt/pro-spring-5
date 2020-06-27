@@ -22,8 +22,8 @@ public class Instrument implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "singer_instrument",
-            joinColumns = @JoinColumn(name = "INSTRUMENT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "SINGER_ID"))
+        joinColumns = @JoinColumn(name = "INSTRUMENT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "SINGER_ID"))
     public Set<Singer> getSingers() {
         return this.singers;
     }

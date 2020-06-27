@@ -1,9 +1,9 @@
 package com.apress.prospring5.ch5;
 
-import java.lang.reflect.Method;
-
 import org.springframework.aop.ClassFilter;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
+
+import java.lang.reflect.Method;
 
 public class SimpleStaticPointcut extends StaticMethodMatcherPointcut {
     @Override

@@ -51,7 +51,7 @@ public class Singer {
         boolean result = true;
 
         if (genre != null &&
-                (genre.equals(Genre.COUNTRY) && (gender == null || lastName == null))) {
+            (genre.equals(Genre.COUNTRY) && (gender == null || lastName == null))) {
             result = false;
         }
 

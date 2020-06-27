@@ -9,7 +9,7 @@ public class DynamicPointcutDemo {
         SampleBean target = new SampleBean();
 
         Advisor advisor = new DefaultPointcutAdvisor(
-                new SimpleDynamicPointcut(), new SimpleAdvice());
+            new SimpleDynamicPointcut(), new SimpleAdvice());
 
         ProxyFactory pf = new ProxyFactory();
         pf.setTarget(target);

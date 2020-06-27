@@ -1,21 +1,20 @@
 package com.apress.prospring5.ch13.mockito;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.apress.prospring5.ch13.SingerController;
 import com.apress.prospring5.ch13.entities.Singer;
 import com.apress.prospring5.ch13.entities.Singers;
 import com.apress.prospring5.ch13.services.SingerService;
 import org.junit.Before;
 import org.junit.Test;
-
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.ui.ExtendedModelMap;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class SingerControllerTest {
     private final List<Singer> singers = new ArrayList<>();
@@ -61,7 +60,7 @@ public class SingerControllerTest {
 
         SingerController singerController = new SingerController();
         ReflectionTestUtils.setField(singerController, "singerService",
-                singerService);
+            singerService);
 
         Singer singer = singerController.create(newSinger);
         assertEquals(Long.valueOf(999l), singer.getId());

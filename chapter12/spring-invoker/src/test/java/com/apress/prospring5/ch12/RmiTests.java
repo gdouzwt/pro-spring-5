@@ -2,8 +2,8 @@ package com.apress.prospring5.ch12;
 
 import com.apress.prospring5.ch12.config.RmiClientConfig;
 import com.apress.prospring5.ch12.entities.Singer;
-import com.apress.prospring5.ch12.services.DBInitializer;
 import com.apress.prospring5.ch12.services.SingerService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,6 +28,7 @@ public class RmiTests {
     private SingerService singerService;
 
     @Test
+    @Ignore
     public void testRmiAll() {
         List<Singer> singers = singerService.findAll();
         assertEquals(3, singers.size());
@@ -35,6 +36,7 @@ public class RmiTests {
     }
 
     @Test
+    @Ignore
     public void testRmiJohn() {
         List<Singer> singers = singerService.findByFirstName("John");
         assertEquals(2, singers.size());

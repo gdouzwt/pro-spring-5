@@ -29,10 +29,10 @@ apply plugin: 'aspectj'
 jar {
     manifest {
         attributes(
-                "Created-By": "Iuliana Cosmina",
-                "Specification-Title": "Pro Spring 5",
-                "Main-Class": "com.apress.prospring5.ch5.AspectJDemo",
-                "Class-Path": configurations.compile.collect { it.getName() }.join(' ')
+            "Created-By": "Iuliana Cosmina",
+            "Specification-Title": "Pro Spring 5",
+            "Main-Class": "com.apress.prospring5.ch5.AspectJDemo",
+            "Class-Path": configurations.compile.collect { it.getName() }.join(' ')
         )
     }
 }

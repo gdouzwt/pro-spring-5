@@ -43,9 +43,9 @@ public class InjectSimple {
 
     public String toString() {
         return "Name: " + name + "\n"
-                + "Age: " + age + "\n"
-                + "Age in Seconds: " + ageInSeconds + "\n"
-                + "Height: " + height + "\n"
-                + "Is Programmer?: " + programmer;
+            + "Age: " + age + "\n"
+            + "Age in Seconds: " + ageInSeconds + "\n"
+            + "Height: " + height + "\n"
+            + "Is Programmer?: " + programmer;
     }
 }

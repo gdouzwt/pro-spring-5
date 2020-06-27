@@ -119,10 +119,10 @@ public class SingerAudit implements Serializable {
 
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
-                + ", Last name: " + lastName + ", Birthday: " + birthDate
-                + ", Created by: " + createdBy + ", Create date: " + createdDate
-                + ", Modified by: " + lastModifiedBy + ", Modified date: "
-                + lastModifiedDate;
+            + ", Last name: " + lastName + ", Birthday: " + birthDate
+            + ", Created by: " + createdBy + ", Create date: " + createdDate
+            + ", Modified by: " + lastModifiedBy + ", Modified date: "
+            + lastModifiedDate;
     }
 
 }

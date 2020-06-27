@@ -1,7 +1,5 @@
 package com.apress.prospring5.ch12.entities;
 
-import com.apress.prospring5.ch12.entities.Singer;
-
 import java.io.Serializable;
 import java.util.List;
 
