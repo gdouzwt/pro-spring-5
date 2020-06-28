@@ -12,8 +12,8 @@ ext {
     slf4jVersion = '1.7.30'
     logbackVersion = '1.2.3'
 
-    groovyVersion = '2.4.5'
-    guavaVersion = '21.0'
+    groovyVersion = '2.5.12'
+    guavaVersion = '29.0-jre'
 
     aspectjVersion = '1.8.13'
     derbyVersion = '10.13.1.1'
