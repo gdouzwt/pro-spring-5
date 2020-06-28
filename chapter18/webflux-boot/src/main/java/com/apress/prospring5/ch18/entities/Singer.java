@@ -2,6 +2,7 @@ package com.apress.prospring5.ch18.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;

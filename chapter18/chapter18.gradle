@@ -9,16 +9,15 @@ subprojects {
     }
 
     dependencies {
-        compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
 
         if (!project.name.contains("boot") && !project.name.contains("webflux")) {
-            compile(spring.batchCore) {
+            implementation(spring.batchCore) {
                 //exclude these as jdbc will bring them on as transitive dependencies
                 exclude module: 'spring-core'
                 exclude module: 'spring-beans'
                 exclude module: 'spring-tx'
             }
-            compile spring.jdbc, misc.io, misc.slf4jJcl, misc.logback, misc.lang3
+            implementation spring.jdbc, misc.io, misc.slf4jJcl, misc.logback, misc.lang3
         }
     }
 }
