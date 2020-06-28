@@ -15,27 +15,27 @@ ext {
     groovyVersion = '2.5.12'
     guavaVersion = '29.0-jre'
 
-    aspectjVersion = '1.8.13'
-    derbyVersion = '10.13.1.1'
+    aspectjVersion = '1.9.5'
+    derbyVersion = '10.14.2.0'
     dbcpVersion = '2.7.0'
-    mysqlVersion = '8.0.15'
-    h2Version = '1.4.194'
-    jodaVersion = '2.9.9'
+    mysqlVersion = '8.0.20'
+    h2Version = '1.4.200'
+    jodaVersion = '2.10.6'
     utVersion = '6.0.1.GA'
-    javaxValidationVersion = '2.0.0.Beta2'
-    javaElVersion = '3.0.1-b04'
-    glasshfishELVersion = '2.2.1-b05'
-    jmsVersion = '2.0'
-    artemisVersion = '2.4.0'
-    hornetqVersion = '2.4.0.Final'
+    jakartaValidationVersion = '2.0.2'
+    javaElVersion = '3.0.3'
+    glasshfishELVersion = '3.0.3'
+    jmsVersion = '2.0.3'
+    artemisVersion = '2.12.0'
+    hornetqVersion = '2.4.7.Final'
     castorVersion = '1.4.1'
-    jacksonVersion = '2.9.0'
-    httpclientVersion = '4.5.3'
-    poiVersion = '3.16'
-    tilesVersion = '3.0.7'
-    bootstrapVersion = '3.3.7-1'
-    thymeSecurityVersion = '3.0.2.RELEASE'
-    jQueryVersion = '3.2.1'
+    jacksonVersion = '2.11.0'
+    httpclientVersion = '4.5.12'
+    poiVersion = '4.1.2'
+    tilesVersion = '3.0.8'
+    bootstrapVersion = '3.3.7-1'  // bootstrap 就先不改，看到 Web UI 那时候再改
+    thymeSecurityVersion = '3.0.4.RELEASE'
+    jQueryVersion = '3.2.1' // 同样先不改，看到 Web UI 那时候再改
     twsVersion = '9.0.36'
 
     //persistence libraries
@@ -127,7 +127,7 @@ ext {
         logback        : "ch.qos.logback:logback-classic:$logbackVersion",
         groovy         : "org.codehaus.groovy:groovy-all:$groovyVersion",
         inject         : "javax.inject:javax.inject:1",
-        validation     : "javax.validation:validation-api:$javaxValidationVersion",
+        validation     : "jakarta.validation:jakarta.validation-api:$jakartaValidationVersion",
         aspectjweaver  : "org.aspectj:aspectjweaver:$aspectjVersion",
         aspectjrt      : "org.aspectj:aspectjrt:$aspectjVersion",
         lang3          : "org.apache.commons:commons-lang3:3.5",
@@ -135,9 +135,9 @@ ext {
         joda           : "joda-time:joda-time:$jodaVersion",
         usertype       : "org.jadira.usertype:usertype.core:$utVersion",
         artemis        : "org.apache.activemq:artemis-jms-server:$artemisVersion",
-        javaEl         : "javax.el:javax.el-api:$javaElVersion",
-        glassfishEl    : "org.glassfish.web:el-impl:$glasshfishELVersion",
-        jms            : "javax.jms:javax.jms-api:$jmsVersion",
+        javaEl         : "jakarta.el:jakarta.el-api:$javaElVersion",
+        glassfishEl    : "org.glassfish:jakarta.el:$glasshfishELVersion",
+        jms            : "jakarta.jms:jakarta.jms-api:$jmsVersion",
         artemisClient  : "org.apache.activemq:artemis-jms-client:$artemisVersion",
         artemisServer  : "org.apache.activemq:artemis-jms-server:$artemisVersion",
         hornetq        : "org.hornetq:hornetq-jms-client:$hornetqVersion",
@@ -152,7 +152,7 @@ ext {
         jstl         : "jstl:jstl:1.2",
         bootstrap    : "org.webjars:bootstrap:$bootstrapVersion",
         jQuery       : "org.webjars:jquery:$jQueryVersion",
-        thymeSecurity: "org.thymeleaf.extras:thymeleaf-extras-springsecurity4:$thymeSecurityVersion",
+        thymeSecurity: "org.thymeleaf.extras:thymeleaf-extras-springsecurity5:$thymeSecurityVersion",
         tomcatWsApi  : "org.apache.tomcat:tomcat-websocket-api:$twsVersion",
         tomcatWsEmbed: "org.apache.tomcat.embed:tomcat-embed-websocket:$twsVersion",
         httpclient   : "org.apache.httpcomponents:httpclient:$httpclientVersion",
