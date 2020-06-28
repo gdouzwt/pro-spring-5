@@ -7,7 +7,6 @@
                 https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--xml方式定义两粒bean-->
-
     <bean id="provider" class="com.apress.prospring5.ch2.decoupled.HelloWorldMessageProvider"/>
 
     <!--id和class，还有p命名空间-->

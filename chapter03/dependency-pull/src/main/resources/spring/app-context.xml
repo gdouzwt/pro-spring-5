@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--定义两粒Bean，引用的是上一章的代码，复用-->
     <bean id="provider" class="com.apress.prospring5.ch2.decoupled.HelloWorldMessageProvider"/>
 
     <bean id="renderer" class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"
