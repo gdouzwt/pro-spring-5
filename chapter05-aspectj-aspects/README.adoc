@@ -14,3 +14,11 @@ IntelliJ IDEA still does not know how to handle aspects, thus my recommendation 
 * execute `gradle copyDependencies`
 * go to: `aspectj-aspects/build/libs`
 * execute `java -jar aspectj-aspects-5.0-SNAPSHOT.jar` and you should see the following: `The Prefix foobar! The Suffix foo`
+
+---
+# 如何运行
+
+`gradle clean compileAspectj build copyDependencies`
+
+然后
+`java -jar build\libs\chapter05-aspectj-aspects.jar`
