@@ -160,6 +160,7 @@ include 'chapter18:xd'
 include 'chapter18:webflux-boot'
 include 'chapter18:webflux'
 include 'chapter18:boot-tests'
+//includeBuild("chapter05-aspectj-aspects")
 
 println(' This project is a collection of simple code samples. It is meant to be used together with the ' +
     '"Pro Spring, Fifth Edition" ' +
@@ -172,4 +173,8 @@ rootProject.children.each { project ->
     assert project.buildFile.exists()
     assert project.buildFile.isFile()
 }
+
+
+
+//rootProject.children.add(project("chapter05-aspectj-aspects"))
 
