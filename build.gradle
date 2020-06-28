@@ -3,7 +3,7 @@ ext {
     springVersion = '5.2.7.RELEASE'
     bootVersion = '2.3.1.RELEASE'
     springDataVersion = '2.3.1.RELEASE'
-    springAmqpVersion = '2.1.0.RELEASE'
+    springAmqpVersion = '2.2.7.RELEASE'
     springSecurityVersion = '5.3.3.RELEASE'
     springBatchVersion = '4.2.4.RELEASE'
     springIntegrationVersion = '5.0.2.BUILD-SNAPSHOT'
