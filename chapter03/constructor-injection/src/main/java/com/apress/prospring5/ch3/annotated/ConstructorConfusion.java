@@ -15,7 +15,7 @@ public class ConstructorConfusion {
         this.someValue = someValue;
     }
 
-    @Autowired
+    @Autowired // @Autowired 只能用于其中一个构造器自动注入
     public ConstructorConfusion(@Value("90") int someValue) {
         System.out.println("ConstructorConfusion(int) called");
         this.someValue = "Number: " + Integer.toString(someValue);

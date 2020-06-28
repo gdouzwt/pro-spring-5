@@ -12,6 +12,7 @@
 
     <bean id="constructorConfusion"
           class="com.apress.prospring5.ch3.xml.ConstructorConfusion">
+        <!--指定构造器参数的类型-->
         <constructor-arg type="int">
             <value>90</value>
         </constructor-arg>
