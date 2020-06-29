@@ -2,6 +2,9 @@ package com.apress.prospring5.ch3;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+/**
+ * 演示父子容器
+ */
 public class HierarchicalAppContextUsage {
 
     public static void main(String... args) {

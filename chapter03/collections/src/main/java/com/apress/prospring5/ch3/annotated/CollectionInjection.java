@@ -25,10 +25,10 @@ public class CollectionInjection {
     private Properties props;
 
     @Resource(name = "set")
-    private Set set;
+    private Set<Object> set;
 
     @Resource(name = "list")
-    private List list;
+    private List<Object> list;
 
     public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
@@ -43,10 +43,10 @@ public class CollectionInjection {
 
     public void displayInfo() {
         System.out.println("Map contents:\n");
-        map.entrySet().stream().forEach(e -> System.out.println("Key: " + e.getKey() + " - Value: " + e.getValue()));
+        map.forEach((key, value) -> System.out.println("Key: " + key + " - Value: " + value));
 
         System.out.println("\nProperties contents:\n");
-        props.entrySet().stream().forEach(e -> System.out.println("Key: " + e.getKey() + " - Value: " + e.getValue()));
+        props.forEach((key, value) -> System.out.println("Key: " + key + " - Value: " + value));
 
         System.out.println("\nSet contents:\n");
         set.forEach(obj -> System.out.println("Value: " + obj));
