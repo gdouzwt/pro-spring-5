@@ -1,20 +1,20 @@
 subprojects {
     group 'com.apress.prospring5.ch06'
-    apply plugin: 'java'
+    apply plugin: 'java-library'
 
     /*Task that copies all the dependencies under build/libs */
     task copyDependencies(type: Copy) {
-        from configurations.compile
+        from configurations.compileClasspath
         into 'build/libs'
     }
 
     dependencies {
-        compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
 
         //we specify these dependencies for all submodules, except the boot module, that defines its own
         if (!project.name.contains("boot")) {
-            compile spring.context, spring.jdbc, misc.slf4jJcl, misc.logback, db.dbcp2, misc.lang3
+            api misc.lang3, misc.anno
+            implementation spring.context, spring.jdbc, misc.slf4jJcl, misc.logback, db.dbcp2
         }
-        testCompile testing.junit, testing.junit5Engine
+        testImplementation testing.junit, testing.junit5Engine
     }
 }

@@ -8,7 +8,7 @@ dependencies {
 
 
 war {
-    archiveName = 'rest.war'
+    archiveFileName = 'rest.war'
     manifest {
         attributes("Created-By": "Iuliana Cosmina",
             "Specification-Title": "Pro Spring 5",

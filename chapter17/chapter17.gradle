@@ -9,7 +9,6 @@ subprojects {
     }
 
     dependencies {
-        compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
 
         if (!project.name.contains("boot")) {
             compile(web.tomcatWsApi) {
@@ -19,7 +18,7 @@ subprojects {
                 exclude module: 'tomcat-embed-core'
             }
             compile spring.context, spring.webSocket, spring.messaging, spring.webmvc, web.websocket, misc.slf4jJcl,
-                misc.logback, misc.lang3, misc.jacksonDatabind, web.servlet, web.jstl
+                misc.logback, misc.lang3, misc.jacksonDatabind, web.servlet, web.jstl, misc.anno
         }
         testCompile testing.junit
     }

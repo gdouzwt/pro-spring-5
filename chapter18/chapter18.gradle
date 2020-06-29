@@ -17,7 +17,7 @@ subprojects {
                 exclude module: 'spring-beans'
                 exclude module: 'spring-tx'
             }
-            implementation spring.jdbc, misc.io, misc.slf4jJcl, misc.logback, misc.lang3
+            compile spring.jdbc, misc.io, misc.slf4jJcl, misc.logback, misc.lang3
         }
     }
 }
