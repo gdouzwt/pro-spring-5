@@ -6,6 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 /**
  * Created by iuliana.cosmina on 1/28/17.
+ * 演示使用混合配置
  */
 public class HelloWorldSpringMixed {
 

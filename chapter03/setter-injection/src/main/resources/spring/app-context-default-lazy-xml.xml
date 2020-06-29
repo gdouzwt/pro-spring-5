@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true">
+    <!--在上面这行，default-lazy-init="true" 就默认了Bean是懒加载-->
 
     <bean id="renderer"
           class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"

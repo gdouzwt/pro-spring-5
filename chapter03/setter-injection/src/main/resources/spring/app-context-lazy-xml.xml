@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--两粒bean都是懒加载-->
     <bean id="renderer"
           class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"
           p:messageProvider-ref="provider" lazy-init="true"/>

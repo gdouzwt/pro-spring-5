@@ -6,13 +6,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 /**
  * Created by iuliana.cosmina on 1/28/17.
+ * 演示基于注解的配置
  */
 public class HelloWorldSpringAnnotated {
+
 
     public static void main(String... args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext
             (HelloWorldConfiguration.class);
         MessageRenderer mr = ctx.getBean("renderer", MessageRenderer.class);
+//        System.out.println("Annotated");
         mr.render();
     }
 }

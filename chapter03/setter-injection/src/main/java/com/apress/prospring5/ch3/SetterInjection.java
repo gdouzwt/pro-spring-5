@@ -1,5 +1,6 @@
 package com.apress.prospring5.ch3;
 
+//基本setter injection形式
 public class SetterInjection {
 
     private Dependency dependency;

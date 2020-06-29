@@ -4,6 +4,10 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
 
+/**
+ * 使用的是 DefaultListableBeanFactory
+ * 和XmlBeanDefinitionReader
+ */
 public class XmlConfigWithBeanFactory {
 
     public static void main(String... args) {
