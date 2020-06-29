@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * Created by iuliana.cosmina on 2/19/17.
  * <p>
  * Observation: @Component("singer") is equivalent to @Component in this case
- * Decomment and comment annotations below and test the result.
+ * Uncomment and comment annotations below and test the result.
  */
 @Component("johnMayer")
 //samples of @Awars annotation possible syntax

@@ -15,11 +15,9 @@ public class BeanCrazyNaming {
         ctx.load("classpath:spring/app-context-03.xml");
         ctx.refresh();
         Map<String, String> beans = ctx.getBeansOfType(String.class);
-        beans.entrySet().forEach(b ->
-            System.out.println(
-                "id: " + b.getKey() + "\n aliases: "
-                    + Arrays.toString(ctx.getAliases(b.getKey())) + "\n")
-        );
+        beans.forEach((key, value) -> System.out.println(
+            "id: " + key + "\n aliases: "
+                + Arrays.toString(ctx.getAliases(key)) + "\n"));
         ctx.close();
     }
 }
