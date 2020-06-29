@@ -21,6 +21,7 @@ public class InjectSimple {
         ctx.close();
     }
 
+    // 一堆 setter injection
     public void setAgeInSeconds(Long ageInSeconds) {
         this.ageInSeconds = ageInSeconds;
     }
