@@ -8,6 +8,7 @@
     <bean id="singer" class="com.apress.prospring5.ch3.Singer" scope="prototype"/>
 
     <bean id="abstractLookupBean" class="com.apress.prospring5.ch3.AbstractLookupDemoBean">
+        <!--bean 属性表示这个 lookup-method 要返回哪个bean-->
         <lookup-method name="getMySinger" bean="singer"/>
     </bean>
 
