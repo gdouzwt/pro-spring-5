@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service("singer")
 public class Singer {
 
+    // IntelliJ 不建议 Field Injection
     @Autowired
     private Inspiration inspirationBean;
 
