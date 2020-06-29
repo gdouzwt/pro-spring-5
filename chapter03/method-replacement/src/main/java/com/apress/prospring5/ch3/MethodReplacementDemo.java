@@ -3,6 +3,7 @@ package com.apress.prospring5.ch3;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.util.StopWatch;
 
+// 方法替换就有麻烦，用到反射API
 public class MethodReplacementDemo {
     public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
@@ -14,7 +15,9 @@ public class MethodReplacementDemo {
         ReplacementTarget standardTarget = (ReplacementTarget) ctx
             .getBean("standardTarget");
 
+        // 用了方法替换的情况
         displayInfo(replacementTarget);
+        // 没有用方法替换
         displayInfo(standardTarget);
 
         ctx.close();

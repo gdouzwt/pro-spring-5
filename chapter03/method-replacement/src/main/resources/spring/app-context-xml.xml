@@ -5,13 +5,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--要实现 MethodReplacer 接口，自定义方法替换的逻辑-->
     <bean id="methodReplacer" class="com.apress.prospring5.ch3.FormatMessageReplacer"/>
 
+    <!--这粒Bean测试方法替换-->
     <bean id="replacementTarget" class="com.apress.prospring5.ch3.ReplacementTarget">
+        <!--要替换的方法名是formatMessage，用于实现替换的Bean是由replacer属性指定-->
         <replaced-method name="formatMessage" replacer="methodReplacer">
             <arg-type>String</arg-type>
         </replaced-method>
     </bean>
 
+    <!--这粒Bean作为方法替换对照组-->
     <bean id="standardTarget" class="com.apress.prospring5.ch3.ReplacementTarget"/>
 </beans>
