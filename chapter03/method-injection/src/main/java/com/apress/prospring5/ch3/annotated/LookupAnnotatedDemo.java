@@ -28,12 +28,12 @@ public class LookupAnnotatedDemo {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start("lookupDemo");
 
-        for (int x = 0; x < 100000; x++) {
+        for (int x = 0; x < 100000000; x++) {
             Singer singer = bean.getMySinger();
             singer.sing();
         }
 
         stopWatch.stop();
-        System.out.println("100000 gets took " + stopWatch.getTotalTimeMillis() + " ms");
+        System.out.println("100000000 gets took " + stopWatch.getTotalTimeMillis() + " ms");
     }
 }

@@ -4,6 +4,7 @@ public class StandardLookupDemoBean implements DemoBean {
 
     private Singer mySinger;
 
+    // standard 噶情况注入的bean是单例
     public void setMySinger(Singer mySinger) {
         this.mySinger = mySinger;
     }
