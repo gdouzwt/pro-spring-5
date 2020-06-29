@@ -12,5 +12,7 @@ subprojects {
         from configurations.compileClasspath
         into 'build/libs'
     }
+   /* sourceCompatibility = 14
+    targetCompatibility = 14*/
 }
 
