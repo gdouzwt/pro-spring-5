@@ -23,7 +23,7 @@ public class MessageDigester {
     }
 
     private void digest(String msg, MessageDigest digest) {
-        System.out.println("Using alogrithm: " + digest.getAlgorithm());
+        System.out.println("Using algorithm: " + digest.getAlgorithm());
         digest.reset();
         byte[] bytes = msg.getBytes();
         byte[] out = digest.digest(bytes);

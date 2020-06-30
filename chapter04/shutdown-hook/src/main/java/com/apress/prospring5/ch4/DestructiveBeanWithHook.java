@@ -6,6 +6,9 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
 
+/**
+ * 使用 JSR250 的注解标注生命周期方法
+ */
 public class DestructiveBeanWithHook {
     private File file;
     private String filePath;
