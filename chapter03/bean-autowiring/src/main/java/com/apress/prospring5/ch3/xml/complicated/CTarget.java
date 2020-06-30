@@ -47,7 +47,7 @@ public class CTarget {
         ctx.load("classpath:spring/app-context-05.xml");
         ctx.refresh();
         System.out.println("\nUsing byType:\n");
-        CTarget t = (CTarget) ctx.getBean("targetByType");
+        CTarget t = (CTarget) ctx.getBean("targetByType"); //会报错
         ctx.close();
     }
 }
