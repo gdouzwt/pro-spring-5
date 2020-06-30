@@ -9,13 +9,17 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--打开注解配置，会激活 @PostConstruct、@PreDestroy 之类-->
     <context:annotation-config/>
 
+    <!--显示定义Bean，通过p命名空间进行setter注入，用SPEL获取系统Properties的临时路径和路径分隔符，
+    拼凑出test.txt的路径，注入给filePath属性-->
     <bean id="destructiveBean"
           class="com.apress.prospring5.ch4.DestructiveBeanWithInterface"
           p:filePath=
               "#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
 
+    <!--注册ShutdownHook到这个Bean-->
     <bean id="shutdownHook"
           class="com.apress.prospring5.ch4.ShutdownHookBean"/>
 </beans>

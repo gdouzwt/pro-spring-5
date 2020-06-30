@@ -4,13 +4,13 @@ subprojects {
 
     /*Task that copies all the dependencies under build/libs */
     task copyDependencies(type: Copy) {
-        from configurations.compile
+        from configurations.compileClasspath
         into 'build/libs'
     }
 
     dependencies {
         //we specify these dependencies for all submodules, except the boot module, that defines its own
-        implementation group: 'jakarta.annotation', name: 'jakarta.annotation-api', version: '1.3.5'
+        implementation misc.anno
 
         if (!project.name.contains("boot")) {
             implementation spring.context, misc.slf4jJcl, misc.logback
