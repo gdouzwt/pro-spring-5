@@ -31,6 +31,7 @@ public class DestructiveBeanConfigDemo {
             new AnnotationConfigApplicationContext(DestructiveBeanConfig.class);
 
         ctx.getBean(DestructiveBeanWithJSR250.class);
+        // 因为用的 GenericApplicationContext 所以可以注册 shutdownHook
         ctx.registerShutdownHook();
     }
 
