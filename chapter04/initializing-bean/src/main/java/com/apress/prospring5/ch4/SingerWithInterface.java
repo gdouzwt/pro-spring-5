@@ -19,6 +19,8 @@ public class SingerWithInterface implements InitializingBean {
         this.age = age;
     }
 
+    // 应该加一个 @Override
+    @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing bean");
 

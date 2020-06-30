@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true">
+    <!--默认懒加载-->
 
     <bean id="singerOne"
           class="com.apress.prospring5.ch4.SingerWithInterface"
