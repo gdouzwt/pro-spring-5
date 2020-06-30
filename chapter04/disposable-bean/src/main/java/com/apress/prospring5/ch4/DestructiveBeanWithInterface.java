@@ -6,10 +6,14 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.io.File;
 
+/**
+ * 注意到这次 afterPropertiesSet() 和 destroy() 方法实际是对接口方法的重写了
+ */
 public class DestructiveBeanWithInterface implements InitializingBean, DisposableBean {
     private File file;
     private String filePath;
 
+    // 初始化 Bean
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing Bean");
@@ -20,16 +24,19 @@ public class DestructiveBeanWithInterface implements InitializingBean, Disposabl
                     DestructiveBeanWithInterface.class);
         }
 
+        // 创建文件
         this.file = new File(filePath);
         this.file.createNewFile();
 
         System.out.println("File exists: " + file.exists());
     }
 
+    // 销毁 Bean
     @Override
     public void destroy() {
         System.out.println("Destroying Bean");
 
+        // 删除文件
         if (!file.delete()) {
             System.err.println("ERROR: failed to delete file.");
         }
@@ -50,7 +57,8 @@ public class DestructiveBeanWithInterface implements InitializingBean, Disposabl
             (DestructiveBeanWithInterface) ctx.getBean("destructiveBean");
 
         System.out.println("Calling destroy()");
-        ctx.destroy();
+        // ctx.destroy(); 已过时，使用 close
+        ctx.close();
         System.out.println("Called destroy()");
     }
 }
