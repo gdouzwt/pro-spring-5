@@ -10,12 +10,18 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class PropertyEditorBean {
+
+    // 这粒 Bean 定义了一系列 Spring 内置提供了 PropertyEditor 支持的属性(property)类型
     private byte[] bytes;                 // ByteArrayPropertyEditor
-    private Character character;          //CharacterEditor
+    private Character character;          // CharacterEditor
     private Class cls;                    // ClassEditor
     private Boolean trueOrFalse;          // CustomBooleanEditor
     private List<String> stringList;      // CustomCollectionEditor
@@ -81,7 +87,9 @@ public class PropertyEditorBean {
     }
 
     public void setDate(Date date) {
-        System.out.println("Setting date: " + date);
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG);
+        System.out.println("Setting date: " + zonedDateTime.format(dateTimeFormatter));
         this.date = date;
     }
 
@@ -105,10 +113,15 @@ public class PropertyEditorBean {
         this.trimString = trimString;
     }
 
+
+    // 这里实现了一个自定义的属性编辑器注册器，应该是客制化，覆盖默认的行为
     public static class CustomPropertyEditorRegistrar implements PropertyEditorRegistrar {
         @Override
         public void registerCustomEditors(PropertyEditorRegistry registry) {
-            SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
+            // 其实这里的format，表示在xml配置文件里面输入字符串的日期格式
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
+            // 为什么这两个需要在这里处理？
             registry.registerCustomEditor(Date.class,
                 new CustomDateEditor(dateFormatter, true));
 
@@ -116,6 +129,8 @@ public class PropertyEditorBean {
         }
     }
 
+    // 为什么 IntelliJ 不显示这个 main 方法可以执行？
+    // 知道了，因为关闭了 Inspection
     public static void main(String... args) throws Exception {
         File file = File.createTempFile("test", "txt");
         file.deleteOnExit();

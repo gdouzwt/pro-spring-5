@@ -8,7 +8,9 @@
 
     <bean name="customEditorConfigurer"
           class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <!--需要将自定义的 Property Editor 注册到 PropertyEditorRegistry-->
         <property name="customEditors">
+            <!--通过一个 map 指定一个自定义的 PropertyEditor 其中 key 是被修改的目标对象类型，value 是对应的自定义 PropertyEditor-->
             <map>
                 <entry key="com.apress.prospring5.ch4.custom.FullName"
                        value="com.apress.prospring5.ch4.custom.NamePropertyEditor"/>
