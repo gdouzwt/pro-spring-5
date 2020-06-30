@@ -6,12 +6,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--根据需求配置两种FactoryBean-->
+
+    <!--SHA1-->
     <bean id="shaDigest" class="com.apress.prospring5.ch4.MessageDigestFactoryBean"
           p:algorithmName="SHA1"/>
 
+    <!--默认 MD5-->
     <bean id="defaultDigest"
           class="com.apress.prospring5.ch4.MessageDigestFactoryBean"/>
 
+    <!--在这个执行摘要算法操作的Bean里引用上边配置的两种FactoryBean
+        一种是用 SHA1 算法， 一种用默认的 MD5 算法-->
     <bean id="digester"
           class="com.apress.prospring5.ch4.MessageDigester"
           p:digest1-ref="shaDigest"

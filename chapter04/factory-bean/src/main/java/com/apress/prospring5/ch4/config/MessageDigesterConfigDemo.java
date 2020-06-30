@@ -12,6 +12,7 @@ import org.springframework.context.support.GenericApplicationContext;
  */
 public class MessageDigesterConfigDemo {
 
+    // 配置
     @Configuration
     static class MessageDigesterConfig {
 
@@ -30,6 +31,7 @@ public class MessageDigesterConfigDemo {
         @Bean
         MessageDigester digester() throws Exception {
             MessageDigester messageDigester = new MessageDigester();
+            // 用 Java Config 的话需要调用 FactoryBean 的 getObject()
             messageDigester.setDigest1(shaDigest().getObject());
             messageDigester.setDigest2(defaultDigest().getObject());
             return messageDigester;
