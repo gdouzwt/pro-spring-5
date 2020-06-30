@@ -23,6 +23,7 @@ public class DestructiveBean implements InitializingBean {
         System.out.println("File exists: " + file.exists());
     }
 
+    // 销毁 Bean 时调用
     public void destroy() {
         System.out.println("Destroying Bean");
 
@@ -33,6 +34,7 @@ public class DestructiveBean implements InitializingBean {
         System.out.println("File exists: " + file.exists());
     }
 
+    // 注入文件路径
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
@@ -45,7 +47,8 @@ public class DestructiveBean implements InitializingBean {
         DestructiveBean bean = (DestructiveBean) ctx.getBean("destructiveBean");
 
         System.out.println("Calling destroy()");
-        ctx.destroy();
+        // ctx.destroy(); 过时，替换为 close()
+        ctx.close();
         System.out.println("Called destroy()");
     }
 }
