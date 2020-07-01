@@ -9,9 +9,17 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--指定properties文件-->
     <context:property-placeholder local-override="true"
-                                  location="classpath:application.properties"/>
+                                  properties-ref="yamlProperties"/>
+                    <!--location="classpath:application.properties"/>-->
 
+    <!--这样就可以使用 application.yml 替换掉 application.properties-->
+    <bean id="yamlProperties" class="org.springframework.beans.factory.config.YamlPropertiesFactoryBean">
+        <property name="resources" value="classpath:application.yml"/>
+    </bean>
+
+    <!--通过SPEL将properties的值注入-->
     <bean id="appProperty" class="com.apress.prospring5.ch4.AppProperty"
           p:applicationHome="${application.home}"
           p:userHome="${user.home}"/>
