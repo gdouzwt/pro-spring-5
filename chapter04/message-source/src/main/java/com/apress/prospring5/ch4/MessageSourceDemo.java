@@ -13,6 +13,7 @@ public class MessageSourceDemo {
         Locale english = Locale.ENGLISH;
         Locale german = new Locale("de", "DE");
 
+        // ApplicationContext 的 getMessage 方法
         System.out.println(ctx.getMessage("msg", null, english));
         System.out.println(ctx.getMessage("msg", null, german));
 
