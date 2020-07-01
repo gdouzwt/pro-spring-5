@@ -1,11 +1,13 @@
 dependencies {
     implementation 'org.yaml:snakeyaml:1.26'
+
 }
 jar {
     manifest {
         attributes("Created-By": "Iuliana Cosmina",
             "Specification-Title": "Pro Spring 5",
             "Main-Class": "com.apress.prospring5.ch4.PlaceHolderDemo",
+
             "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(' '))
     }
 }

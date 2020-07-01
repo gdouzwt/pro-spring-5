@@ -10,10 +10,8 @@ subprojects {
 
     dependencies {
         //we specify these dependencies for all submodules, except the boot module, that defines its own
-        implementation misc.anno
-
         if (!project.name.contains("boot")) {
-            implementation spring.context, misc.slf4jJcl, misc.logback
+            implementation spring.context, misc.slf4jJcl, misc.logback, misc.anno
         }
         testImplementation testing.junit
     }

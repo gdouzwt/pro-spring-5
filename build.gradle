@@ -124,6 +124,7 @@ ext {
 
     misc = [
         slf4jJcl       : "org.slf4j:jcl-over-slf4j:$slf4jVersion",
+        slf4jJul       : "org.slf4j:jul-to-slf4j:$slf4jVersion",
         logback        : "ch.qos.logback:logback-classic:$logbackVersion",
         groovy         : "org.codehaus.groovy:groovy-all:$groovyVersion",
         inject         : "jakarta.inject:jakarta.inject-api:1.0.1",
