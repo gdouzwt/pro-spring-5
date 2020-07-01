@@ -25,6 +25,7 @@ public class EnvironmentSampleFirst {
         System.out.println("user.home: " + System.getProperty("user.home"));
         System.out.println("JAVA_HOME: " + System.getenv("JAVA_HOME"));
 
+        // 这里是 env 的值
         System.out.println("user.home: " + env.getProperty("user.home"));
         System.out.println("JAVA_HOME: " + env.getProperty("JAVA_HOME"));
 

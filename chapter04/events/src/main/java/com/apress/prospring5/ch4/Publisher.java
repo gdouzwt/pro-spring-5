@@ -8,11 +8,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Publisher implements ApplicationContextAware {
     private ApplicationContext ctx;
 
+    // 获取到 ApplicationContext 的引用
     public void setApplicationContext(ApplicationContext applicationContext)
         throws BeansException {
         this.ctx = applicationContext;
     }
 
+    // 发布事件，当前对象作为 source
     public void publish(String message) {
         ctx.publishEvent(new MessageEvent(this, message));
     }
