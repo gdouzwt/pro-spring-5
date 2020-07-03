@@ -5,15 +5,8 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
-    maven { url "https://repo.spring.io/release" }
-    maven { url "https://repo.spring.io/snapshot" }
-    maven { url "https://repo.spring.io/libs-snapshot" }
-    maven { url "https://repo.spring.io/milestone" }
-    maven { url "https://repo.spring.io/libs-milestone" }
 }
-
 
 
 /*Task that copies all the dependencies under build/libs */
@@ -24,7 +17,8 @@ task copyDependencies(type: Copy) {
 
 dependencies {
     implementation 'org.springframework:spring-context:5.2.7.RELEASE'
-    implementation 'org.aspectj:aspectjrt:1.9.5'
+    implementation 'org.aspectj:aspectjrt:1.9.5', 'org.aspectj:aspectjweaver:1.9.5'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2', 'org.springframework:spring-test:5.2.7.RELEASE'
 }
 
 compileAspectj {
@@ -42,4 +36,21 @@ jar {
         )
     }
 }
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+/*tasks.withType(Test) {
+    logging.captureStandardOutput LogLevel.QUIET
+    logging.captureStandardError LogLevel.QUIET
+    testLogging.showStandardStreams = true
+}*/
+
+/*最后将依赖项赋值到 lib 目录*/
+tasks.build.finalizedBy(copyDependencies)
 
