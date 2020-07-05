@@ -8,6 +8,7 @@ public class WorkerBean {
     }
 
     private void work() {
+        // This prevents the compiler from optimizing the work() method and thus the call to work().
         System.out.print("");
     }
 }

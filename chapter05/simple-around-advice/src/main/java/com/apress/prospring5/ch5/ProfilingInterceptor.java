@@ -29,8 +29,8 @@ public class ProfilingInterceptor implements MethodInterceptor {
             target.getClass().getName());
 
         System.out.println("With arguments:");
-        for (int x = 0; x < args.length; x++) {
-            System.out.print("       > " + args[x]);
+        for (Object arg : args) {
+            System.out.print("       > " + arg);
         }
         System.out.print("\n");
 

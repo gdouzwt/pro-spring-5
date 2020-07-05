@@ -28,6 +28,13 @@ public class SimpleThrowsAdvice implements ThrowsAdvice {
         }
     }
 
+    /**
+     * 符合这样的形式就可以
+     * void afterThrowing([Method, args, target], ThrowableSubclass);
+     * 即要么一个参数，要么四个参数
+     */
+
+    // Invoked by reflection.
     public void afterThrowing(Exception ex) throws Throwable {
         System.out.println("***");
         System.out.println("Generic Exception Capture");
@@ -35,6 +42,7 @@ public class SimpleThrowsAdvice implements ThrowsAdvice {
         System.out.println("***\n");
     }
 
+    // Invoked by reflection.
     public void afterThrowing(Method method, Object[] args, Object target,
                               IllegalArgumentException ex) throws Throwable {
         System.out.println("***");
