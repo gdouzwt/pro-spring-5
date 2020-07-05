@@ -3,7 +3,7 @@ package com.apress.prospring5.ch5;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 /**
- * Comment or de-comment lines 11-13 according to examples in the book
+ * Comment or uncomment lines 11-13 according to examples in the book
  */
 public class AopNamespaceDemo {
     public static void main(String... args) {
