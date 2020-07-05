@@ -20,5 +20,8 @@ IntelliJ IDEA still does not know how to handle aspects, thus my recommendation 
 
 `gradle clean compileAspectj build copyDependencies`
 
+其实直接就够了，插件会编译 AspectJ
+`gradle clean build copyDependencies`
+
 然后
 `java -jar build\libs\chapter05-aspectj-aspects.jar`

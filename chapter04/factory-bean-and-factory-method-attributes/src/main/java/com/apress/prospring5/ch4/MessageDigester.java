@@ -1,5 +1,6 @@
 package com.apress.prospring5.ch4;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
 
 public class MessageDigester {
@@ -23,10 +24,19 @@ public class MessageDigester {
     }
 
     private void digest(String msg, MessageDigest digest) {
-        System.out.println("Using alogrithm: " + digest.getAlgorithm());
+        System.out.println("Using algorithm: " + digest.getAlgorithm());
         digest.reset();
         byte[] bytes = msg.getBytes();
         byte[] out = digest.digest(bytes);
-        System.out.println(out);
+
+         /*以下内容，将摘要消息转为 Hex 输出
+         其中 SH1 是 40 个字符长度
+         MD5 是 32 个字符长度
+         结果能正常*/
+        if ("MD5".equals(digest.getAlgorithm())) {
+            System.out.println(String.format("%032x", new BigInteger(1, out))); // 输出处理结果
+        } else {
+            System.out.println(String.format("%040x", new BigInteger(1, out))); // 输出处理结果
+        }
     }
 }

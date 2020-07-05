@@ -13,7 +13,9 @@ public class ResourceDemo {
         File file = File.createTempFile("test", "txt");
         file.deleteOnExit();
 
-        Resource res1 = ctx.getResource("file://" + file.getPath());
+
+        // 那个 file:// 多加一条斜线 / 多几条也没问题，但是如果只是两条，在Windows 环境会报错
+        Resource res1 = ctx.getResource("file:///" + file.getPath());
         displayInfo(res1);
 
         Resource res2 = ctx.getResource("classpath:test.txt");

@@ -7,13 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.support.GenericApplicationContext;
 
-import static com.apress.prospring5.ch4.Singer.getBean;
-
 /**
  * Created by iuliana.cosmina on 2/26/17.
  */
 public class SingerConfigDemo {
 
+    // 本身就配楞佐个 Java Config
     @Configuration
     static class SingerConfig {
 
@@ -39,6 +38,7 @@ public class SingerConfigDemo {
         Singer singerThree() {
             Singer singerThree = new Singer();
             singerThree.setName("John Butler");
+            // singerThree.setAge(25); 如果设置个年龄，就不会报错了
             return singerThree;
         }
     }
@@ -46,9 +46,10 @@ public class SingerConfigDemo {
     public static void main(String... args) {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(SingerConfig.class);
 
-        getBean("singerOne", ctx);
-        getBean("singerTwo", ctx);
-        getBean("singerThree", ctx);
+        // 改成Singer.getBean形式清楚些
+        Singer.getBean("singerOne", ctx);
+        Singer.getBean("singerTwo", ctx);
+        Singer.getBean("singerThree", ctx);
 
         ctx.close();
     }

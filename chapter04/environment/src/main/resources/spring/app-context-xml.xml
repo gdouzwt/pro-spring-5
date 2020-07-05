@@ -7,7 +7,8 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true">
 
-    <bean id="simpleBean1"
+    <!--根本没有用到这些 Bean 配置-->
+    <!--<bean id="simpleBean1"
           class="SimpleBean"
           init-method="init" p:name="John Mayer" p:age="39"/>
 
@@ -17,5 +18,5 @@
 
     <bean id="simpleBean3"
           class="SimpleBean"
-          init-method="init" p:name="John Mayer"/>
+          init-method="init" p:name="John Mayer"/>-->
 </beans>

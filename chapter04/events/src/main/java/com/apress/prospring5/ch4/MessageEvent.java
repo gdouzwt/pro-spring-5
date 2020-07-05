@@ -2,6 +2,9 @@ package com.apress.prospring5.ch4;
 
 import org.springframework.context.ApplicationEvent;
 
+/**
+ * 一个事件
+ */
 public class MessageEvent extends ApplicationEvent {
     private String msg;
 

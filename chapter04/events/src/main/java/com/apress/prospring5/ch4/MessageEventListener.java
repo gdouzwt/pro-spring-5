@@ -2,6 +2,9 @@ package com.apress.prospring5.ch4;
 
 import org.springframework.context.ApplicationListener;
 
+/**
+ * 事件监听器
+ */
 public class MessageEventListener implements ApplicationListener<MessageEvent> {
     @Override
     public void onApplicationEvent(MessageEvent event) {

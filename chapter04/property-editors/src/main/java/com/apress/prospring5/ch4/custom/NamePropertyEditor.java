@@ -2,6 +2,7 @@ package com.apress.prospring5.ch4.custom;
 
 import java.beans.PropertyEditorSupport;
 
+// 作为一个自定义的 PropertyEditor
 public class NamePropertyEditor extends PropertyEditorSupport {
     @Override
     public void setAsText(String text) throws IllegalArgumentException {

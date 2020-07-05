@@ -15,7 +15,9 @@
           class="com.apress.prospring5.ch4.Singer"
           p:age="72"/>
 
+    <!--这粒 Bean 没有设置 age ，会抛异常-->
     <bean id="singerThree"
           class="com.apress.prospring5.ch4.Singer"
           p:name="John Butler"/>
+          <!--p:age="25" 加上去就不会报错了-->
 </beans>

@@ -9,6 +9,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--激活JSR250注解-->
     <context:annotation-config/>
 
     <bean id="destructiveBean"

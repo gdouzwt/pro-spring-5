@@ -28,7 +28,8 @@ public class IsModifiedMixin extends DelegatingIntroductionInterceptor
 
                 if (getter != null) {
                     Object newVal = invocation.getArguments()[0];
-                    Object oldVal = getter.invoke(invocation.getThis(), null);
+                    // Object oldVal = getter.invoke(invocation.getThis(), new Object[]{}); 多余
+                    Object oldVal = getter.invoke(invocation.getThis());
 
                     if ((newVal == null) && (oldVal == null)) {
                         isModified = false;
@@ -55,7 +56,8 @@ public class IsModifiedMixin extends DelegatingIntroductionInterceptor
 
         String getterName = setter.getName().replaceFirst("set", "get");
         try {
-            getter = setter.getDeclaringClass().getMethod(getterName, null);
+            //getter = setter.getDeclaringClass().getMethod(getterName, null); varargs 多余
+            getter = setter.getDeclaringClass().getMethod(getterName);
             synchronized (methodCache) {
                 methodCache.put(setter, getter);
             }

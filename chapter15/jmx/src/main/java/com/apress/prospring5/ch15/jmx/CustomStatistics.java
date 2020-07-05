@@ -30,8 +30,8 @@ public class CustomStatistics {
         return stats.getCollectionStatistics(role);
     }
 
-    public SecondLevelCacheStatistics getSecondLevelCacheStatistics(String regionName) {
-        return stats.getSecondLevelCacheStatistics(regionName);
+    public CacheRegionStatistics getSecondLevelCacheStatistics(String regionName) {
+        return stats.getDomainDataRegionStatistics(regionName);
     }
 
     public QueryStatistics getQueryStatistics(String hql) {

@@ -19,4 +19,4 @@ public class InheritanceDemo {
         System.out.println("Child:\n" + child);
     }
 }
-//abstract="true" 这是做什么的？ bean 的继承不等同于 Java 的继承
+//abstract="true" 这是做什么的？ bean 的继承不等同于 Java 的继承， 如果 abstract="true" 则在容器中查找不到

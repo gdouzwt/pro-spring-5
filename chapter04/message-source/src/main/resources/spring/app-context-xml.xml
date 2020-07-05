@@ -14,7 +14,7 @@
           p:basenames-ref="basenames"/>
 
     <util:list id="basenames">
-        <value>buttons</value>
+        <value>buttons</value><!--这个basename没有用到-->
         <value>labels</value>
     </util:list>
 </beans>

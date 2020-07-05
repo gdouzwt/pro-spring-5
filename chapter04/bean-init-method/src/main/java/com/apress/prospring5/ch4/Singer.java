@@ -54,7 +54,7 @@ public class Singer {
             System.out.println(bean);
             return bean;
         } catch (BeanCreationException ex) {
-            System.out.println("An error occurred in bean configuration: "
+            System.err.println("An error occurred in bean configuration: "
                 + ex.getMessage());
             return null;
         }

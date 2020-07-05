@@ -13,11 +13,10 @@ public class WeakKeyCheckAdvice implements AfterReturningAdvice {
 
         if ((target instanceof KeyGenerator)
             && ("getKey".equals(method.getName()))) {
-            long key = ((Long) returnValue).longValue();
+            long key = (Long) returnValue;
 
             if (key == WEAK_KEY) {
-                throw new SecurityException(
-                    "Key Generator generated a weak key. Try again");
+                throw new SecurityException("Key Generator generated a weak key. Try again");
             }
         }
     }
