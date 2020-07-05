@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--aspectJ编译增强之后的 MessageWrapper 类，增加了aspectOf 方法作为 factory-method-->
+    <!--aspectJ编译增强之后的 MessageWrapper 类，增加了 aspectOf 方法作为 factory-method-->
     <!--p:prefix 属性这些，IntelliJ 没有提示-->
     <bean id="aspect" class="com.apress.prospring5.ch5.MessageWrapper"
           factory-method="aspectOf" p:prefix="The Prefix" p:suffix="The Suffix"/>

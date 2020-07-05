@@ -50,7 +50,8 @@ public class DestructiveBeanWithJSR250 {
             (DestructiveBeanWithJSR250) ctx.getBean("destructiveBean");
 
         System.out.println("Calling destroy()");
-        ctx.destroy();
+        // ctx.destroy(); 替换过时的方法
+        ctx.close();
         System.out.println("Called destroy()");
     }
 }
