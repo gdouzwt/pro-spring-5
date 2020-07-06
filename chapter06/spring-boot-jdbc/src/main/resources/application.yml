@@ -6,6 +6,6 @@ spring:
     schema: db/schema.sql
     data: db/test-data.sql
     initialization-mode: embedded
-#    url: jdbc:mysql://localhost:3306/MUSICDB?useSSL=false
+#    url: jdbc:mysql://localhost:3306/MUSICDB?useSSL=false&allowPublicKeyRetrieval=true
 #    username: root
 #    password: se1124
