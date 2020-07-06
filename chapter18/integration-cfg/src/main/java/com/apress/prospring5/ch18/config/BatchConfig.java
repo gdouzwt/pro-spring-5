@@ -59,6 +59,7 @@ public class BatchConfig {
         return jobs.get("singerJob").start(step1()).build();
     }
 
+    @SuppressWarnings("unchecked")
     @Bean
     protected Step step1() {
         return steps.get("step1").listener(executionStatsListener)
@@ -69,6 +70,7 @@ public class BatchConfig {
             .build();
     }
 
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Bean
     @StepScope
     public FlatFileItemReader itemReader(@Value("file://#{jobParameters['file.name']}") String filePath) {

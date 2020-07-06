@@ -24,8 +24,8 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
     @Override
     public List<Singer> findAllWithAlbums() {
         String sql = "select s.id, s.first_name, s.last_name, s.birth_date" +
-            ", a.id as album_id, a.title, a.release_date from singer s " +
-            "left join album a on s.id = a.singer_id";
+            ", a.id as album_id, a.title, a.release_date from SINGER s " +
+            "left join ALBUM a on s.id = a.singer_id";
         return namedParameterJdbcTemplate.query(sql, rs -> {
             Map<Long, Singer> map = new HashMap<>();
             Singer singer;
@@ -41,7 +41,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
                     singer.setAlbums(new ArrayList<>());
                     map.put(id, singer);
                 }
-                Long albumId = rs.getLong("album_id");
+                long albumId = rs.getLong("album_id");
                 if (albumId > 0) {
                     Album album = new Album();
                     album.setId(albumId);
@@ -64,7 +64,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     @Override
     public String findLastNameById(Long id) {
-        String sql = "SELECT last_name FROM singer WHERE id = :singerId";
+        String sql = "SELECT last_name FROM SINGER WHERE id = :singerId";
         Map<String, Object> namedParameters = new HashMap<>();
         namedParameters.put("singerId", id);
         return namedParameterJdbcTemplate.queryForObject(sql,

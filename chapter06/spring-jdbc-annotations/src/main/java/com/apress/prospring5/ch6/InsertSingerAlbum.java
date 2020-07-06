@@ -8,16 +8,16 @@ import java.sql.Types;
 
 public class InsertSingerAlbum extends BatchSqlUpdate {
     private static final String SQL_INSERT_SINGER_ALBUM =
-        "insert into album (singer_id, title, release_date) values (:singer_id, :title, :release_date)";
+        "INSERT INTO ALBUM (SINGER_ID, TITLE, RELEASE_DATE) VALUES (:SINGER_ID, :TITLE, :RELEASE_DATE)";
 
     private static final int BATCH_SIZE = 10;
 
     public InsertSingerAlbum(DataSource dataSource) {
         super(dataSource, SQL_INSERT_SINGER_ALBUM);
 
-        declareParameter(new SqlParameter("singer_id", Types.INTEGER));
-        declareParameter(new SqlParameter("title", Types.VARCHAR));
-        declareParameter(new SqlParameter("release_date", Types.DATE));
+        declareParameter(new SqlParameter("SINGER_ID", Types.INTEGER));
+        declareParameter(new SqlParameter("TITLE", Types.VARCHAR));
+        declareParameter(new SqlParameter("RELEASE_DATE", Types.DATE));
 
         setBatchSize(BATCH_SIZE);
     }

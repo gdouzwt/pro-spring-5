@@ -17,14 +17,14 @@ public class PlainSingerDao implements SingerDao {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
-            logger.error("Prblem loadng DB dDiver!", ex);
+            logger.error("Problem loading DB dDiver!", ex);
         }
     }
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/musicdb?useSSL=true",
-            "prospring5", "prospring5");
+            "jdbc:mysql://localhost:3306/MUSICDB?useSSL=false",
+            "root", "se1124");
     }
 
     private void closeConnection(Connection connection) {
@@ -45,7 +45,7 @@ public class PlainSingerDao implements SingerDao {
         try {
             connection = getConnection();
             PreparedStatement statement =
-                connection.prepareStatement("select * from singer");
+                connection.prepareStatement("SELECT * FROM SINGER");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Singer singer = new Singer();
@@ -70,7 +70,7 @@ public class PlainSingerDao implements SingerDao {
         try {
             connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(
-                "insert into Singer (first_name, last_name, birth_date) values (?, ?, ?)"
+                "INSERT INTO SINGER (FIRST_NAME, LAST_NAME, BIRTH_DATE) VALUES (?, ?, ?)"
                 , Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, singer.getFirstName());
             statement.setString(2, singer.getLastName());
@@ -81,7 +81,7 @@ public class PlainSingerDao implements SingerDao {
                 singer.setId(generatedKeys.getLong(1));
             }
         } catch (SQLException ex) {
-            logger.error("Prblem executing INSERT", ex);
+            logger.error("Problem executing INSERT", ex);
         } finally {
             closeConnection(connection);
         }
@@ -92,11 +92,11 @@ public class PlainSingerDao implements SingerDao {
         Connection connection = null;
         try {
             connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement("delete from singer where id=?");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM SINGER WHERE ID=?");
             statement.setLong(1, singerId);
             statement.execute();
         } catch (SQLException ex) {
-            logger.error("Prblem executing DELETE", ex);
+            logger.error("Problem executing DELETE", ex);
         } finally {
             closeConnection(connection);
         }

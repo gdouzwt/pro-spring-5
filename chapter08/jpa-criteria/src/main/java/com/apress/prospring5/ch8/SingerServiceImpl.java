@@ -18,7 +18,7 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public class SingerServiceImpl implements SingerService {
     final static String ALL_SINGER_NATIVE_QUERY =
-        "select id, first_name, last_name, birth_date, version from singer";
+        "select id, first_name, last_name, birth_date, version from SINGER";
 
     private Log log = LogFactory.getLog(SingerServiceImpl.class);
 

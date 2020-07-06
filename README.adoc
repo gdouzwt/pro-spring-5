@@ -8,9 +8,9 @@ Download the files as a zip using the green button, or clone the repository to y
 
 == Requirements
 
-To be able to execute 'gradle clean build -x test' successfully you need at least *Java 11* installed.
+To be able to execute 'gradle clean build -x test' successfully you need at least *Java 11.0.7* installed.
 
-The AspectJ plugin in the module 'chapter05:aspectj-aspects' requires *Gradle 6.5*.
+The AspectJ plugin in the module 'chapter05:aspectj-aspects' requires *Gradle 6.5.1*.
 
 == Releases
 
@@ -27,7 +27,7 @@ See the file Contributing.adoc for more information on how you can contribute to
 == Building and Deploying
 
 This is a Gradle multi-module project.
-Currently, it can be compiled with Gradle 6.5 and JDK 11. Build it from scratch using:
+Currently, it can be compiled with Gradle 6.5.1 and JDK 11.0.7. Build it from scratch using:
 
 ----
 gradle clean build

@@ -17,8 +17,8 @@ buildscript {
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    compile project(':chapter06:plain-jdbc')
-    compile boot.starterJdbc, db.h2
+    implementation project(':chapter06:plain-jdbc')
+    implementation boot.starterJdbc, db.h2
 }
 
 jar {

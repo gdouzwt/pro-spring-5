@@ -45,6 +45,7 @@ public class BatchConfig {
             .build();
     }
 
+    @SuppressWarnings("unchecked")
     @Bean
     protected Step step1() {
         return steps.get("step1")
@@ -55,13 +56,14 @@ public class BatchConfig {
             .build();
     }
 
+    @SuppressWarnings("rawtypes")
     @Bean
     public ItemReader itemReader() {
         FlatFileItemReader<Singer> itemReader = new FlatFileItemReader<>();
         itemReader.setResource(new ClassPathResource("support/test-data.csv"));
         itemReader.setLineMapper(new DefaultLineMapper<Singer>() {{
             setLineTokenizer(new DelimitedLineTokenizer() {{
-                setNames(new String[]{"firstName", "lastName", "song"});
+                setNames("firstName", "lastName", "song");
             }});
             setFieldSetMapper(new BeanWrapperFieldSetMapper<Singer>() {{
                 setTargetType(Singer.class);
@@ -70,6 +72,7 @@ public class BatchConfig {
         return itemReader;
     }
 
+    @SuppressWarnings("rawtypes")
     @Bean
     public ItemWriter itemWriter() {
         JdbcBatchItemWriter<Singer> itemWriter = new JdbcBatchItemWriter<>();

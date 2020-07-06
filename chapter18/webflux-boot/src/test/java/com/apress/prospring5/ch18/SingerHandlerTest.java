@@ -20,6 +20,7 @@ import java.net.URI;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,7 +47,7 @@ public class SingerHandlerTest {
         //get singer
         URI uri = URI.create(String.format("http://%s:%d/singers/99", HOST, PORT));
         logger.debug("GET REQ: " + uri.toString());
-        ClientRequest request = ClientRequest.method(HttpMethod.GET, uri).build();
+        ClientRequest request = ClientRequest.create(HttpMethod.GET, uri).build();
 
         Mono<Singer> singerMono = exchange.exchange(request)
             .flatMap(response -> response.bodyToMono(Singer.class));
@@ -59,7 +60,7 @@ public class SingerHandlerTest {
         //get singer
         URI uri = URI.create(String.format("http://%s:%d/singers/1", HOST, PORT));
         logger.debug("GET REQ: " + uri.toString());
-        ClientRequest request = ClientRequest.method(HttpMethod.GET, uri).build();
+        ClientRequest request = ClientRequest.create(HttpMethod.GET, uri).build();
 
         Mono<Singer> singerMono = exchange.exchange(request)
             .flatMap(response -> response.bodyToMono(Singer.class));
@@ -78,25 +79,25 @@ public class SingerHandlerTest {
         singer.setFirstName("John Clayton");
         uri = URI.create(String.format("http://%s:%d/singers", HOST, PORT));
         logger.debug("UPDATE REQ: " + uri.toString());
-        request = ClientRequest.method(HttpMethod.POST, uri)
-            .body(BodyInserters.fromObject(singer)).build();
+        request = ClientRequest.create(HttpMethod.POST, uri)
+            .body(BodyInserters.fromValue(singer)).build();
 
         Mono<ClientResponse> response = exchange.exchange(request);
-        assertEquals(HttpStatus.OK, response.block().statusCode());
-        logger.info("Update Response status: " + response.block().statusCode());
+        assertEquals(HttpStatus.OK, Objects.requireNonNull(response.block()).statusCode());
+        logger.info("Update Response status: " + Objects.requireNonNull(response.block()).statusCode());
     }
 
     @Test
     public void printAllSingers() {
         URI uri = URI.create(String.format("http://%s:%d/singers", HOST, PORT));
         logger.debug("ALL REQ: " + uri.toString());
-        ClientRequest request = ClientRequest.method(HttpMethod.GET, uri).build();
+        ClientRequest request = ClientRequest.create(HttpMethod.GET, uri).build();
 
         Flux<Singer> singers = exchange.exchange(request)
             .flatMapMany(response -> response.bodyToFlux(Singer.class));
 
         Mono<List<Singer>> singerList = singers.collectList();
-        singerList.block().forEach(singer -> logger.info(singer.toString()));
+        Objects.requireNonNull(singerList.block()).forEach(singer -> logger.info(singer.toString()));
     }
 
     @Test
@@ -109,13 +110,13 @@ public class SingerHandlerTest {
         singer.setBirthDate(new Date(
             (new GregorianCalendar(1991, 2, 17)).getTime().getTime()));
 
-        ClientRequest request = ClientRequest.method(HttpMethod.POST, uri)
-            .body(BodyInserters.fromObject(singer)).build();
+        ClientRequest request = ClientRequest.create(HttpMethod.POST, uri)
+            .body(BodyInserters.fromValue(singer)).build();
 
         Mono<ClientResponse> response = exchange.exchange(request);
-        assertEquals(HttpStatus.OK, response.block().statusCode());
+        assertEquals(HttpStatus.OK, Objects.requireNonNull(response.block()).statusCode());
 
-        logger.info("Create Response status: " + response.block().statusCode());
+        logger.info("Create Response status: " + Objects.requireNonNull(response.block()).statusCode());
     }
 
 

@@ -12,12 +12,12 @@ subprojects {
 
         //we specify these dependencies for all submodules, except the boot module, that defines its own
         if (!project.name.contains("boot")) {
-            compile(spring.contextSupport) {
+            implementation(spring.contextSupport) {
                 exclude module: 'spring-beans'
                 exclude module: 'spring-core'
             }
-            compile misc.slf4jJcl, misc.logback, misc.lang3, hibernate.em, misc.guava, misc.anno
+            implementation misc.slf4jJcl, misc.logback, misc.lang3, hibernate.em, misc.guava, misc.anno
         }
-        testCompile testing.junit
+        testImplementation testing.junit
     }
 }

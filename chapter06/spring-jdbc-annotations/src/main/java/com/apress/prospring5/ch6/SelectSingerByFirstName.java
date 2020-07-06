@@ -11,20 +11,20 @@ import java.sql.Types;
 
 public class SelectSingerByFirstName extends MappingSqlQuery<Singer> {
     private static final String SQL_FIND_BY_FIRST_NAME =
-        "select id, first_name, last_name, birth_date from singer where first_name = :first_name";
+        "SELECT ID, FIRST_NAME, LAST_NAME, BIRTH_DATE FROM SINGER WHERE FIRST_NAME = :FIRST_NAME";
 
     public SelectSingerByFirstName(DataSource dataSource) {
         super(dataSource, SQL_FIND_BY_FIRST_NAME);
-        super.declareParameter(new SqlParameter("first_name", Types.VARCHAR));
+        super.declareParameter(new SqlParameter("FIRST_NAME", Types.VARCHAR));
     }
 
     protected Singer mapRow(ResultSet rs, int rowNum) throws SQLException {
         Singer singer = new Singer();
 
-        singer.setId(rs.getLong("id"));
-        singer.setFirstName(rs.getString("first_name"));
-        singer.setLastName(rs.getString("last_name"));
-        singer.setBirthDate(rs.getDate("birth_date"));
+        singer.setId(rs.getLong("ID"));
+        singer.setFirstName(rs.getString("FIRST_NAME"));
+        singer.setLastName(rs.getString("LAST_NAME"));
+        singer.setBirthDate(rs.getDate("BIRTH_DATE"));
 
         return singer;
     }

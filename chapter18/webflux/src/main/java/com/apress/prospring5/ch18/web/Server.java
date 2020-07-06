@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
 import org.springframework.http.server.reactive.ServletHttpHandlerAdapter;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
@@ -51,7 +52,7 @@ public class Server {
     SingerHandler singerHandler;
 
     public RouterFunction<ServerResponse> routingFunction() {
-        return route(GET("/test"), serverRequest -> ok().body(fromObject("works!")))
+        return route(GET("/test"), serverRequest -> ok().body(BodyInserters.fromValue("works!")))
             .andRoute(GET("/singers"), singerHandler.list)
             .andRoute(GET("/singers/{id}"), singerHandler::show)
             .andRoute(POST("/singers"), singerHandler.save)

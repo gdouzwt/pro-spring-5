@@ -103,7 +103,7 @@ public class SingerDaoTest {
 
     @Test
     public void testDelete() {
-        Singer singer = singerDao.findById(4l);
+        Singer singer = singerDao.findById(4L);
         //making sure such singer exists
         assertNotNull(singer);
         singerDao.delete(singer);

@@ -10,8 +10,7 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by iuliana.cosmina on 4/16/17.
@@ -24,7 +23,7 @@ public class RowMapperTest {
         SingerDao singerDao = ctx.getBean(SingerDao.class);
         assertNotNull(singerDao);
         List<Singer> singers = singerDao.findAll();
-        assertTrue(singers.size() == 3);
+        assertEquals(3, singers.size());
 
         singers.forEach(singer -> {
             System.out.println(singer);

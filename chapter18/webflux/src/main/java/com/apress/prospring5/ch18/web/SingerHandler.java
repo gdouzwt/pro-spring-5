@@ -4,6 +4,7 @@ import com.apress.prospring5.ch18.entities.Singer;
 import com.apress.prospring5.ch18.repos.ReactiveSingerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -28,7 +29,7 @@ public class SingerHandler {
         Mono<Singer> singerMono = reactiveSingerRepo.findById(Long.valueOf(request.pathVariable("id")));
         Mono<ServerResponse> notFound = ServerResponse.notFound().build();
         return singerMono
-            .flatMap(singer -> ServerResponse.ok().contentType(APPLICATION_JSON).body(fromObject(singer)))
+            .flatMap(singer -> ServerResponse.ok().contentType(APPLICATION_JSON).body(BodyInserters.fromValue(singer)))
             .switchIfEmpty(notFound);
     }
 

@@ -10,3 +10,6 @@ jar {
             "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
     }
 }
+test {
+    useJUnitPlatform()
+}

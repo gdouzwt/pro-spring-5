@@ -17,7 +17,7 @@ public class SpringHibernateDemo {
     public static void main(String... args) {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         SingerDao singerDao = ctx.getBean(SingerDao.class);
-        Singer singer = singerDao.findById(2l);
+        Singer singer = singerDao.findById(2L);
         logger.info(singer.toString());
 
         singerDao.delete(singer);

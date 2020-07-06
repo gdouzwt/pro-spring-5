@@ -21,7 +21,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     @Override
     public List<Singer> findAll() {
-        String sql = "select id, first_name, last_name, birth_date from singer";
+        String sql = "select id, first_name, last_name, birth_date from SINGER";
         return namedParameterJdbcTemplate.query(sql, (rs, rowNum) -> {
             Singer singer = new Singer();
             singer.setId(rs.getLong("id"));
@@ -34,7 +34,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     @Override
     public String findNameById(Long id) {
-        String sql = "SELECT first_name || ' ' || last_name FROM singer WHERE id = :singerId";
+        String sql = "SELECT first_name || ' ' || last_name FROM SINGER WHERE id = :singerId";
         Map<String, Object> namedParameters = new HashMap<>();
         namedParameters.put("singerId", id);
         return namedParameterJdbcTemplate.queryForObject(sql,

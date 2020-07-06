@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class SelectAllSingers extends MappingSqlQuery<Singer> {
     private static final String SQL_SELECT_ALL_SINGER =
-        "select id, first_name, last_name, birth_date from singer";
+        "SELECT ID, FIRST_NAME, LAST_NAME, BIRTH_DATE FROM SINGER";
 
     public SelectAllSingers(DataSource dataSource) {
         super(dataSource, SQL_SELECT_ALL_SINGER);
@@ -18,10 +18,10 @@ public class SelectAllSingers extends MappingSqlQuery<Singer> {
     protected Singer mapRow(ResultSet rs, int rowNum) throws SQLException {
         Singer singer = new Singer();
 
-        singer.setId(rs.getLong("id"));
-        singer.setFirstName(rs.getString("first_name"));
-        singer.setLastName(rs.getString("last_name"));
-        singer.setBirthDate(rs.getDate("birth_date"));
+        singer.setId(rs.getLong("ID"));
+        singer.setFirstName(rs.getString("FIRST_NAME"));
+        singer.setLastName(rs.getString("LAST_NAME"));
+        singer.setBirthDate(rs.getDate("BIRTH_DATE"));
 
         return singer;
     }

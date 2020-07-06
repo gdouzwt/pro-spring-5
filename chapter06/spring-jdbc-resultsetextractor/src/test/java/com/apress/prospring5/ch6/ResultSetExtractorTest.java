@@ -10,8 +10,7 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by iuliana.cosmina on 4/16/17.
@@ -24,7 +23,7 @@ public class ResultSetExtractorTest {
         SingerDao singerDao = ctx.getBean(SingerDao.class);
         assertNotNull(singerDao);
         List<Singer> singers = singerDao.findAllWithAlbums();
-        assertTrue(singers.size() == 3);
+        assertEquals(3, singers.size());
         singers.forEach(singer -> {
             System.out.println(singer);
             if (singer.getAlbums() != null) {
@@ -32,11 +31,11 @@ public class ResultSetExtractorTest {
                     System.out.println("\t--> " + album);
                 }
                 if (singer.getId() == 1L) {
-                    assertTrue(singer.getAlbums().size() == 2);
+                    assertEquals(2, singer.getAlbums().size());
                 } else if (singer.getId() == 2L) {
-                    assertTrue(singer.getAlbums().size() == 1);
+                    assertEquals(1, singer.getAlbums().size());
                 } else if (singer.getId() == 3L) {
-                    assertTrue(singer.getAlbums().size() == 0);
+                    assertEquals(0, singer.getAlbums().size());
                 }
             }
         });

@@ -8,13 +8,13 @@ import java.sql.Types;
 
 public class UpdateSinger extends SqlUpdate {
     private static final String SQL_UPDATE_SINGER =
-        "update singer set first_name=:first_name, last_name=:last_name, birth_date=:birth_date where id=:id";
+        "UPDATE SINGER SET FIRST_NAME=:FIRST_NAME, LAST_NAME=:LAST_NAME, BIRTH_DATE=:BIRTH_DATE WHERE ID=:ID";
 
     public UpdateSinger(DataSource dataSource) {
         super(dataSource, SQL_UPDATE_SINGER);
-        super.declareParameter(new SqlParameter("first_name", Types.VARCHAR));
-        super.declareParameter(new SqlParameter("last_name", Types.VARCHAR));
-        super.declareParameter(new SqlParameter("birth_date", Types.DATE));
-        super.declareParameter(new SqlParameter("id", Types.INTEGER));
+        super.declareParameter(new SqlParameter("FIRST_NAME", Types.VARCHAR));
+        super.declareParameter(new SqlParameter("LAST_NAME", Types.VARCHAR));
+        super.declareParameter(new SqlParameter("BIRTH_DATE", Types.DATE));
+        super.declareParameter(new SqlParameter("ID", Types.INTEGER));
     }
 }

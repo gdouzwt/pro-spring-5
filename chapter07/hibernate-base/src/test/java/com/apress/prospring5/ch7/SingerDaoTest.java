@@ -3,6 +3,7 @@ package com.apress.prospring5.ch7;
 import com.apress.prospring5.ch7.config.AppConfig;
 import com.apress.prospring5.ch7.dao.SingerDao;
 import com.apress.prospring5.ch7.entities.Album;
+import com.apress.prospring5.ch7.entities.Instrument;
 import com.apress.prospring5.ch7.entities.Singer;
 import org.junit.After;
 import org.junit.Before;
@@ -103,7 +104,7 @@ public class SingerDaoTest {
 
     @Test
     public void testDelete() {
-        Singer singer = singerDao.findById(2l);
+        Singer singer = singerDao.findById(2L);
         //making sure such singer exists
         assertNotNull(singer);
         singerDao.delete(singer);
@@ -125,7 +126,7 @@ public class SingerDaoTest {
                 singer.getAlbums().forEach(album -> logger.info("\t" + album.toString()));
             }
             if (singer.getInstruments() != null) {
-                singer.getInstruments().forEach(instrument -> instrument.getInstrumentId());
+                singer.getInstruments().forEach(Instrument::getInstrumentId);
             }
         });
     }

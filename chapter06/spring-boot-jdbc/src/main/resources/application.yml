@@ -1,0 +1,11 @@
+#spring.datasource.schema=db/schema.sql
+#spring.datasource.data=db/test-data.sql
+#spring.datasource.initialize=true
+spring:
+  datasource:
+    schema: db/schema.sql
+    data: db/test-data.sql
+    initialization-mode: embedded
+#    url: jdbc:mysql://localhost:3306/MUSICDB?useSSL=false
+#    username: root
+#    password: se1124

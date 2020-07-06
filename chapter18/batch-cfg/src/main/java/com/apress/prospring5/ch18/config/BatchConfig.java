@@ -65,6 +65,7 @@ public class BatchConfig {
             .build();
     }
 
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Bean
     public ItemReader itemReader() {
         FlatFileItemReader itemReader = new FlatFileItemReader();
@@ -84,6 +85,7 @@ public class BatchConfig {
         return itemReader;
     }
 
+    @SuppressWarnings("rawtypes")
     @Bean
     public ItemWriter itemWriter() {
         JdbcBatchItemWriter<Singer> itemWriter = new JdbcBatchItemWriter<>();

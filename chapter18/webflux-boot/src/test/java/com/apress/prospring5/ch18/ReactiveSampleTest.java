@@ -10,8 +10,7 @@ import reactor.core.publisher.Flux;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by iuliana.cosmina on 8/5/17.
@@ -22,7 +21,7 @@ public class ReactiveSampleTest {
     @Test
     public void testFlux() {
         List<String> elements = new ArrayList<>();
-        Flux.just("hope", "sadness", "smile", "tear", "grin", "cry", "laugh").log().subscribe(new Subscriber<String>() {
+        Flux.just("hope", "sadness", "smile", "tear", "grin", "cry", "laugh").log().subscribe(new Subscriber<>() {
             private Subscription sub;
             int onNextAmount;
 
@@ -52,7 +51,7 @@ public class ReactiveSampleTest {
             public void onComplete() {
                 logger.info("All done!");
                 elements.forEach(logger::info);
-                assertTrue(elements.size() == 7);
+                assertEquals(7, elements.size());
             }
         });
     }

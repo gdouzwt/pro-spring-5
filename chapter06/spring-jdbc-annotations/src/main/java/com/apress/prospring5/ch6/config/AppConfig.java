@@ -35,7 +35,8 @@ public class AppConfig {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
-    @Bean(destroyMethod = "close")
+    //@Bean(destroyMethod = "close")
+    @Bean()
     public DataSource dataSource() {
         try {
             BasicDataSource dataSource = new BasicDataSource();

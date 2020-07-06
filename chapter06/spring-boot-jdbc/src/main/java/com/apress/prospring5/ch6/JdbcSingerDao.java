@@ -24,14 +24,14 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
     @Override
     public String findNameById(Long id) {
         return jdbcTemplate.queryForObject(
-            "SELECT first_name || ' ' || last_name FROM singer WHERE id = ?",
+            "SELECT FIRST_NAME || ' ' || LAST_NAME FROM SINGER WHERE id = ?",
             new Object[]{id}, String.class);
     }
 
     @Override
     public String findFirstNameById(Long id) {
         return jdbcTemplate.queryForObject(
-            "SELECT first_name FROM singer WHERE id = ?",
+            "SELECT FIRST_NAME FROM SINGER WHERE ID = ?",
             new Object[]{id}, String.class);
     }
 

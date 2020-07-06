@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 import java.sql.Types;
 
 public class StoredFunctionFirstNameById extends SqlFunction<String> {
-    private static final String SQL = "select getfirstnamebyid(?)";
+    private static final String SQL = "SELECT getFirstNameById(?)";
 
     public StoredFunctionFirstNameById(DataSource dataSource) {
         super(dataSource, SQL);

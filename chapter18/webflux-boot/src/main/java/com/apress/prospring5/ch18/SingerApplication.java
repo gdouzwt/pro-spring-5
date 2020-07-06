@@ -11,6 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.http.server.reactive.ServletHttpHandlerAdapter;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -37,7 +38,7 @@ public class SingerApplication {
     SingerHandler singerHandler;
 
     public RouterFunction<ServerResponse> routingFunction() {
-        return route(GET("/test"), serverRequest -> ok().body(fromObject("works!")))
+        return route(GET("/test"), serverRequest -> ok().body(BodyInserters.fromValue("works!")))
             .andRoute(GET("/singers"), singerHandler.list)
             .andRoute(GET("/singers/{id}"), singerHandler::show)
             .andRoute(POST("/singers"), singerHandler.save)
@@ -47,10 +48,12 @@ public class SingerApplication {
             });
     }
 
+    @SuppressWarnings("rawtypes")
     @Bean
     public ServletRegistrationBean servletRegistrationBean() throws Exception {
         HttpHandler httpHandler = RouterFunctions.toHttpHandler(routingFunction());
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean<>(new ServletHttpHandlerAdapter(httpHandler), "/");
+        ServletRegistrationBean registrationBean =
+            new ServletRegistrationBean<>(new ServletHttpHandlerAdapter(httpHandler), "/");
         registrationBean.setLoadOnStartup(1);
         registrationBean.setAsyncSupported(true);
         return registrationBean;
