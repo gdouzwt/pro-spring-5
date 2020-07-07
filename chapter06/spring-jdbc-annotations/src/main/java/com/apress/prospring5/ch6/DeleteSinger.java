@@ -12,6 +12,6 @@ public class DeleteSinger extends SqlUpdate {
 
     public DeleteSinger(DataSource dataSource) {
         super(dataSource, SQL_DELETE_SINGERS);
-        super.declareParameter(new SqlParameter("id", Types.INTEGER));
+        super.declareParameter(new SqlParameter("ID", Types.INTEGER));
     }
 }

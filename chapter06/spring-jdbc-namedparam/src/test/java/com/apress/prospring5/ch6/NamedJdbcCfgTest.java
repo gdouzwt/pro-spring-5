@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by iuliana.cosmina on 4/16/17.
@@ -20,8 +19,8 @@ public class NamedJdbcCfgTest {
 
         SingerDao singerDao = ctx.getBean(SingerDao.class);
         assertNotNull(singerDao);
-        String singerName = singerDao.findNameById(1l);
-        assertTrue("John Mayer".equals(singerName));
+        String singerName = singerDao.findNameById(1L);
+        assertEquals("John Mayer", singerName);
 
         ctx.close();
     }

@@ -39,7 +39,7 @@ public class JdbcSingerDao implements SingerDao {
     @Override
     public List<Singer> findByFirstName(String firstName) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("first_name", firstName);
+        paramMap.put("FIRST_NAME", firstName);
         return selectSingerByFirstName.executeByNamedParam(paramMap);
     }
 
@@ -52,9 +52,9 @@ public class JdbcSingerDao implements SingerDao {
     @Override
     public void insert(Singer singer) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("first_name", singer.getFirstName());
-        paramMap.put("last_name", singer.getLastName());
-        paramMap.put("birth_date", singer.getBirthDate());
+        paramMap.put("FIRST_NAME", singer.getFirstName());
+        paramMap.put("LAST_NAME", singer.getLastName());
+        paramMap.put("BIRTH_DATE", singer.getBirthDate());
         KeyHolder keyHolder = new GeneratedKeyHolder();
         insertSinger.updateByNamedParam(paramMap, keyHolder);
         singer.setId(keyHolder.getKey().longValue());
@@ -65,9 +65,9 @@ public class JdbcSingerDao implements SingerDao {
     public void insertWithAlbum(Singer singer) {
         insertSingerAlbum = new InsertSingerAlbum(dataSource);
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("first_name", singer.getFirstName());
-        paramMap.put("last_name", singer.getLastName());
-        paramMap.put("birth_date", singer.getBirthDate());
+        paramMap.put("FIRST_NAME", singer.getFirstName());
+        paramMap.put("LAST_NAME", singer.getLastName());
+        paramMap.put("BIRTH_DATE", singer.getBirthDate());
         KeyHolder keyHolder = new GeneratedKeyHolder();
         insertSinger.updateByNamedParam(paramMap, keyHolder);
         singer.setId(keyHolder.getKey().longValue());
@@ -77,9 +77,9 @@ public class JdbcSingerDao implements SingerDao {
         if (albums != null) {
             for (Album album : albums) {
                 paramMap = new HashMap<>();
-                paramMap.put("singer_id", singer.getId());
-                paramMap.put("title", album.getTitle());
-                paramMap.put("release_date", album.getReleaseDate());
+                paramMap.put("SINGER_ID", singer.getId());
+                paramMap.put("TITLE", album.getTitle());
+                paramMap.put("RELEASE_DATE", album.getReleaseDate());
                 insertSingerAlbum.updateByNamedParam(paramMap);
             }
         }
@@ -96,24 +96,24 @@ public class JdbcSingerDao implements SingerDao {
             Map<Long, Singer> map = new HashMap<>();
             Singer singer;
             while (rs.next()) {
-                Long id = rs.getLong("id");
+                Long id = rs.getLong("ID");
                 singer = map.get(id);
                 if (singer == null) {
                     singer = new Singer();
                     singer.setId(id);
-                    singer.setFirstName(rs.getString("first_name"));
-                    singer.setLastName(rs.getString("last_name"));
-                    singer.setBirthDate(rs.getDate("birth_date"));
+                    singer.setFirstName(rs.getString("FIRST_NAME"));
+                    singer.setLastName(rs.getString("LAST_NAME"));
+                    singer.setBirthDate(rs.getDate("BIRTH_DATE"));
                     singer.setAlbums(new ArrayList<>());
                     map.put(id, singer);
                 }
-                long albumId = rs.getLong("album_id");
+                long albumId = rs.getLong("ALBUM_ID");
                 if (albumId > 0) {
                     Album album = new Album();
                     album.setId(albumId);
                     album.setSingerId(id);
-                    album.setTitle(rs.getString("title"));
-                    album.setReleaseDate(rs.getDate("release_date"));
+                    album.setTitle(rs.getString("TITLE"));
+                    album.setReleaseDate(rs.getDate("RELEASE_DATE"));
                     singer.getAlbums().add(album);
                 }
             }
@@ -124,10 +124,10 @@ public class JdbcSingerDao implements SingerDao {
     @Override
     public void update(Singer singer) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("first_name", singer.getFirstName());
-        paramMap.put("last_name", singer.getLastName());
-        paramMap.put("birth_date", singer.getBirthDate());
-        paramMap.put("id", singer.getId());
+        paramMap.put("FIRST_NAME", singer.getFirstName());
+        paramMap.put("LAST_NAME", singer.getLastName());
+        paramMap.put("BIRTH_DATE", singer.getBirthDate());
+        paramMap.put("ID", singer.getId());
         updateSinger.updateByNamedParam(paramMap);
         logger.info("Existing singer updated with id: " + singer.getId());
     }
@@ -160,7 +160,7 @@ public class JdbcSingerDao implements SingerDao {
     @Override
     public void delete(Long singerId) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("id", singerId);
+        paramMap.put("ID", singerId);
         deleteSinger.updateByNamedParam(paramMap);
         logger.info("Deleting singer with id: " + singerId);
     }

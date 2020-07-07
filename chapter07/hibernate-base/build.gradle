@@ -6,3 +6,4 @@ jar {
             "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(' '))
     }
 }
+

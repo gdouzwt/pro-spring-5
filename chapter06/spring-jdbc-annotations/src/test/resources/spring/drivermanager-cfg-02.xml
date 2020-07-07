@@ -16,5 +16,5 @@
           p:password="#{jdbc.password}"/>
 
     <util:properties id="jdbc" location="classpath:db/jdbc2.properties"/>
-
+    <!--<context:property-placeholder location="classpath:db/jdbc2.properties"/>-->
 </beans>

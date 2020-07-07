@@ -8,14 +8,14 @@ import java.sql.Types;
 
 public class InsertSinger extends SqlUpdate {
     private static final String SQL_INSERT_SINGER =
-        "INSERT INTO SINGER (FIRST_NAME, LAST_NAME, BIRTH_DATE) VALUES (:first_name, :last_name, :birth_date)";
+        "INSERT INTO SINGER (FIRST_NAME, LAST_NAME, BIRTH_DATE) VALUES (:FIRST_NAME, :LAST_NAME, :BIRTH_DATE)";
 
     public InsertSinger(DataSource dataSource) {
         super(dataSource, SQL_INSERT_SINGER);
         super.declareParameter(new SqlParameter("FIRST_NAME", Types.VARCHAR));
         super.declareParameter(new SqlParameter("LAST_NAME", Types.VARCHAR));
         super.declareParameter(new SqlParameter("BIRTH_DATE", Types.DATE));
-        super.setGeneratedKeysColumnNames("id");
+        super.setGeneratedKeysColumnNames("ID");
         super.setReturnGeneratedKeys(true);
     }
 

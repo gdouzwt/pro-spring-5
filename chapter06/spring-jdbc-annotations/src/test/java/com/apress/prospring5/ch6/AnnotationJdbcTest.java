@@ -3,10 +3,8 @@ package com.apress.prospring5.ch6;
 import com.apress.prospring5.ch6.dao.SingerDao;
 import com.apress.prospring5.ch6.entities.Album;
 import com.apress.prospring5.ch6.entities.Singer;
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -22,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * Created by iuliana.cosmina on 4/16/17.
  * Observation: before running these tests make sure to have the MySQL database in the initial state defined in the SQL scripts
  */
-@Ignore
+//@Ignore
 // 这个数据库测试，应该Rollback的，但是没有，所以运行第二次的时候，就会有冲突，有重复的外键
 //FixMe: 到时候改进一下。 现在先忽略
 public class AnnotationJdbcTest {
@@ -43,7 +41,7 @@ public class AnnotationJdbcTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     public void testFindAll() {
         List<Singer> singers = singerDao.findAll();
         assertEquals(3, singers.size());
@@ -52,7 +50,7 @@ public class AnnotationJdbcTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     public void testFindByFirstName() {
         List<Singer> singers = singerDao.findByFirstName("John");
         assertEquals(1, singers.size());
@@ -61,7 +59,7 @@ public class AnnotationJdbcTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     public void testSingerUpdate() {
         Singer singer = new Singer();
         singer.setId(1L);
@@ -76,7 +74,7 @@ public class AnnotationJdbcTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     public void testSingerInsert() {
         Singer singer = new Singer();
         singer.setFirstName("Ed");
@@ -90,7 +88,7 @@ public class AnnotationJdbcTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     public void testSingerInsertWithAlbum() {
         Singer singer = new Singer();
         singer.setFirstName("BB");
@@ -117,7 +115,7 @@ public class AnnotationJdbcTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     public void testFindFirstNameById() {
         String firstName = singerDao.findFirstNameById(2L);
         assertEquals("Eric", firstName);

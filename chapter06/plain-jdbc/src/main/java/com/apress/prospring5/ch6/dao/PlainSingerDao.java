@@ -54,10 +54,10 @@ public class PlainSingerDao implements SingerDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Singer singer = new Singer();
-                singer.setId(resultSet.getLong("id"));
-                singer.setFirstName(resultSet.getString("first_name"));
-                singer.setLastName(resultSet.getString("last_name"));
-                singer.setBirthDate(resultSet.getDate("birth_date"));
+                singer.setId(resultSet.getLong("ID"));
+                singer.setFirstName(resultSet.getString("FIRST_NAME"));
+                singer.setLastName(resultSet.getString("LAST_NAME"));
+                singer.setBirthDate(resultSet.getDate("BIRTH_DATE"));
                 result.add(singer);
             }
             statement.close();

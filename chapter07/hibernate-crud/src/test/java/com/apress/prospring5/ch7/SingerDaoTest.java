@@ -4,9 +4,9 @@ import com.apress.prospring5.ch7.config.AdvancedConfig;
 import com.apress.prospring5.ch7.dao.SingerDao;
 import com.apress.prospring5.ch7.entities.Album;
 import com.apress.prospring5.ch7.entities.Singer;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -16,8 +16,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Created by iuliana.cosmina on 4/22/17.
@@ -28,7 +28,7 @@ public class SingerDaoTest {
     private GenericApplicationContext ctx;
     private SingerDao singerDao;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         ctx = new AnnotationConfigApplicationContext(AdvancedConfig.class);
         singerDao = ctx.getBean(SingerDao.class);
@@ -132,7 +132,7 @@ public class SingerDaoTest {
         });
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         ctx.close();
     }
