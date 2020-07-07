@@ -174,5 +174,5 @@ rootProject.children.each { project ->
 }
 
 include 'chapter05-aspectj-aspects'
-
+include 'mybatis-plus'
 

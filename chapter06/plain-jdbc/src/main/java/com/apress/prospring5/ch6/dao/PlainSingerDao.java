@@ -5,7 +5,12 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +28,7 @@ public class PlainSingerDao implements SingerDao {
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/MUSICDB?useSSL=false&allowPublicKeyRetrieval=true",
+            "jdbc:mysql://localhost:3306/MUSICDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai",
             "root", "se1124");
     }
 
