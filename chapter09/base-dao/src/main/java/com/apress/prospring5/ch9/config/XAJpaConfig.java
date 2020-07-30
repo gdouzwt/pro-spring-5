@@ -75,7 +75,7 @@ public class XAJpaConfig {
     }
 
 
-    @Bean
+    @Bean(name = "hiProp") // 解决冲突
     public Properties hibernateProperties() {
         Properties hibernateProp = new Properties();
         hibernateProp.put("hibernate.transaction.factory_class", "org.hibernate.transaction.JTATransactionFactory");
@@ -84,7 +84,7 @@ public class XAJpaConfig {
         hibernateProp.put(TRANSACTION_COORDINATOR_STRATEGY, "jta");
         hibernateProp.put(CURRENT_SESSION_CONTEXT_CLASS, "jta");
 
-        hibernateProp.put(AUTOCOMMIT, false);
+        hibernateProp.put(AUTOCOMMIT, false);  // 关闭自动提交
         hibernateProp.put(FLUSH_BEFORE_COMPLETION, false);
         hibernateProp.put(DIALECT, "org.hibernate.dialect.MySQL5Dialect");
         // this will work only if users/schemas are created first, use ddl.sql script for this

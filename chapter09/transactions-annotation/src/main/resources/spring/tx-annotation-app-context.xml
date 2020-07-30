@@ -2,12 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xsi:schemaLocation="http://www.springframework.org/schema/jdbc
-        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
-        http://www.springframework.org/schema/beans
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
@@ -18,10 +15,11 @@
 
     <!-- this is a sample configuration file, depicted here for legacy purposes, to show you how it was done before.
     It is not really used anywhere in this example, but provided the necessary dependencies this configuration is functional. -->
-    <jdbc:embedded-database id="dataSource" type="H2">
+    <!--没有用到这个 H2 数据源？ 因为不支持事务-->
+    <!--<jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="classpath:db/schema.sql"/>
         <jdbc:script location="classpath:db/test-data.sql"/>
-    </jdbc:embedded-database>
+    </jdbc:embedded-database>-->
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="emf"/>

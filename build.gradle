@@ -42,7 +42,7 @@ ext {
     hibernateVersion = '5.4.18.Final'
     hibernateJpaVersion = '1.0.2.Final'
     hibernateValidatorVersion = '6.1.5.Final' //6.0.0.Beta2
-    atomikosVersion = '5.0.6'
+    atomikosVersion = '5.0.8'
 
     //testing libs
     mockitoVersion = '3.3.3'
@@ -86,7 +86,7 @@ ext {
         envers     : "org.hibernate:hibernate-envers:$hibernateVersion",
         jpaApi     : "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpaVersion",
         querydslapt: "com.querydsl:querydsl-apt:4.3.1",
-        tx         : "com.atomikos:transactions-hibernate4:$atomikosVersion"
+        tx         : "com.atomikos:transactions-hibernate4:$atomikosVersion"  // 还可以用嘛？
     ]
 
 

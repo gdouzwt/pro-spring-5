@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -17,6 +18,7 @@ import java.util.Properties;
 
 /**
  * Created by iuliana.cosmina on 4/29/17.
+ * 配置 JPA 的 repository
  */
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch9.repos"})
@@ -25,6 +27,7 @@ public class DataJpaConfig {
     private static Logger logger = LoggerFactory.getLogger(DataJpaConfig.class);
 
     @SuppressWarnings("unchecked")
+    // 数据源配置
     @Bean
     public DataSource dataSource() {
         try {
@@ -41,6 +44,7 @@ public class DataJpaConfig {
         }
     }
 
+    // 配置用于 Hibernate 的 properties
     @Bean
     public Properties hibernateProperties() {
         Properties hibernateProp = new Properties();
@@ -54,12 +58,15 @@ public class DataJpaConfig {
         return hibernateProp;
     }
 
+    // 还要配置 JPAVendorAdapter
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         return new HibernateJpaVendorAdapter();
     }
 
+    // 最后当然要配置 EntityManagerFactory
     @Bean
+    @Primary
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setPackagesToScan("com.apress.prospring5.ch9.entities");

@@ -21,6 +21,7 @@ public class SingerServiceImpl implements SingerService {
     @Transactional(readOnly = true)
     public List<Singer> findAll() {
         return Lists.newArrayList(singerRepository.findAll());
+        // return singerRepository.findAll(); 不能用这个，因为 SingerRepository 是 CrudRepository 而不是 JpaRepository
     }
 
     /*

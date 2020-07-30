@@ -1,0 +1,4 @@
+spring:
+  artemis.embedded.queues: singers
+  jta:
+    log-dir: out

@@ -22,6 +22,7 @@ public class DBInitializer {
     @Autowired
     SingerRepository singerRepository;
 
+    // 初始化数据库
     @PostConstruct
     public void initDB() {
         logger.info("Starting database initialization...");

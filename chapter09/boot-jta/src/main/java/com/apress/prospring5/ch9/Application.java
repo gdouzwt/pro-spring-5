@@ -16,7 +16,8 @@ import java.util.GregorianCalendar;
 /**
  * Created by iuliana.cosmina on 5/12/17.
  */
-@SpringBootApplication(scanBasePackages = "com.apress.prospring5.ch9.services")
+//@SpringBootApplication(scanBasePackages = "com.apress.prospring5.ch9.services")
+@SpringBootApplication
 public class Application implements CommandLineRunner {
 
     private static Logger logger = LoggerFactory.getLogger(Application.class);

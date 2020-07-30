@@ -20,6 +20,8 @@ public class SingerSummaryServiceImpl implements SingerSummaryService {
     @Transactional(readOnly = true)
     @Override
     public List<SingerSummary> findAll() {
+        // 使用 JP QL的 constructor expression 表示 ResultSet 的映射类型
+        // 结果类型为 SingerSummary
         List<SingerSummary> result = em.createQuery(
             "select new com.apress.prospring5.ch8.view.SingerSummary("
                 + "s.firstName, s.lastName, a.title) from Singer s "

@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  * Created by iuliana.cosmina on 5/17/17.
+ * 分开来放，这个部分专注于服务层的事务配置
  */
 @Configuration
 @EnableTransactionManagement

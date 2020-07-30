@@ -14,6 +14,7 @@ subprojects {
         implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.2'
 
         //we specify these dependencies for all submodules, except the boot module, that defines its own
+        // 以下针对非 Spring Boot project
         if (!project.name.contains("boot")) {
             implementation(spring.contextSupport) {
                 exclude module: 'spring-context'

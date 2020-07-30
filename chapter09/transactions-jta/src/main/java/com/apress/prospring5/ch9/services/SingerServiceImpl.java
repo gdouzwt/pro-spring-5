@@ -69,6 +69,7 @@ public class SingerServiceImpl implements SingerService {
         if (singer.getId() == null) {
             emA.persist(singer);
             if (true) {
+                // 模拟出情况
                 throw new JpaSystemException(new PersistenceException("Simulation of something going wrong."));
             }
             emB.persist(singerB);
